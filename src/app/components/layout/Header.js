@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from 'react';
 import Link from 'next/link'
 import Image from 'next/image';
@@ -11,7 +10,7 @@ export default function Header() {
     setIsNavVisible(!isNavVisible);
   };
   return (
-    <header className="flex px-12 py-6 items-center justify-between">
+    <header className="flex px-2 py-6 items-center justify-between">
       <Link href="/">
         <Image src="/logo.png" width={40} height={40} alt='JAYS' />
       </Link>
