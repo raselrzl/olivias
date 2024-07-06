@@ -135,7 +135,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* Visit Us Section */}
-                <section className="text-center mb-12 bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+                <section className="text-center mb-14 bg-gray-900 rounded-lg shadow-lg overflow-hidden">
                     <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Visit Us</h2>
                     <p className="text-lg text-amber-200 mb-6">
                         Join us at <span className="font-semibold">JAY'S</span>, located at <span className="font-semibold">Finspångsvägen 484, 605 80 Svärtinge, Sweden</span>.
@@ -143,7 +143,7 @@ export default function AboutPage() {
                     <div className="relative mb-6">
                         <div id="map" className="w-full h-64 rounded-lg shadow-lg"></div>
                     </div>
-                    <div className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-4 mb-8 rounded-lg text-amber-200">
+                    <div className="bg-gradient-to-r from-gray-700 p-4  via-gray-800 to-gray-900rounded-lg text-amber-200">
                         <h3 className="text-2xl uppercase font-semibold text-amber-200 ">Opening Hours</h3>
                         <ul className="text-lg space-y-1">
                             <li>Wednesday: 3–8:30 PM</li>
