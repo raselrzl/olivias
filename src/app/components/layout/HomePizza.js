@@ -82,25 +82,22 @@ export default function HomePizza() {
 
 
 
-            <div className="relative bg-cover bg-center bg-no-repeat min-h-[25vh] h-[25vh] bg-[url('/milkshake2.jpg')]">
-                {/* Overlay for better text visibility */}
-                <div className="absolute inset-0 bg-black opacity-50"></div>
+            <div className="relative bg-cover bg-center bg-no-repeat min-h-[25vh] h-[25vh] bg-[url('/images/milkshake2.jpg')]">
+    {/* Overlay for better text visibility */}
+    <div className="absolute inset-0 bg-black opacity-50"></div>
 
-                {/* Content container */}
-                <div className="relative flex flex-col items-center justify-center h-full text-center text-white p-6">
-                    {/* Title */}
-                    <h1 className='text-center mt-12  text-2xl font-semibold text-amber-200'>"Indulge & Delight: Explore Our Scrumptious Dessert Haven!"</h1>
+    {/* Content container */}
+    <div className="relative flex flex-col items-center justify-center h-full text-center text-white p-6">
+        {/* Title */}
+        <h1 className='text-center mt-12 text-2xl font-semibold text-amber-200'>"Indulge & Delight: Explore Our Scrumptious Dessert Haven!"</h1>
 
+        {/* Button */}
+        <Link href="/menu" className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
+            Explore <RightArrow />
+        </Link>
+    </div>
+</div>
 
-
-
-                    {/* Button */}
-                    <Link href="/menu"  className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
-                        Explore <RightArrow />
-                    </Link>
-
-                </div>
-            </div>
 
 
 
