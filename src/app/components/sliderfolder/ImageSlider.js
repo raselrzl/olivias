@@ -5,20 +5,20 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 export default function ImageSlider() {
   const slides = [
     {
-      url: '/r1.jpg',
+      url: 'images/r1.jpg',
     },
     {
-      url: '/r2.jpeg',
+      url: 'images/r2.jpeg',
     },
     {
-      url: '/r3.jpeg',
+      url: 'images/r3.jpeg',
     },
 
     {
-      url: '/r4.jpg',
+      url: 'images/r4.jpg',
     },
     {
-      url: '/r5.webp',
+      url: 'images/r5.webp',
     },
   ];
 

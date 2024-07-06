@@ -4,28 +4,28 @@ const popularBurgersData = [
       title: 'Tryffel 139 SEK',
       price: 'SEK125',
       description: 'Chaddder, Piklad Rodlok, Tryffel mayo, Ostcream',
-      imageUrl: '/burger1.png',
+      imageUrl: 'images/burger1.png',
     },
     {
       id: 2,
       title: 'Tryffel 139 SEK',
       price: 'SEK125',
       description: 'Chaddder, Piklad Rodlok, Tryffel mayo, Ostcream',
-      imageUrl: '/burger1.png',
+      imageUrl: 'images/burger1.png',
     },
     {
       id: 3,
       title: 'Tryffel 139 SEK',
       price: 'SEK125',
       description: 'Chaddder, Piklad Rodlok, Tryffel mayo, Ostcream',
-      imageUrl: '/burger1.png',
+      imageUrl: 'images/burger1.png',
     },
     {
       id: 4,
       title: 'Tryffel 139 SEK',
       price: 'SEK125',
       description: 'Chaddder, Piklad Rodlok, Tryffel mayo, Ostcream',
-      imageUrl: '/burger1.png',
+      imageUrl: 'images/burger1.png',
     },
   ];
   

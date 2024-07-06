@@ -1,24 +1,24 @@
 const burgers = [
     {
-      src: '/burger1.png',
+      src: 'images/burger1.png',
       title: 'Margherita',
       price: 'SEK125',
       description: 'Burger bliss like never before with our smash burgers.',
     },
     {
-      src: '/burger1.png',
+      src: 'images/burger1.png',
       title: 'Margherita',
       price: 'SEK125',
       description: 'Burger bliss like never before with our smash burgers.',
     },
     {
-      src: '/burger1.png',
+      src: 'images/burger1.png',
       title: 'Margherita',
       price: 'SEK125',
       description: 'Burger bliss like never before with our smash burgers.',
     },
     {
-      src: '/burger1.png',
+      src: 'images/burger1.png',
       title: 'Margherita',
       price: 'SEK125',
       description: 'Burger bliss like never before with our smash burgers.',

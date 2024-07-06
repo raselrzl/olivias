@@ -4,28 +4,28 @@ const popularPizzaData = [
       title: 'Margherita 125 SEK',
       price: 'SEK125',
       description: 'Oregano',
-      imageUrl: '/pizza1.png',
+      imageUrl: 'images/pizza1.png',
     },
     {
       id: 2,
       title: 'Margherita',
       price: 'SEK125',
       description: 'Experience pizza bliss like never before with our Margherita.',
-      imageUrl: '/pizza1.png',
+      imageUrl: 'images/pizza1.png',
     },
     {
       id: 3,
       title: 'Margherita',
       price: 'SEK125',
       description: 'Experience pizza bliss like never before with our Margherita.',
-      imageUrl: '/pizza1.png',
+      imageUrl: 'images/pizza1.png',
     },
     {
       id: 4,
       title: 'Margherita',
       price: 'SEK125',
       description: 'Experience pizza bliss like never before with our Margherita.',
-      imageUrl: '/pizza1.png',
+      imageUrl: 'images/pizza1.png',
     },
   ];
   

@@ -1,24 +1,24 @@
 const extras = [
     {
-      src: '/crispyFries1.png',
+      src: 'images/crispyFries1.png',
       title: 'Crispy Fries',
       price: 'SEK125',
       description: 'Burger bliss like never before with our smash burgers.',
     },
     {
-      src: '/crispyFries1.png',
+      src: 'images/crispyFries1.png',
       title: 'Crispy Fries',
       price: 'SEK125',
       description: 'Burger bliss like never before with our smash burgers.',
     },
     {
-      src: '/crispyFries1.png',
+      src: 'images/crispyFries1.png',
       title: 'Crispy Fries',
       price: 'SEK125',
       description: 'Burger bliss like never before with our smash burgers.',
     },
     {
-      src: '/crispyFries1.png',
+      src: 'images/crispyFries1.png',
       title: 'Crispy Fries',
       price: 'SEK125',
       description: 'Burger bliss like never before with our smash burgers.',

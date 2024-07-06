@@ -38,7 +38,7 @@ export default function AboutPage() {
                 <section className="text-center mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="relative">
                         <img
-                            src="restaurant-interior.jpg"
+                            src="images/restaurant-interior.jpg"
                             alt="Restaurant Interior"
                             className="w-full h-60 object-cover rounded-t-lg"
                         />
@@ -55,7 +55,7 @@ export default function AboutPage() {
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center p-6">
                         <img
-                            src="ourchef.avif"
+                            src="images/ourchef.avif"
                             alt="Our Chef"
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
@@ -72,7 +72,7 @@ export default function AboutPage() {
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center p-6">
                         <img
-                            src="ourteam.jpg"
+                            src="images/ourteam.jpg"
                             alt="Our Team"
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
@@ -89,7 +89,7 @@ export default function AboutPage() {
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center p-6">
                         <img
-                            src="freshingredients.avif"
+                            src="images/freshingredients.avif"
                             alt="Fresh Ingredients"
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
@@ -106,7 +106,7 @@ export default function AboutPage() {
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center p-6">
                         <img
-                            src="community-engagement-event.jpg"
+                            src="images/community-engagement-event.jpg"
                             alt="Community Engagement"
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />

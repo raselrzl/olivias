@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <header className="flex px-2 py-6 items-center justify-between">
       <Link href="/">
-        <Image src="/logo.png" width={40} height={40} alt='JAYS' />
+        <Image src="/images/logo.png" width={40} height={40} alt='JAYS' />
       </Link>
       <div className="relative">
         <div className="relative">

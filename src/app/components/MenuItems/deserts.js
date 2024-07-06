@@ -1,24 +1,24 @@
 const deserts = [
     {
-      src: '/milkshake.jpg',
+      src: 'images/milkshake.jpg',
       title: 'Milkshake',
       price: 'SEK125',
       description: 'A creamy milkshake made with the finest ingredients.',
     },
     {
-      src: '/milkshake.jpg',
+      src: 'images/milkshake.jpg',
       title: 'Milkshake',
       price: 'SEK125',
       description: 'A creamy milkshake made with the finest ingredients.',
     },
     {
-      src: '/milkshake.jpg',
+      src: 'images/milkshake.jpg',
       title: 'Milkshake',
       price: 'SEK125',
       description: 'A creamy milkshake made with the finest ingredients.',
     },
     {
-      src: '/milkshake.jpg',
+      src: 'images/milkshake.jpg',
       title: 'Milkshake',
       price: 'SEK125',
       description: 'A creamy milkshake made with the finest ingredients.',
