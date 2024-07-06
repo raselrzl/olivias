@@ -41,7 +41,7 @@ export default function ImageSlider() {
   };
 
   return (
-    <div className='relative max-w-[1000px] max-h-[600px] w-full mx-auto py-8 px-4 group'>
+    <div className='relative max-w-[1000px] max-h-[600px] w-full mx-auto py-8 px-1/2 group'>
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className='w-full h-[40vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] bg-center bg-cover bg-no-repeat duration-500'
