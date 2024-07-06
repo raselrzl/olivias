@@ -48,7 +48,7 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="bg-gray-900 min-h-screen">
+        <div className="min-h-screen">
             <Header />
 
             <ImageSlider />
@@ -64,14 +64,14 @@ export default function ContactPage() {
                     </div>
                 </section>
 
-                <section className="mb-12 rounded-lg shadow-lg overflow-hidden p-6 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900">
+                <section className="mb-12 mx-4 lg:mx-40 xl:mx-40 rounded-lg shadow-lg overflow-hidden p-8 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900">
                     {submitted ? (
                         <div className="text-center text-amber-200">
                             <h2 className="text-2xl font-semibold mb-4">Thank You!</h2>
                             <p>Your message has been successfully sent. We will get back to you soon.</p>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-2">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-amber-200">
                                     Name
@@ -82,7 +82,7 @@ export default function ContactPage() {
                                     id="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full p-2 rounded-md bg-gray-700 text-white border-gray-600 focus:border-indigo-500 focus:ring-indigo-500"
+                                    className="mt-.5 block w-full p-2 rounded-md bg-gray-700 text-white border-gray-600 focus:border-indigo-500 focus:ring-indigo-500"
                                 />
                                 {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                             </div>
@@ -97,7 +97,7 @@ export default function ContactPage() {
                                     id="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full p-2 rounded-md bg-gray-700 text-white border-gray-600 focus:border-indigo-500 focus:ring-indigo-500"
+                                    className="mt-.5 block w-full p-2 rounded-md bg-gray-700 text-white border-gray-600 focus:border-indigo-500 focus:ring-indigo-500"
                                 />
                                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                             </div>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                                     id="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full p-2 rounded-md bg-gray-700 text-white border-gray-600 focus:border-indigo-500 focus:ring-indigo-500"
+                                    className="mt-.5 block w-full p-2 rounded-md bg-gray-700 text-white border-gray-600 focus:border-indigo-500 focus:ring-indigo-500"
                                 />
                                 {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject}</p>}
                             </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                                     rows="4"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full p-2 rounded-md bg-gray-700 text-white border-gray-600 focus:border-indigo-500 focus:ring-indigo-500"
+                                    className="mt-.5 block w-full p-2 rounded-md bg-gray-700 text-white border-gray-600 focus:border-indigo-500 focus:ring-indigo-500"
                                 ></textarea>
                                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                             </div>
@@ -143,6 +143,7 @@ export default function ContactPage() {
                         </form>
                     )}
                 </section>
+
             </div>
 
             <Footer />
