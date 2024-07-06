@@ -7,12 +7,19 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isNavVisible, setIsNavVisible] = useState(false);
+  const [activeLink, setActiveLink] = useState('');
   const pathname = usePathname();
+
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible);
   };
 
-  const isActive = (path) => pathname === path;
+  const isActive = (path) => pathname === path || activeLink === path;
+
+  const handleLinkClick = (path) => {
+    setActiveLink(path);
+    setIsNavVisible(false); // Close the drawer on link click
+  };
 
   return (
     <header className="flex px-2 py-6 items-center justify-between">
@@ -32,23 +39,39 @@ export default function Header() {
           ></div>
 
           <nav
-            className={`fixed top-0 right-0 h-1.2/2 w-2/5 bg-gray-900 text-white transform transition-transform duration-300 z-20 ${isNavVisible ? 'translate-x-0' : 'translate-x-full'
+            className={`fixed top-0 right-0 h-1/2 w-2/5 bg-gray-900 text-white transform transition-transform duration-300 z-20 ${isNavVisible ? 'translate-x-0' : 'translate-x-full'
               } sm:hidden flex flex-col items-start p-6 gap-6`}
           >
             <button onClick={toggleNav} className="self-end mb-4 text-xl">
               ✕
             </button>
-            <Link href={'/'} className={`text-amber-200 ${isActive('/') ? 'font-bold' : ''}`}>Home</Link>
-            <Link href={'/menu'} className={`text-amber-200 ${isActive('/menu') ? 'font-bold' : ''}`}>Menu</Link>
-            <Link href={'/about'} className={`text-amber-200 ${isActive('/about') ? 'font-bold' : ''}`}>About</Link>
-            <Link href={'/contact'} className={`text-amber-200 ${isActive('/contact') ? 'font-bold' : ''}`}>Contact</Link>
+            <Link href={'/'} className={`text-amber-200 p-2 rounded transition-colors duration-300 ${isActive('/') ? 'bg-primary text-white' : ''}`} onClick={() => handleLinkClick('/')}>
+              Home
+            </Link>
+            <Link href={'/menu'} className={`text-amber-200 p-2 rounded transition-colors duration-300 ${isActive('/menu') ? 'bg-primary text-white' : ''}`} onClick={() => handleLinkClick('/menu')}>
+              Menu
+            </Link>
+            <Link href={'/about'} className={`text-amber-200 p-2 rounded transition-colors duration-300 ${isActive('/about') ? 'bg-primary text-white' : ''}`} onClick={() => handleLinkClick('/about')}>
+              About
+            </Link>
+            <Link href={'/contact'} className={`text-amber-200 p-2 rounded transition-colors duration-300 ${isActive('/contact') ? 'bg-primary text-white' : ''}`} onClick={() => handleLinkClick('/contact')}>
+              Contact
+            </Link>
           </nav>
 
           <nav className="hidden sm:flex items-center gap-6 text-gray-600 font-semibold">
-            <Link href={'/'} className={`text-amber-200 ${isActive('/') ? 'font-bold' : ''}`}>Home</Link>
-            <Link href={'/menu'} className={`text-amber-200 ${isActive('/menu') ? 'font-bold' : ''}`}>Menu</Link>
-            <Link href={'/about'} className={`text-amber-200 ${isActive('/about') ? 'font-bold' : ''}`}>About</Link>
-            <Link href={'/contact'} className={`text-amber-200 ${isActive('/contact') ? 'font-bold' : ''}`}>Contact</Link>
+            <Link href={'/'} className={`text-amber-200 p-2 rounded transition-colors duration-300 ${isActive('/') ? 'bg-primary text-white' : ''}`}>
+              Home
+            </Link>
+            <Link href={'/menu'} className={`text-amber-200 p-2 rounded transition-colors duration-300 ${isActive('/menu') ? 'bg-primary text-white' : ''}`}>
+              Menu
+            </Link>
+            <Link href={'/about'} className={`text-amber-200 p-2 rounded transition-colors duration-300 ${isActive('/about') ? 'bg-primary text-white' : ''}`}>
+              About
+            </Link>
+            <Link href={'/contact'} className={`text-amber-200 p-2 rounded transition-colors duration-300 ${isActive('/contact') ? 'bg-primary text-white' : ''}`}>
+              Contact
+            </Link>
           </nav>
         </div>
       </div>

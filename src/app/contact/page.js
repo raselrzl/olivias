@@ -48,32 +48,32 @@ export default function ContactPage() {
     };
 
     return (
-        <div>
+        <div className="bg-gray-900 min-h-screen">
             <Header />
 
             <ImageSlider />
-            <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 text-gray-100">
-                <section className="text-center text-amber-100 mb-12 bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                    <div className="relative">
-                        <div className="p-6 bg-black/50 rounded-t-lg">
-                            <h1 className="text-4xl font-bold text-amber-100 mb-4">Contact Us</h1>
-                            <p className="text-lg text-amber-100">
+            <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 text-amber-200">
+                <section className="text-center mb-12">
+                    <div className="relative bg-black/50 rounded-lg shadow-lg overflow-hidden">
+                        <div className="p-6">
+                            <h1 className="text-4xl font-bold text-amber-200 mb-4">Contact Us</h1>
+                            <p className="text-lg text-amber-200">
                                 We'd love to hear from you. Please fill out the form below to get in touch.
                             </p>
                         </div>
                     </div>
                 </section>
 
-                <section className="mb-12 rounded-lg shadow-lg overflow-hidden p-6">
+                <section className="mb-12 rounded-lg shadow-lg overflow-hidden p-6 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900">
                     {submitted ? (
-                        <div className="text-center text-green-400">
+                        <div className="text-center text-amber-200">
                             <h2 className="text-2xl font-semibold mb-4">Thank You!</h2>
                             <p>Your message has been successfully sent. We will get back to you soon.</p>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-amber-100">
+                                <label htmlFor="name" className="block text-sm font-medium text-amber-200">
                                     Name
                                 </label>
                                 <input
@@ -88,7 +88,7 @@ export default function ContactPage() {
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-amber-100">
+                                <label htmlFor="email" className="block text-sm font-medium text-amber-200">
                                     Email
                                 </label>
                                 <input
@@ -103,7 +103,7 @@ export default function ContactPage() {
                             </div>
 
                             <div>
-                                <label htmlFor="subject" className="block text-sm font-medium text-amber-100">
+                                <label htmlFor="subject" className="block text-sm font-medium text-amber-200">
                                     Subject
                                 </label>
                                 <input
@@ -118,7 +118,7 @@ export default function ContactPage() {
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-amber-100">
+                                <label htmlFor="message" className="block text-sm font-medium text-amber-200">
                                     Message
                                 </label>
                                 <textarea
@@ -147,6 +147,5 @@ export default function ContactPage() {
 
             <Footer />
         </div>
-
     );
 }
