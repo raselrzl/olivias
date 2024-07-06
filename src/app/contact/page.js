@@ -56,10 +56,9 @@ export default function ContactPage() {
                 <section className="text-center mb-12">
                     <div className="relative bg-black/50 rounded-lg shadow-lg overflow-hidden">
                         <div className="p-6">
-                            <h1 className="text-4xl font-bold text-amber-200 mb-4">Contact Us</h1>
-                            <p className="text-lg text-amber-200">
-                                We'd love to hear from you. Please fill out the form below to get in touch.
-                            </p>
+                            <h1 className="text-3xl font-bold text-amber-200 mb-4 uppercase">Contact Us</h1>
+                            <p className="text-lg text-amber-200 lg:px-40">
+                            Whether you have questions, feedback, or just want to say hello, we’re here for you. Fill out the form below, and we’ll get back to you as soon as possible. </p>
                         </div>
                     </div>
                 </section>

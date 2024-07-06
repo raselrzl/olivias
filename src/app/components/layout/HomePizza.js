@@ -51,7 +51,7 @@ export default function HomePizza() {
                 
                 <div className='flex items-center justify-center gap-4 text-sm mt-10 mb-10'>
                     <button className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
-                        Most Saled Burgers
+                        Most Sailed Burgers
                     </button>
                 </div>
             </div>
