@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function HomePizza() {
     return (
-        <section className='lg:mx-20 lg:px-20 mb-24 px-8'>
+        <section className='lg:mx-20 lg:px-20 mb-24 px-6'>
             <div>
                 <div >
                     <h1 className='text-center text-2xl font-bold text-amber-200 uppercase mb-4'>Welcome to  <span className='text-rose-500'>JAYS! </span> </h1>
