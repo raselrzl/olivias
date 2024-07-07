@@ -1,8 +1,8 @@
 "use client"
 import { useEffect, useState } from 'react';
-import Header from "./components/layout/Header";
-import HomePizza from "./components/layout/HomePizza";
-import { Footer } from "./components/layout/Footer";
+import Header from "./components/Header";
+import HomePizza from "./components/HomePizza";
+import { Footer } from "./components/Footer";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);

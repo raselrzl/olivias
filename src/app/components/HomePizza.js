@@ -1,7 +1,7 @@
-import RightArrow from '../Icons/RightArrow';
-import PopularPizzas from '../MenuItems/popularPizza';
-import PopularBurgers from '../MenuItems/popularBurgers';
-import ImageSlider from '../sliderfolder/ImageSlider';
+import RightArrow from './RightArrow';
+import PopularPizzas from './popularPizza';
+import PopularBurgers from './popularBurgers';
+import ImageSlider from './ImageSlider';
 import Link from 'next/link';
 
 export default function HomePizza() {

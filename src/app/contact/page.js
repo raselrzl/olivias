@@ -1,9 +1,9 @@
 "use client";
 import { useState } from 'react';
-import Header from '../components/layout/Header';
-import ImageSlider from '../components/sliderfolder/ImageSlider';
+import Header from '../components/Header';
+import ImageSlider from '../components/ImageSlider';
 import FormInputs from '../components/FormInputs';
-import { Footer } from '../components/layout/Footer';
+import { Footer } from '../components/Footer';
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({

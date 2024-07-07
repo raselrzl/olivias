@@ -1,12 +1,12 @@
 "use client";
 import { useState, lazy, Suspense } from 'react';
-import { Footer } from "../components/layout/Footer";
-import Header from "../components/layout/Header";
+import { Footer } from "../components/Footer";
+import Header from "../components/Header";
 
-const Burgers = lazy(() => import("../components/MenuItems/burgers"));
-const Deserts = lazy(() => import("../components/MenuItems/deserts"));
-const Extras = lazy(() => import("../components/MenuItems/extras"));
-const Pizzas = lazy(() => import("../components/MenuItems/pizzas"));
+const Burgers = lazy(() => import("../components/burgers"));
+const Deserts = lazy(() => import("../components/deserts"));
+const Extras = lazy(() => import("../components/extras"));
+const Pizzas = lazy(() => import("../components/pizzas"));
 
 export default function Menu() {
     const [selectedCategory, setSelectedCategory] = useState('All');
