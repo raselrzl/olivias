@@ -37,39 +37,26 @@ export default function ContactPage() {
         return formErrors;
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const formErrors = validateForm();
         if (Object.keys(formErrors).length === 0) {
-            try {
-                const response = await fetch('/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
+            // Log form data to the console
+            console.log('Form Data Submitted:', formData);
 
-                if (response.ok) {
-                    setShowConfirmation(true);
+            // Show confirmation message
+            setShowConfirmation(true);
+            setTimeout(() => {
+                setShowConfirmation(false);
+            }, 3000);
 
-                    setTimeout(() => {
-                        setShowConfirmation(false);
-                    }, 3000);
-
-                    setFormData({
-                        name: '',
-                        email: '',
-                        subject: '',
-                        message: '',
-                    });
-                } else {
-                    const errorData = await response.json();
-                    console.error('Failed to submit form:', errorData);
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-            }
+            // Clear the form data
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: '',
+            });
         } else {
             setErrors(formErrors);
         }

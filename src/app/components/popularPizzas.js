@@ -1,38 +1,38 @@
 import { useState, useEffect } from 'react';
-import LoadingSpinner from '../components/loading-spinner'; // Import the LoadingSpinner component
+import LoadingSpinner from './loading-spinner';
 
-// Static desert data
-const DesertsData = [
+// Static pizza data
+const pizzaData = [
   {
-    title: 'Daim',
+    title: 'Margherita',
     price: 'SEK125',
     description: 'Classic pizza with tomato sauce and mozzarella cheese.',
-    src: 'images/milkshake.jpg',
+    src: 'images/pizza1.png',
   },
   {
-    title: 'Dumle',
+    title: 'Pepperoni',
     price: 'SEK125',
     description: 'Spicy pepperoni with mozzarella cheese and tomato sauce.',
-    src: 'images/milkshake.jpg',
+    src: 'images/pizza1.png',
   },
   {
-    title: 'Pennut',
+    title: 'BBQ Chicken',
     price: 'SEK125',
     description: 'BBQ sauce, chicken, and fresh vegetables on a crispy crust.',
-    src: 'images/milkshake.jpg',
+    src: 'images/pizza1.png',
   },
   {
-    title: 'Oreo',
+    title: 'Veggie Supreme',
     price: 'SEK125',
     description: 'Loaded with a variety of fresh vegetables and cheese.',
-    src: 'images/milkshake.jpg',
+    src: 'images/pizza1.png',
   },
 ];
 
-export default function Deserts() {
-  const [deserts, setDeserts] = useState(DesertsData);  // Use static data
-  const [loading, setLoading] = useState(false);  // Set loading to false as we are not fetching data
+export default function PopularPizzas() {
+  const [pizzas, setPizzas] = useState(pizzaData);  // Use static data
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // Simulate a loading state
@@ -43,33 +43,26 @@ export default function Deserts() {
   }, []);
 
   if (loading) {
-    return <LoadingSpinner />;  // Show the spinner while loading
+    return <div><LoadingSpinner /></div>;
   }
 
   if (error) {
-    return <div className='text-red-500 text-center'>Error: {error}</div>;
+    return <div>Error: {error}</div>;
   }
 
   return (
     <>
-      {deserts.map((desert, index) => (
+      {pizzas.map((pizza, index) => (
         <div
           key={index}  // Use index as the key since there's no unique ID
           className='relative bg-gray-200 p-4 text-center rounded-lg hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
         >
-          {/* Price Button */}
           <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
-            {desert.price}
+            {pizza.price}
           </button>
-
-          {/* Dessert Image */}
-          <img src={desert.src} alt={desert.title} className='mx-auto mb-4' />
-
-          {/* Dessert Title */}
-          <h4 className='font-semibold text-lg mb-2'>{desert.title}</h4>
-
-          {/* Description */}
-          <p className='text-sm text-gray-500 mb-2'>{desert.description}</p>
+          <img src={pizza.src} alt={pizza.title} className='mx-auto mb-4' />
+          <h4 className='font-semibold my-2'>{pizza.title}</h4>
+          <p className='text-sm text-gray-500'>{pizza.description}</p>
         </div>
       ))}
     </>

@@ -2,104 +2,137 @@
 @tailwind components;
 @tailwind utilities;
 
-section.homeSection{
-  @apply grid;
-  overflow-y:auto;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-
-
+/* Full-screen Spinner Styles */
+.fixed-spinner {
+  @apply fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50;
 }
 
-.bg-image{
-  background-image: url("/homepageBackground1.png");
-  width: 100vw;
-  height: 100vh;
-  /* Other styling properties (e.g., background-size, background-position) */
-}
-body {
-  background-color: #000; /* Sets the background color to black */
+/* Ring Spinner */
+.ring-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-/* Spinner styles */
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #4f46e5; /* Change this to match your primary color */
+.ring-spinner div {
+  border: 4px solid rgba(0, 0, 0, 0.1); /* Light background */
+  border-top: 4px solid #777a0b; /* Spinner color */
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
+  width: 3rem; /* 48px */
+  height: 3rem; /* 48px */
+  animation: ring 1s linear infinite;
 }
 
-@keyframes spin {
-  to {
+/* Custom spinner color */
+.spinner-custom {
+  border-top-color: #777a0b; /* Dark olive green */
+}
+
+/* Keyframes for ring spinner animation */
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 }
 
-/* Transition styles */
-.fade-in {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeIn 0.5s forwards;
+/* Ring Spinner Variants */
+.ring-spinner-sm {
+  width: 2rem; /* 32px */
+  height: 2rem; /* 32px */
+  border-width: 2px;
+  border-top-width: 2px;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.ring-spinner-md {
+  width: 3rem; /* 48px */
+  height: 3rem; /* 48px */
+  border-width: 4px;
+  border-top-width: 4px;
 }
 
+.ring-spinner-lg {
+  width: 4rem; /* 64px */
+  height: 4rem; /* 64px */
+  border-width: 4px;
+  border-top-width: 4px;
+}
 
+body {
+  background-color: #000; /* Sets the background color to black */
+}
 
-/* Add this to your global CSS file */
+/* Spinner styles */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1); /* Light background */
+  border-top: 4px solid #777a0b; /* Dark olive green spinner color */
+  border-radius: 50%;
+  width: 3rem; /* 12 x 0.25rem = 12 */
+  height: 3rem; /* 12 x 0.25rem = 12 */
+  animation: spin 1s linear infinite;
+}
+
+/* Additional spinner colors */
+.spinner-red {
+  border-top-color: rgb(255, 0, 0); /* Red */
+}
+
+.spinner-green {
+  border-top-color: rgb(0, 255, 0); /* Green */
+}
+
+.spinner-blue {
+  border-top-color: rgb(0, 0, 255); /* Blue */
+}
+
+.spinner-yellow {
+  border-top-color: rgb(255, 255, 0); /* Yellow */
+}
+
+.spinner-purple {
+  border-top-color: rgb(128, 0, 128); /* Purple */
+}
+
+.spinner-orange {
+  border-top-color: rgb(255, 165, 0); /* Orange */
+}
+
+.spinner-pink {
+  border-top-color: rgb(255, 105, 180); /* Hot pink */
+}
+
+/* Spinner sizes */
+.spinner-sm {
+  width: 1.5rem; /* 24px */
+  height: 1.5rem; /* 24px */
+  border-width: 2px;
+  border-top-width: 2px;
+}
+
+.spinner-md {
+  width: 3rem; /* 48px */
+  height: 3rem; /* 48px */
+  border-width: 4px;
+  border-top-width: 4px;
+}
+
+.spinner-lg {
+  width: 4rem; /* 64px */
+  height: 4rem; /* 64px */
+  border-width: 4px;
+  border-top-width: 4px;
+}
+
+/* Keyframes for spinner animation */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-.loading-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: black; /* Adjust based on your preference */
-  color: white; /* Adjust based on your preference */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+/* Primary Color */
+.border-t-primary {
+  border-top-color: #3498db; /* You can replace this with your primary color */
 }
 
-.loading-spinner {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-}
-
-.bg-gray-800 {
-  background-color: #2d3748;
-}
-
-.bg-gray-700 {
-  background-color: #4a5568;
-}
-
-.text-gray-300 {
-  color: #e2e8f0;
-}
-
-.hover\:bg-gray-700:hover {
-  background-color: #4a5568;
-}
-
-.transition {
-  transition: all 0.3s ease-in-out;
-}

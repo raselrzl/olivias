@@ -1,5 +1,5 @@
 import RightArrow from './RightArrow';
-import PopularPizzas from './popularPizza';
+import PopularPizzas from './popularPizzas';
 import PopularBurgers from './popularBurgers';
 import ImageSlider from './ImageSlider';
 import Link from 'next/link';

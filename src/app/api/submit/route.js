@@ -1,7 +1,7 @@
 // src/app/api/submit/route.js
 import { MongoClient } from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = 'mongodb+srv://rasel6041:tJdut5cpN2g3gq3@cluster0.zlo8hzx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const DATABASE_NAME = 'JAYS';
 const COLLECTION_NAME = 'User Messages';
 
