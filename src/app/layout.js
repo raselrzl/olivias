@@ -11,11 +11,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className }>
+      <body className={inter.className}>
         <main className="overflow-scroll sm:px-4 xl:px-20">
-         {children}
-        </main> 
-       {/*  bg-image */}
+          {children}
+        </main>
+        {/*  bg-image */}
       </body>
     </html>
   );

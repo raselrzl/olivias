@@ -2,8 +2,8 @@
 import { MongoClient } from 'mongodb';
 
 const MONGODB_URI = process.env.MONGODB_URI;
-const DATABASE_NAME = 'your_database_name';
-const COLLECTION_NAME = 'your_collection_name';
+const DATABASE_NAME = 'JAYS';
+const COLLECTION_NAME = 'User Messages';
 
 let client;
 let clientPromise;
