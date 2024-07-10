@@ -30,7 +30,9 @@ export default function Burgers() {
 
   return (
     <>
+    
       {burgers.map((burger, index) => (
+        
         <div
           key={index}  // Use index as the key since there's no unique ID
           className='relative bg-gray-200 p-4 text-center rounded-lg hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'

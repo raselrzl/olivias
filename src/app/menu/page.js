@@ -158,6 +158,12 @@ export default function Menu() {
                 <div className='my-10 mx-6'>
                     <div className='bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-6 shadow-lg mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-lg'>
                         <h1 className='mb-2 my-2 text-amber-100 text-xl text-center text-primary uppercase'>Note:</h1>
+
+                        <p className='mb-6 my-6 text-primary text-sm text-center uppercase '>
+                            Each Burger You can choose 80g two kött or 2 piece of Hallumni
+                        </p>
+
+
                         <p className='mb-6 my-6 text-amber-100 text-sm text-center uppercase '>
                             At Jay's, we offer two types of pizza bread to cater to your preferences: Italiensk Surdeg and Gluten-Free. <br /> <br />
 
