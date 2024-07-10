@@ -160,7 +160,10 @@ export default function Menu() {
                         <h1 className='mb-2 my-2 text-amber-100 text-xl text-center text-primary uppercase'>Note:</h1>
 
                         <p className='mb-6 my-6 text-primary text-sm text-center uppercase '>
-                            Each Burger You can choose 80g two kött or 2 piece of Hallumni
+                            Each Burger include 80g*2 kött
+                        </p>
+                        <p className='mb-6 my-6 text-primary text-sm text-center uppercase '>
+                            You have option to Choose Hallumni*2
                         </p>
 
 
