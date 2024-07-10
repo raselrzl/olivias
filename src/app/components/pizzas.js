@@ -1,40 +1,17 @@
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
-
-// Static pizzas data
-const PizzasData = [
-  {
-    title: 'Margherita',
-    price: 'SEK125',
-    description: 'Classic pizza with tomato sauce and mozzarella cheese.',
-    src: 'images/pizza1.png',
-  },
-  {
-    title: 'Pepperoni',
-    price: 'SEK145',
-    description: 'Spicy pepperoni with mozzarella cheese and tomato sauce.',
-    src: 'images/pizza1.png',
-  },
-  {
-    title: 'BBQ Chicken',
-    price: 'SEK155',
-    description: 'BBQ sauce, chicken, and fresh vegetables on a crispy crust.',
-    src: 'images/pizza1.png',
-  },
-  {
-    title: 'Veggie Supreme',
-    price: 'SEK135',
-    description: 'Loaded with a variety of fresh vegetables and cheese.',
-    src: 'images/pizza1.png',
-  },
-];
+import { menuItems } from '../menuItems/MenuItem.js';
 
 export default function Pizzas() {
-  const [pizzas, setPizzas] = useState(PizzasData);  // Use static data
-  const [loading, setLoading] = useState(false);  // Set loading to false as we are not fetching data
+  const [pizzas, setPizzas] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Filter pizzas data from menuItems
+    const pizzasData = menuItems.find(category => category.category === 'Pizzas')?.items || [];
+    setPizzas(pizzasData);
+
     // Simulate a loading state
     setLoading(true);
     setTimeout(() => {

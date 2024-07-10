@@ -8,6 +8,7 @@ const Burgers = lazy(() => import("../components/burgers"));
 const Deserts = lazy(() => import("../components/deserts"));
 const Extras = lazy(() => import("../components/extras"));
 const Pizzas = lazy(() => import("../components/pizzas"));
+const Drinks = lazy(() => import("../components/drinks"));
 
 export default function Menu() {
     const [selectedCategory, setSelectedCategory] = useState('All');
@@ -54,6 +55,12 @@ export default function Menu() {
                             onClick={() => handleCategoryChange('Deserts')}
                         >
                             Deserts
+                        </button>
+                        <button
+                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Drinks' ? 'bg-primary-dark' : 'bg-primary'}`}
+                            onClick={() => handleCategoryChange('Drinks')}
+                        >
+                            Drinks
                         </button>
                     </div>
                 </div>
@@ -102,6 +109,18 @@ export default function Menu() {
                             <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
                                 <Deserts />
                             </div>
+                            <div className="flex justify-center">
+                                <button
+                                    className='w-1/4 m-10 bg-primary flex justify-center items-center uppercase gap-2 rounded text-white px-4 py-2'
+                                    onClick={() => handleCategoryChange('Drinks')}
+                                >
+                                    Drinks
+                                </button>
+                            </div>
+
+                            <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
+                                <Drinks />
+                            </div>
                         </>
                     )}
 
@@ -126,6 +145,12 @@ export default function Menu() {
                     {selectedCategory === 'Deserts' && (
                         <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
                             <Deserts />
+                        </div>
+                    )}
+
+                    {selectedCategory === 'Drinks' && (
+                        <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
+                            <Drinks />
                         </div>
                     )}
                 </Suspense>

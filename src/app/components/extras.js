@@ -1,40 +1,17 @@
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
-
-// Static extras data
-const ExtrasData = [
-  {
-    title: 'Permesanofries',
-    price: 'SEK125',
-    description: 'Classic pizza with tomato sauce and mozzarella cheese.',
-    src: 'images/crispyFries1.png',
-  },
-  {
-    title: 'Fries',
-    price: 'SEK125',
-    description: 'Spicy pepperoni with mozzarella cheese and tomato sauce.',
-    src: 'images/crispyFries1.png',
-  },
-  {
-    title: 'Chesefries',
-    price: 'SEK125',
-    description: 'BBQ sauce, chicken, and fresh vegetables on a crispy crust.',
-    src: 'images/crispyFries1.png',
-  },
-  {
-    title: 'Tryffel',
-    price: 'SEK125',
-    description: 'Loaded with a variety of fresh vegetables and cheese.',
-    src: 'images/crispyFries1.png',
-  },
-];
+import { menuItems } from '../menuItems/MenuItem.js'; 
 
 export default function Extras() {
-  const [extras, setExtras] = useState(ExtrasData);  // Use static data
-  const [loading, setLoading] = useState(false);  // Set loading to false as we are not fetching data
+  const [extras, setExtras] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Filter extras data from menuItems
+    const extrasData = menuItems.find(category => category.category === 'Extras')?.items || [];
+    setExtras(extrasData);
+
     // Simulate a loading state
     setLoading(true);
     setTimeout(() => {

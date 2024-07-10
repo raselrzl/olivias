@@ -1,40 +1,17 @@
 import { useState, useEffect } from 'react';
-import LoadingSpinner from './loading-spinner';
-
-// Static pizza data
-const pizzaData = [
-  {
-    title: 'Margherita',
-    price: 'SEK125',
-    description: 'Classic pizza with tomato sauce and mozzarella cheese.',
-    src: 'images/pizza1.png',
-  },
-  {
-    title: 'Pepperoni',
-    price: 'SEK125',
-    description: 'Spicy pepperoni with mozzarella cheese and tomato sauce.',
-    src: 'images/pizza1.png',
-  },
-  {
-    title: 'BBQ Chicken',
-    price: 'SEK125',
-    description: 'BBQ sauce, chicken, and fresh vegetables on a crispy crust.',
-    src: 'images/pizza1.png',
-  },
-  {
-    title: 'Veggie Supreme',
-    price: 'SEK125',
-    description: 'Loaded with a variety of fresh vegetables and cheese.',
-    src: 'images/pizza1.png',
-  },
-];
+import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
+import { menuItems } from '../menuItems/MenuItem.js'; 
 
 export default function PopularPizzas() {
-  const [pizzas, setPizzas] = useState(pizzaData);  // Use static data
-  const [error, setError] = useState(null);
+  const [pizzas, setPizzas] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Fetch popular pizzas data from menuItems
+    const popularPizzasData = menuItems.find(category => category.category === 'Popular Pizzas')?.items || [];
+    setPizzas(popularPizzasData);
+
     // Simulate a loading state
     setLoading(true);
     setTimeout(() => {
@@ -43,11 +20,11 @@ export default function PopularPizzas() {
   }, []);
 
   if (loading) {
-    return <div><LoadingSpinner /></div>;
+    return <div><LoadingSpinner /></div>;  // Show the spinner while loading
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className='text-red-500 text-center'>Error: {error}</div>;  // Show the error message
   }
 
   return (
@@ -57,12 +34,19 @@ export default function PopularPizzas() {
           key={index}  // Use index as the key since there's no unique ID
           className='relative bg-gray-200 p-4 text-center rounded-lg hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
         >
+          {/* Price Button */}
           <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
             {pizza.price}
           </button>
+
+          {/* Pizza Image */}
           <img src={pizza.src} alt={pizza.title} className='mx-auto mb-4' />
-          <h4 className='font-semibold my-2'>{pizza.title}</h4>
-          <p className='text-sm text-gray-500'>{pizza.description}</p>
+
+          {/* Pizza Title */}
+          <h4 className='font-semibold text-lg mb-2'>{pizza.title}</h4>
+
+          {/* Description */}
+          <p className='text-sm text-gray-500 mb-2'>{pizza.description}</p>
         </div>
       ))}
     </>

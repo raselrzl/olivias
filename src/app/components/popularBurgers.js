@@ -1,40 +1,17 @@
 import { useState, useEffect } from 'react';
-import LoadingSpinner from './loading-spinner';
-
-// Static popular burgers data
-const PopularBurgersData = [
-  {
-    title: 'Classic Cheeseburger',
-    price: 'SEK130',
-    description: 'A delicious cheeseburger with a juicy beef patty, melted cheese, lettuce, tomato, and pickles.',
-    src: 'images/burger1.png',
-  },
-  {
-    title: 'BBQ Bacon Burger',
-    price: 'SEK150',
-    description: 'A smoky BBQ bacon burger with a beef patty, crispy bacon, cheddar cheese, and BBQ sauce.',
-    src: 'images/burger1.png',
-  },
-  {
-    title: 'Veggie Burger',
-    price: 'SEK120',
-    description: 'A hearty veggie burger with a black bean patty, avocado, lettuce, and tomato.',
-    src: 'images/burger1.png',
-  },
-  {
-    title: 'Spicy Jalapeño Burger',
-    price: 'SEK140',
-    description: 'A spicy burger with jalapeños, pepper jack cheese, and a zesty sauce.',
-    src: 'images/burger1.png',
-  },
-];
+import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
+import { menuItems } from '../menuItems/MenuItem.js'; 
 
 export default function PopularBurgers() {
-  const [burgers, setBurgers] = useState(PopularBurgersData);  // Use static data
-  const [loading, setLoading] = useState(false);  // Set loading to false as we are not fetching data
+  const [burgers, setBurgers] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Filter popular burgers data from menuItems
+    const popularBurgersData = menuItems.find(category => category.category === 'Popular Burgers')?.items || [];
+    setBurgers(popularBurgersData);
+
     // Simulate a loading state
     setLoading(true);
     setTimeout(() => {
@@ -54,7 +31,7 @@ export default function PopularBurgers() {
     <>
       {burgers.map((burger, index) => (
         <div
-          key={index}
+          key={index}  // Use index as the key since there's no unique ID
           className='relative bg-gray-200 p-4 text-center rounded-lg hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
         >
           {/* Price Button */}

@@ -1,18 +1,20 @@
+// src/app/components/Drinks.js
+
 import { useState, useEffect } from 'react';
 import LoadingSpinner from './loading-spinner';
 import { menuItems } from '../menuItems/MenuItem.js'; 
 
-export default function Burgers() {
-  const [burgers, setBurgers] = useState([]);
+export default function Drinks() {
+  const [drinks, setDrinks] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     try {
-      const burgersCategory = menuItems.find(category => category.category === 'Burgers');
-      const burgersData = burgersCategory ? burgersCategory.items : [];
-      setBurgers(burgersData);
+      const desertsCategory = menuItems.find(category => category.category === 'Drinks');
+      const drinksData = desertsCategory ? desertsCategory.items : [];
+      setDrinks(drinksData);
       setLoading(false);
     } catch (err) {
       setError(err.message);
@@ -30,20 +32,20 @@ export default function Burgers() {
 
   return (
     <>
-      {burgers.map((burger, index) => (
+      {drinks.map((drink, index) => (
         <div
           key={index}  // Use index as the key since there's no unique ID
           className='relative bg-gray-200 p-4 text-center rounded-lg hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
         >
           <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
-            {burger.price}
+            {drink.price}
           </button>
 
-          <img src={burger.src} alt={burger.title} className='mx-auto mb-4' />
+          <img src={drink.src} alt={drink.title} className='mx-auto mb-4' />
 
-          <h4 className='font-semibold my-2'>{burger.title}</h4>
+          <h4 className='font-semibold my-2'>{drink.title}</h4>
 
-          <p className='text-sm text-gray-500'>{burger.description}</p>
+          <p className='text-sm text-gray-500'>{drink.description}</p>
         </div>
       ))}
     </>
