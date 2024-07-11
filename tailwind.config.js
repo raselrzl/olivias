@@ -10,6 +10,9 @@ module.exports = {
       colors:{
         primary:'#B0AE38'
       },
+      fontSize: {
+        'xxs': '0.625rem', // equivalent to 10px
+      }
     },
   },
   plugins: [],

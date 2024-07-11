@@ -15,6 +15,7 @@ export default function Menu() {
 
     const handleCategoryChange = (category) => {
         setSelectedCategory(category);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
