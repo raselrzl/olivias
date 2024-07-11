@@ -12,10 +12,11 @@ module.exports = {
       },
       fontSize: {
         'xxs': '0.625rem', // equivalent to 10px
+      },
+      scrollBehavior: {
+        smooth: 'smooth',
       }
     },
   },
   plugins: [],
 };
-
-
