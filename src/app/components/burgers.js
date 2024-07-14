@@ -1,10 +1,7 @@
-// src/app/components/Burgers.js
-
 "use client";
 
 import { useState, useEffect } from 'react';
 import LoadingSpinner from './loading-spinner';  // Import the LoadingSpinner component
-import { menuItems } from '../menuItems/MenuItem.js'; 
 
 export default function Burgers() {
   const [burgers, setBurgers] = useState([]);
