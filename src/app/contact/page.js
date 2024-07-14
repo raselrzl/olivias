@@ -37,26 +37,39 @@ export default function ContactPage() {
         return formErrors;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formErrors = validateForm();
         if (Object.keys(formErrors).length === 0) {
-            // Log form data to the console
-            console.log('Form Data Submitted:', formData);
+            try {
+                // Send form data to the backend
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
 
-            // Show confirmation message
-            setShowConfirmation(true);
-            setTimeout(() => {
-                setShowConfirmation(false);
-            }, 3000);
-
-            // Clear the form data
-            setFormData({
-                name: '',
-                email: '',
-                subject: '',
-                message: '',
-            });
+                if (response.ok) {
+                    setShowConfirmation(true);
+                    setTimeout(() => {
+                        setShowConfirmation(false);
+                    }, 3000);
+                    
+                    // Clear the form data
+                    setFormData({
+                        name: '',
+                        email: '',
+                        subject: '',
+                        message: '',
+                    });
+                } else {
+                    console.error('Failed to submit form');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         } else {
             setErrors(formErrors);
         }
@@ -91,9 +104,11 @@ export default function ContactPage() {
                         </div>
                     </form>
                     {showConfirmation && (
-                        <div className="text-center text-green-500 mt-4">
-                            Your message has been sent successfully!
-                        </div>
+                        <div className='bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-6 shadow-lg mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-lg'>
+                        <p className='mb-6 my-6 text-amber-100 text-sm text-center uppercase'>
+                            Thank You for your message. We will write back as soon as possible.
+                        </p>
+                    </div>
                     )}
                 </section>
             </div>

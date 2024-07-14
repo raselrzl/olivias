@@ -1,22 +1,34 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
-import { menuItems } from '../menuItems/MenuItem.js';
 
 export default function Pizzas() {
   const [pizzas, setPizzas] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Filter pizzas data from menuItems
-    const pizzasData = menuItems.find(category => category.category === 'Pizzas')?.items || [];
-    setPizzas(pizzasData);
+    const fetchPizzas = async () => {
+      try {
+        const response = await fetch('/api/data');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
-    // Simulate a loading state
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 100);  // Short delay for demo purposes
+        // Filter the data to get only the "Pizzas" category
+        const pizzasCategory = data.find(category => category.category === 'Pizzas');
+        const pizzasData = pizzasCategory ? pizzasCategory.items : [];
+        setPizzas(pizzasData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPizzas();
   }, []);
 
   if (loading) {

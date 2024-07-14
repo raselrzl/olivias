@@ -1,26 +1,38 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
-import { menuItems } from '../menuItems/MenuItem.js'; 
 
 export default function PopularBurgers() {
   const [burgers, setBurgers] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Filter popular burgers data from menuItems
-    const popularBurgersData = menuItems.find(category => category.category === 'Popular Burgers')?.items || [];
-    setBurgers(popularBurgersData);
+    const fetchBurgers = async () => {
+      try {
+        const response = await fetch('/api/data');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
-    // Simulate a loading state
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 100);  // Short delay for demo purposes
+        // Filter the data to get only the "Popular Burgers" category
+        const popularBurgersCategory = data.find(category => category.category === 'Popular Burgers');
+        const popularBurgersData = popularBurgersCategory ? popularBurgersCategory.items : [];
+        setBurgers(popularBurgersData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBurgers();
   }, []);
 
   if (loading) {
-    return <div><LoadingSpinner /></div>;  // Show the spinner while loading
+    return <LoadingSpinner />;  // Show the spinner while loading
   }
 
   if (error) {

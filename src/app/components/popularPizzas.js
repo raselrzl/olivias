@@ -1,26 +1,38 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
-import { menuItems } from '../menuItems/MenuItem.js'; 
 
 export default function PopularPizzas() {
   const [pizzas, setPizzas] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch popular pizzas data from menuItems
-    const popularPizzasData = menuItems.find(category => category.category === 'Popular Pizzas')?.items || [];
-    setPizzas(popularPizzasData);
+    const fetchPizzas = async () => {
+      try {
+        const response = await fetch('/api/data');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
-    // Simulate a loading state
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 100);  // Short delay for demo purposes
+        // Filter the data to get only the "Popular Pizzas" category
+        const popularPizzasCategory = data.find(category => category.category === 'Popular Pizzas');
+        const popularPizzasData = popularPizzasCategory ? popularPizzasCategory.items : [];
+        setPizzas(popularPizzasData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPizzas();
   }, []);
 
   if (loading) {
-    return <div><LoadingSpinner /></div>;  // Show the spinner while loading
+    return <LoadingSpinner />;  // Show the spinner while loading
   }
 
   if (error) {

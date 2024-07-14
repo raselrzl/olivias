@@ -1,22 +1,34 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
-import { menuItems } from '../menuItems/MenuItem.js'; 
 
 export default function Extras() {
   const [extras, setExtras] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Filter extras data from menuItems
-    const extrasData = menuItems.find(category => category.category === 'Extras')?.items || [];
-    setExtras(extrasData);
+    const fetchExtras = async () => {
+      try {
+        const response = await fetch('/api/data');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
-    // Simulate a loading state
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 100);  // Short delay for demo purposes
+        // Filter the data to get only the "Extras" category
+        const extrasCategory = data.find(category => category.category === 'Extras');
+        const extrasData = extrasCategory ? extrasCategory.items : [];
+        setExtras(extrasData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchExtras();
   }, []);
 
   if (loading) {

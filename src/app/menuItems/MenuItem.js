@@ -1,4 +1,4 @@
-export const menuItems = [
+/* export const menuItems = [
     {
       category: 'Popular Pizzas',
       items: [
@@ -407,4 +407,4 @@ export const menuItems = [
       ],
     },
   ];
-  
+   */
