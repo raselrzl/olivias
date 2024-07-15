@@ -8,6 +8,7 @@ export default function MenuItemsForm() {
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
+    const [src, setSrc] = useState(''); // Changed imageUrl to src
     const [submitted, setSubmitted] = useState('');
     const [error, setError] = useState('');
 
@@ -16,6 +17,7 @@ export default function MenuItemsForm() {
         setTitle('');
         setPrice('');
         setDescription('');
+        setSrc(''); // Reset src on category change
         setSubmitted('');
         setError('');
     };
@@ -26,14 +28,17 @@ export default function MenuItemsForm() {
             setError('Please select a category');
             return;
         }
-        if (title && price) {
+
+        const priceWithSEK = price.startsWith('SEK') ? price : `SEK${price.trim()}`;
+
+        if (title && src) {  // Changed imageUrl to src
             try {
                 const response = await fetch('/api/menu-items', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ category, title, price, description }),
+                    body: JSON.stringify({ category, title, price: priceWithSEK, description, src }),  // Include src in the payload
                 });
 
                 if (response.ok) {
@@ -49,9 +54,10 @@ export default function MenuItemsForm() {
             setTitle('');
             setPrice('');
             setDescription('');
+            setSrc(''); // Clear src after submission
             setError('');
         } else {
-            setError('Please fill in all fields');
+            setError('Please fill in all fields correctly');
         }
     };
 
@@ -141,7 +147,7 @@ export default function MenuItemsForm() {
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="title"
                                 type="text"
-                                placeholder="Title"
+                                placeholder="Name of the menu item: Example: Tryffel"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                             />
@@ -154,36 +160,48 @@ export default function MenuItemsForm() {
                             <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="price"
-                                type="number"
-                                placeholder="Price"
+                                type="text"
+                                placeholder="Only numbers"
                                 value={price}
-                                onChange={(e) => setPrice(e.target.value)}
+                                onChange={(e) => setPrice(e.target.value.replace(/[^0-9.]/g, ''))}  // Remove non-numeric characters
                             />
                         </div>
 
-                        {category !== 'Deserts' && category !== 'Drinks' && (
-                            <div className="mb-6">
+                        {category !== 'Drinks' && category !== 'Deserts' && (
+                            <div className="mb-4">
                                 <label className="block text-sm sm:text-base md:text-lg font-medium text-primary" htmlFor="description">
                                     Description
                                 </label>
                                 <textarea
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     id="description"
-                                    placeholder="Description"
+                                    placeholder="Example: Piccante Salami, Ndjua, Chilihonung"
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                             </div>
                         )}
 
-                        <div className="flex items-center justify-center">
-                            <button
-                                type="submit"
-                                className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:shadow-outline"
-                            >
-                                Add Item
-                            </button>
+                        <div className="mb-4">
+                            <label className="block text-sm sm:text-base md:text-lg font-medium text-primary" htmlFor="src">
+                                Image Source (URL)
+                            </label>
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="src"
+                                type="text"
+                                placeholder="Example: images/burger.png"
+                                value={src}  // Changed imageUrl to src
+                                onChange={(e) => setSrc(e.target.value)}  // Changed imageUrl to src
+                            />
                         </div>
+
+                        <button
+                            type="submit"
+                            className="w-full bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:shadow-outline"
+                        >
+                            Add to {category}  {/* Changed button text to reflect the category */}
+                        </button>
                     </form>
                 </div>
             </div>
