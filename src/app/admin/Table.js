@@ -126,7 +126,6 @@ const Table = () => {
                 <th className="px-4 py-2 border" scope="col">Description</th>
                 <th className="px-4 py-2 border" scope="col">Image</th>
                 <th className="px-4 py-2 border" scope="col">Image Link</th>
-                <th className="px-4 py-2 border" scope="col">Edit</th>
                 <th className="px-4 py-2 border" scope="col">Delete</th>
               </tr>
             </thead>
@@ -142,9 +141,6 @@ const Table = () => {
                   </td>
                   <td className="px-4 py-2 border">
                     <a href={item.src} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{item.src}</a>
-                  </td>
-                  <td className="px-4 py-2 border">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Edit</button>
                   </td>
                   <td className="px-4 py-2 border">
                     <button
