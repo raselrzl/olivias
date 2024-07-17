@@ -26,6 +26,11 @@ export default function Header() {
       <Link href="/">
         <Image src="/images/logo.png" width={40} height={40} alt='JAYS' />
       </Link>
+      {/* <div className="">
+        <div className="text-amber-100 whitespace-nowrap animate-marquee">
+          <span className="">Today 10% Deals! </span>
+        </div>
+      </div> */}
       <div className="relative">
         <div className="relative">
           <button onClick={toggleNav} className="block sm:hidden">

@@ -1,38 +1,35 @@
-"use client";
-
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
 
 export default function PopularBurgers() {
   const [burgers, setBurgers] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchBurgers = async () => {
-      try {
-        const response = await fetch('/api/data');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+    setLoading(true);
+    fetch('/api/data')
+      .then((response) => response.json())
+      .then((data) => {
+        // Log the entire data object to the console for debugging
+        console.log('Fetched data:', data);
 
-        // Filter the data to get only the "Popular Burgers" category
+        // Extract popular burgers data from the API response
         const popularBurgersCategory = data.find(category => category.category === 'Popular Burgers');
-        const popularBurgersData = popularBurgersCategory ? popularBurgersCategory.items : [];
-        setBurgers(popularBurgersData);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+        console.log('Popular Burgers data:', popularBurgersCategory);
 
-    fetchBurgers();
+        const popularBurgersData = popularBurgersCategory ? popularBurgersCategory.items : [];
+        setBurgers(popularBurgersData);  // Set the popular burgers data from the API response
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);  // Set error message if fetching data fails
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
-    return <LoadingSpinner />;  // Show the spinner while loading
+    return <div><LoadingSpinner /></div>;  // Show the spinner while loading
   }
 
   if (error) {

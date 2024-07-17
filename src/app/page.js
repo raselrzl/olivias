@@ -16,9 +16,6 @@ export default function Home() {
       });
   }, []);
 
-  // Filter the data to show only items in the "Deserts" category
-  const desertsData = data.find(category => category.category === 'Deserts');
-
   return (
     <div className="flex flex-col justify-between min-h-screen">
       <Header />

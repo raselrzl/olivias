@@ -1,38 +1,35 @@
-"use client";
-
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
 
 export default function PopularPizzas() {
   const [pizzas, setPizzas] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPizzas = async () => {
-      try {
-        const response = await fetch('/api/data');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+    setLoading(true);
+    fetch('/api/data')
+      .then((response) => response.json())
+      .then((data) => {
+        // Log the entire data object to the console for debugging
+        console.log('Fetched data:', data);
 
-        // Filter the data to get only the "Popular Pizzas" category
+        // Extract popular pizzas data from the API response
         const popularPizzasCategory = data.find(category => category.category === 'Popular Pizzas');
-        const popularPizzasData = popularPizzasCategory ? popularPizzasCategory.items : [];
-        setPizzas(popularPizzasData);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+        console.log('Popular Pizzas data:', popularPizzasCategory);
 
-    fetchPizzas();
+        const popularPizzasData = popularPizzasCategory ? popularPizzasCategory.items : [];
+        setPizzas(popularPizzasData);  // Set the popular pizzas data from the API response
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);  // Set error message if fetching data fails
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
-    return <LoadingSpinner />;  // Show the spinner while loading
+    return <div><LoadingSpinner /></div>;  // Show the spinner while loading
   }
 
   if (error) {

@@ -1,42 +1,39 @@
-"use client";
-
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
 
 export default function Pizzas() {
   const [pizzas, setPizzas] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchPizzas = async () => {
-      try {
-        const response = await fetch('/api/data');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+    setLoading(true);
+    fetch('/api/data')
+      .then((response) => response.json())
+      .then((data) => {
+        // Log the entire data object to the console for debugging
+        console.log('Fetched data:', data);
 
-        // Filter the data to get only the "Pizzas" category
+        // Extract pizza data from the API response
         const pizzasCategory = data.find(category => category.category === 'Pizzas');
-        const pizzasData = pizzasCategory ? pizzasCategory.items : [];
-        setPizzas(pizzasData);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+        console.log('Pizzas data:', pizzasCategory);
 
-    fetchPizzas();
+        const pizzasData = pizzasCategory ? pizzasCategory.items : [];
+        setPizzas(pizzasData);  // Set the pizzas data from the API response
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);  // Set error message if fetching data fails
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
-    return <LoadingSpinner />;  // Show the spinner while loading
+    return <div><LoadingSpinner /></div>;  // Show the spinner while loading
   }
 
   if (error) {
-    return <div className='text-red-500 text-center'>Error: {error}</div>;  // Show the error message
+    return <div>Error: {error}</div>;  // Show the error message
   }
 
   return (

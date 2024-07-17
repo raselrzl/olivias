@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 
 export default function ImageSlider() {
@@ -40,6 +40,14 @@ export default function ImageSlider() {
     setCurrentIndex(slideIndex);
   };
 
+  useEffect(() => {
+    const autoSlide = setInterval(() => {
+      nextSlide();
+    }, 3000);
+
+    return () => clearInterval(autoSlide);
+  }, [currentIndex]);
+
   return (
     <div className='relative max-w-[1000px] max-h-[600px] w-full mx-auto py-8 px-1/2 group'>
       <div
@@ -68,13 +76,9 @@ export default function ImageSlider() {
             <p className={`w-4 h-4 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center text-white bg-black mx-1 mb-4 cursor-pointer hover:bg-primary transition ${slideIndex === currentIndex ? 'bg-primary' : ''} rounded-full text-xs md:text-sm lg:text-base`}>
               {slideIndex + 1}
             </p>
-
-
           </div>
         ))}
       </div>
     </div>
-
-
   );
 }

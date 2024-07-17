@@ -1,34 +1,32 @@
-"use client";
+// src/app/components/Extras.js
 
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
 
 export default function Extras() {
   const [extras, setExtras] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchExtras = async () => {
-      try {
-        const response = await fetch('/api/data');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-
-        // Filter the data to get only the "Extras" category
+    // Fetch data from the API
+    setLoading(true);
+    fetch('/api/data')
+      .then((response) => response.json())
+      .then((data) => {
+        // Find the Extras category from the fetched data
         const extrasCategory = data.find(category => category.category === 'Extras');
+        console.log('Extras data:', extrasCategory); // Log Extras data to the console
+
+        // Extract the items from the Extras category if it exists
         const extrasData = extrasCategory ? extrasCategory.items : [];
         setExtras(extrasData);
-      } catch (err) {
-        setError(err.message);
-      } finally {
         setLoading(false);
-      }
-    };
-
-    fetchExtras();
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
