@@ -12,6 +12,10 @@ const Register = dynamic(() => import('../user/Register'), { ssr: false });
 export default function MenuItemsForm() {
   const [view, setView] = useState('');
 
+  const handleRegisterSuccess = () => {
+    setView('login');
+  };
+
   return (
     <div>
       <Header />
@@ -35,7 +39,7 @@ export default function MenuItemsForm() {
         </div>
         <div className="flex items-center justify-center">
           {view === 'login' && <Login />}
-          {view === 'register' && <Register />}
+          {view === 'register' && <Register onRegisterSuccess={handleRegisterSuccess} />}
         </div>
         <AddItem />
         <div className='mb-60'>

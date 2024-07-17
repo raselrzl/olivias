@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const Register = () => {
+const Register = ({ onRegisterSuccess }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [confirmEmail, setConfirmEmail] = useState('');
@@ -39,6 +39,7 @@ const Register = () => {
 
       if (response.ok) {
         setSuccess('User registered successfully');
+        onRegisterSuccess(); // Call the callback to update the view
       } else {
         setError(data.error);
       }
