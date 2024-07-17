@@ -28,6 +28,11 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
     }
 
+    // Check if the user is an admin
+    if (!user.isAdmin) {
+      return NextResponse.json({ error: 'Access denied' }, { status: 403 });
+    }
+
     // Return success response with user details
     return NextResponse.json({
       message: 'Login successful',

@@ -190,3 +190,10 @@ body {
 .animate-marquee {
   animation: marquee 15s linear infinite;
 }
+
+
+/* Custom styles in your global CSS file (e.g., globals.css) */
+.button-clicked {
+  transform: scale(0.98);
+  background-color: #cc8400; /* Darker shade of your primary color */
+}

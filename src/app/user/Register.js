@@ -50,7 +50,7 @@ const Register = ({ onRegisterSuccess }) => {
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-80">
         <Link href="/" className="flex items-center justify-center">
           <Image src="/images/logo.png" width={40} height={40} alt='JAYS' />
@@ -108,7 +108,7 @@ const Register = ({ onRegisterSuccess }) => {
             required
           />
         </div>
-        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
+        <button type="submit" className="w-full bg-primary text-white p-2 rounded">
           Register
         </button>
       </form>
