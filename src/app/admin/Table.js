@@ -1,6 +1,6 @@
- // deletebutton Working
 import React, { useState, useEffect, useCallback } from 'react';
 import LoadingSpinner from '../components/loading-spinner';
+import Modal from '../components/Modal';  // Import the Modal component
 
 const Table = () => {
   const [data, setData] = useState([]);
@@ -8,6 +8,9 @@ const Table = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showAll, setShowAll] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,9 +41,15 @@ const Table = () => {
     setSelectedCategory(null);
   };
 
-  const handleDeleteClick = async (category, title) => {
-    const confirmed = confirm(`Are you sure you want to delete "${title}"?`);
-    if (!confirmed) return;
+  const handleDeleteClick = (category, title) => {
+    setModalMessage(`Are you sure you want to delete "${title}"?`);
+    setItemToDelete({ category, title });
+    setModalVisible(true);
+  };
+
+  const confirmDelete = async () => {
+    setModalVisible(false);
+    const { category, title } = itemToDelete;
 
     try {
       const response = await fetch('/api/deleteItem', {
@@ -151,6 +160,12 @@ const Table = () => {
           </table>
         </div>
       ))}
+      <Modal
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onConfirm={confirmDelete}
+        message={modalMessage}
+      />
     </div>
   );
 };
