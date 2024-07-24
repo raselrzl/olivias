@@ -39,7 +39,7 @@ const Login = ({ onLoginSuccess }) => {
         <Link href="/" className="flex items-center justify-center">
           <Image src="/images/logo.png" width={40} height={40} alt='JAYS' />
         </Link>
-        <h1 className="text-2xl font-bold mb-4">Login</h1>
+        <h1 className="text-2xl text-center font-bold mb-4">Login</h1>
         {error && <p className="text-red-500">{error}</p>}
         <div className="mb-4">
           <label className="block text-gray-700">Email</label>
@@ -64,6 +64,7 @@ const Login = ({ onLoginSuccess }) => {
         <button type="submit" className="w-full bg-primary text-white p-2 rounded">
           Login
         </button>
+        
       </form>
     </div>
   );

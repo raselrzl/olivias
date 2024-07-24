@@ -33,7 +33,7 @@ export default function Pizzas() {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;  // Show the error message
+    return <div className='text-red-500 text-center'>Error: {error}</div>;  // Show the error message
   }
 
   return (

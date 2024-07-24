@@ -37,7 +37,7 @@ export default function Drinks() {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className='text-red-500 text-center'>Error: {error}</div>;
   }
 
   return (

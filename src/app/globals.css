@@ -136,45 +136,6 @@ body {
   border-top-color: #3498db; /* You can replace this with your primary color */
 }
 
-/* styles/globals.css or your global CSS file */
-
-.header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #1f2937; /* Dark background color */
-  color: #fbbf24; /* Amber text color */
-  z-index: 50; /* Ensure header is above other content */
-  padding: 1rem 0.5rem; /* Padding for header */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
-}
-
-.mobile-nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%; /* Full viewport height */
-  width: 75%; /* Full width for mobile navigation */
-  background-color: #1f2937; /* Same dark background color */
-  color: #ffffff; /* White text color */
-  transform: translateX(100%); /* Hidden by default */
-  transition: transform 0.3s ease; /* Smooth transition */
-}
-
-.mobile-nav.visible {
-  transform: translateX(0); /* Show navigation */
-}
-
-.mobile-nav-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(31, 41, 55, 0.75); /* Semi-transparent overlay */
-  z-index: 10; /* Ensure it's above other content */
-}
 
 
 /* styles/globals.css or any other global stylesheet */

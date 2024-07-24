@@ -6,7 +6,7 @@ export default function Extras() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+/*   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
@@ -51,6 +51,42 @@ export default function Extras() {
 
   if (error) {
     return <div className='text-red-500 text-center'>Error: {error}</div>;  // Show the error message
+  }
+ */
+
+
+
+
+  useEffect(() => {
+    setLoading(true);
+    fetch('/api/data')
+      .then((response) => response.json())
+      .then((data) => {
+        // Find the Drinks category
+        const extrasCategory = data.find(category => category.category === 'Extras');
+        
+        // Log the Drinks category to the console
+        console.log('Extras data:', extrasCategory);
+        
+        // Extract the items from the Drinks category if it exists
+        const extrasData = extrasCategory ? extrasCategory.items : [];
+        
+        // Set the Drinks data to state
+        setExtras(extrasData);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div><LoadingSpinner /></div>;
+  }
+
+  if (error) {
+    return <div className='text-red-500 text-center'>Error: {error}</div>;
   }
 
   return (

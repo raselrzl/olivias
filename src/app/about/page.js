@@ -33,7 +33,7 @@ export default function AboutPage() {
     return (
         <div>
             <Header />
-            <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 text-amber-200">
+            <div className="max-w-7xl mx-auto p-4 mb-4 sm:p-6 lg:p-8 text-amber-200">
                 {/* Introduction Section */}
                 <section className="text-center mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="relative">
@@ -42,7 +42,7 @@ export default function AboutPage() {
                             alt="Restaurant Interior"
                             className="w-full h-60 object-cover rounded-t-lg"
                         />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-black/50 rounded-t-lg">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black/50 rounded-t-lg">
                             <h1 className="text-3xl font-bold text-amber-200 mb-4  uppercase">Welcome to JAY'S</h1>
                             <p className="text-lg text-amber-200">
                             Discover JAY’S, your go-to spot for classic pizzas, unique specials, and irresistible smash burgers right here in Svärtinge. We pride ourselves on crafting delicious dishes with passion..
@@ -59,7 +59,7 @@ export default function AboutPage() {
                             alt="Our Chef"
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
-                        <div className="md:ml-6 text-center md:text-left">
+                        <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Our Story</h2>
                             <p className="text-lg text-amber-200">
                                 Founded in 2024, JAY'S is a beloved spot for classic Special Pizza and Smash Burger.
@@ -76,7 +76,7 @@ export default function AboutPage() {
                             alt="Our Team"
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
-                        <div className="md:ml-6 text-center md:text-left">
+                        <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Meet Our Team</h2>
                             <p className="text-lg text-amber-200">
                                 Led by Chef of JAY'S, our team serves up the best Pizza and Burger compare to any classic restuarent.
@@ -93,7 +93,7 @@ export default function AboutPage() {
                             alt="Fresh Ingredients"
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
-                        <div className="md:ml-6 text-center md:text-left">
+                        <div className="md:ml-6 text-center p-4 md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Our Philosophy</h2>
                             <p className="text-lg text-amber-200">
                             We’re dedicated to perfecting the art of pizza and smash burgers.
@@ -110,7 +110,7 @@ export default function AboutPage() {
                             alt="Community Engagement"
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
-                        <div className="md:ml-6 text-center md:text-left">
+                        <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Community Engagement</h2>
                             <p className="text-lg text-amber-200">
                                 Proudly supporting local initiatives and events.
@@ -143,16 +143,16 @@ export default function AboutPage() {
                     <div className="relative mb-6">
                         <div id="map" className="w-full h-64 rounded-lg shadow-lg"></div>
                     </div>
-                    <div className="bg-gradient-to-r from-gray-700 p-4  via-gray-800 to-gray-900rounded-lg text-amber-200">
-                        <h3 className="text-2xl uppercase font-semibold text-amber-200 ">Opening Hours</h3>
-                        <ul className="text-lg space-y-1">
+                    <div className="bg-gradient-to-r from-gray-700 p-4  via-gray-800 to-gray-900 rounded-lg text-amber-200">
+                        <h3 className="text-lg uppercase font-semibold text-amber-200 ">Opening Hours</h3>
+                        <ul className="text-sm space-y-1">
                             <li>Wednesday: 3–8:30 PM</li>
-                            <li>Thursday: Closed</li>
+                          
                             <li>Friday: 11 AM–1:30 PM, 3–9:30 PM</li>
                             <li>Saturday: 12–9:30 PM</li>
                             <li>Sunday: 12–8 PM</li>
-                            <li>Monday: Closed</li>
-                            <li>Tuesday: Closed</li>
+                            <li>Monday & Tuesday & Thursday: Closed</li>
+                            
                         </ul>
                     </div>
                 </section>

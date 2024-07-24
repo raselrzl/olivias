@@ -31,9 +31,22 @@ export default function Burgers() {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className='text-red-500 text-center'>Error: {error}</div>;
   }
-
+/* const burgers=[{
+  "title": "Jay's Beef",
+  "price": "SEK155",
+  "description": "Svenks Marinerad Ryggbiff, Färska Champinjoner, Piklad Rödlök, Ruccola, Aioli",
+  "src": "images/pizza1.png",
+  "category": "Pizzas"
+},
+{
+  "title": "Spicy Shrimp",
+  "price": "SEK144",
+  "description": "Chilli Marinerad Räkor, Färska Champinjoner, Ruccola",
+  "src": "images/pizza1.png",
+  "category": "Pizzas"
+},] */
   return (
     <>
       {burgers.map((burger, index) => (

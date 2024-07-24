@@ -65,7 +65,7 @@ export default function MenuItemsForm() {
           ) : (
             <div className="flex flex-col items-center">
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4">
-                Welcome, {user.name}
+                Welcome Mr , {user.name}
               </p>
               <button
                 className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
@@ -80,14 +80,18 @@ export default function MenuItemsForm() {
           {view === 'login' && <Login onLoginSuccess={handleLoginSuccess} />}
           {view === 'register' && <Register onRegisterSuccess={handleRegisterSuccess} />}
         </div>
-        {user && (
-          <>
-            <AddItem />
-            <div className='mb-60'>
-              <Table />
-            </div>
-          </>
-        )}
+        <div>
+          {user && (
+            <>
+              <div>
+                <AddItem />
+              </div>
+              <div className='mb-60'>
+                <Table />
+              </div>
+            </>
+          )}
+        </div>
       </div>
       <Footer />
     </div>

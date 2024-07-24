@@ -3,7 +3,7 @@ const FormInputs = ({ formData, handleChange, errors }) => {
         <>
             <div>
                 <label htmlFor="name" className="block text-sm font-medium text-primary">
-                    Name
+                    Full Name
                 </label>
                 <input
                     type="text"
