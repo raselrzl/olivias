@@ -87,20 +87,73 @@ export default function AboutPage() {
 
                 {/* Our Philosophy Section */}
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
-                    <div className="flex flex-col md:flex-row items-center p-6">
-                        <img
-                            src="images/freshingredients.avif"
-                            alt="Fresh Ingredients"
-                            className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
-                        />
-                        <div className="md:ml-6 text-center p-4 md:text-left">
-                            <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Our Philosophy</h2>
-                            <p className="text-lg text-amber-200">
-                            We’re dedicated to perfecting the art of pizza and smash burgers.
-                            Our commitment to quality ingredients and traditional methods ensures every dish is exceptional. </p>
-                        </div>
-                    </div>
-                </section>
+  <div className="flex flex-col items-center p-6">
+    <div className="flex flex-col md:flex-row items-center w-full">
+      
+      <div className="md:ml-6 text-center p-4 md:text-left">
+        <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Our Philosophy</h2>
+        <p className="text-lg text-amber-200">
+          We’re dedicated to perfecting the art of pizza and smash burgers.
+          Our commitment to quality ingredients and traditional methods ensures every dish is exceptional.
+        </p>
+      </div>
+    </div>
+    <div className="mt-6 w-full h-[50vh] flex justify-center items-center">
+      <div className="hexagon-gallery">
+      <div className="hexagon" >
+            <img
+              src="images/freshingredients.avif"
+              alt="Fresh Ingredients"
+              className="hexagon-inset"
+            />
+          </div>
+          <div className="hexagon">
+            <img
+              src="images/burger-kött.jpg"
+              alt="Fresh Ingredients"
+              className="hexagon-inset"
+            />
+          </div>
+          <div className="hexagon">
+            <img
+              src="images/ryggbif.jpg"
+              alt="Fresh Ingredients"
+              className="hexagon-inset"
+            />
+          </div>
+          <div className="hexagon">
+            <img
+              src="images/smashedonsteak.jpg"
+              alt="Fresh Ingredients"
+              className="hexagon-inset"
+            />
+          </div>
+          <div className="hexagon">
+            <img
+              src="images/nutella.png"
+              alt="Fresh Ingredients"
+              className="hexagon-inset"
+            />
+          </div>
+          <div className="hexagon">
+            <img
+              src="images/pizza1.png"
+              alt="Fresh Ingredients"
+              className="hexagon-inset"
+            />
+          </div>
+          <div className="hexagon">
+            <img
+              src="images/burger2.png"
+              alt="Fresh Ingredients"
+              className="hexagon-inset"
+            />
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
                 {/* Community Engagement Section */}
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">

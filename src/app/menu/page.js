@@ -45,6 +45,12 @@ export default function Menu() {
                         </button>
                     </div>
                     <div className="flex flex-row">
+                    <button
+                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Extras' ? 'bg-primary-dark' : 'bg-primary'}`}
+                            onClick={() => handleCategoryChange('Extras')}
+                        >
+                            Extras
+                        </button>
                         
                         <button
                             className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Deserts' ? 'bg-primary-dark' : 'bg-primary'}`}
@@ -58,12 +64,7 @@ export default function Menu() {
                         >
                             Drinks
                         </button>
-                        <button
-                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Extras' ? 'bg-primary-dark' : 'bg-primary'}`}
-                            onClick={() => handleCategoryChange('Extras')}
-                        >
-                            Extras
-                        </button>
+                        
                     </div>
                 </div>
 
@@ -86,7 +87,18 @@ export default function Menu() {
                             <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
                                 <Burgers />
                             </div>
-                            
+                            <div className="flex justify-center">
+                                <button
+                                    className='w-1/4 m-10 bg-primary flex justify-center items-center uppercase gap-2 rounded text-white px-4 py-2'
+                                    onClick={() => handleCategoryChange('Extras')}
+                                >
+                                    Extras
+                                </button>
+                            </div>
+
+                            <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
+                                <Extras />
+                            </div>
 
                             <div className="flex justify-center">
                                 <button
@@ -112,18 +124,7 @@ export default function Menu() {
                             <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
                                 <Drinks />
                             </div>
-                            <div className="flex justify-center">
-                                <button
-                                    className='w-1/4 m-10 bg-primary flex justify-center items-center uppercase gap-2 rounded text-white px-4 py-2'
-                                    onClick={() => handleCategoryChange('Extras')}
-                                >
-                                    Extras
-                                </button>
-                            </div>
-
-                            <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                                <Extras />
-                            </div>
+                            
                         </>
                     )}
 
