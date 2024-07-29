@@ -94,7 +94,7 @@ export default function Extras() {
       {extras.map((extra, index) => (
         <div
           key={index}  // Use index as the key since there's no unique ID
-          className='relative bg-gray-200 p-4 text-center rounded-lg hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
+          className='relative bg-gray-200 p-4 text-center  hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
         >
           {/* Price Button */}
           <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
@@ -102,13 +102,13 @@ export default function Extras() {
           </button>
 
           {/* Image */}
-          <img src={extra.src} alt={extra.title} className='mx-auto mb-4' />
+          <img src={extra.src} alt={extra.title} className='mx-auto mb-2 h-20 w-20 object-cover' />
 
           {/* Title */}
-          <h4 className='font-semibold my-2'>{extra.title}</h4>
+          <h4 className='font-semibold text-md my-1'>{extra.title}</h4>
 
           {/* Description */}
-          <p className='text-sm text-gray-500'>{extra.description}</p>
+          <p className='text-xs text-gray-500'>{extra.description}</p>
         </div>
       ))}
     </>

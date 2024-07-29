@@ -41,7 +41,7 @@ export default function Pizzas() {
       {pizzas.map((pizza, index) => (
         <div
           key={index}  // Use index as the key since there's no unique ID
-          className='relative bg-gray-200 p-4 text-center rounded-lg hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
+          className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
         >
           {/* Price Button */}
           <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
@@ -49,13 +49,13 @@ export default function Pizzas() {
           </button>
 
           {/* Pizza Image */}
-          <img src={pizza.src} alt={pizza.title} className='mx-auto mb-4' />
+          <img src={pizza.src} alt={pizza.title} className='mx-auto mb-2' />
 
           {/* Pizza Title */}
-          <h4 className='font-semibold my-2'>{pizza.title}</h4>
+          <h4 className='font-semibold text-md my-1'>{pizza.title}</h4>
 
           {/* Description */}
-          <p className='text-sm text-gray-500'>{pizza.description}</p>
+          <p className='text-xs text-gray-500'>{pizza.description}</p>
         </div>
       ))}
     </>
