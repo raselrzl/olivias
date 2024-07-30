@@ -11,11 +11,11 @@ export default function Extras() {
     fetch('/api/data')
       .then((response) => response.json())
       .then((data) => {
-        console.log('Fetched data:', data);
+        console.log('Fetched data:', JSON.stringify(data, null, 2)); // More detailed log
 
         if (Array.isArray(data)) {
           const extrasCategory = data.find(category => category.category === 'Extras');
-          console.log('Extras data:', extrasCategory);
+          console.log('Extras data:', JSON.stringify(extrasCategory, null, 2)); // More detailed log
 
           const extrasData = extrasCategory ? extrasCategory.items : [];
           setExtras(extrasData);
@@ -28,7 +28,7 @@ export default function Extras() {
       })
       .catch((err) => {
         console.error('Fetch error:', err);
-        setError(err.message);
+        setError('Error fetching data: ' + err.message);
         setLoading(false);
       });
   }, []);

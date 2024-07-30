@@ -34,7 +34,7 @@ export default function Burgers() {
       })
       .catch((err) => {
         console.error('Fetch error:', err);
-        setError('Error: ' + err.message);
+        setError('Error fetching data: ' + err.message);
       })
       .finally(() => {
         setLoading(false);

@@ -37,7 +37,7 @@ export default function Deserts() {
       })
       .catch((err) => {
         console.error('Fetch error:', err);
-        setError(err.message);  // Set error message if fetching data fails
+        setError('Error fetching data: ' + err.message);  // Set error message if fetching data fails
         setLoading(false);
       });
   }, []);
