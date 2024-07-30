@@ -9,18 +9,25 @@ export default function PopularBurgers() {
   useEffect(() => {
     setLoading(true);
     fetch('/api/data')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         // Log the entire data object to the console for debugging
         console.log('Fetched data:', data);
 
         // Check if the fetched data is an array
         if (Array.isArray(data)) {
+          // Find the Popular Burgers category
           const popularBurgersCategory = data.find(category => category.category === 'Popular Burgers');
           console.log('Popular Burgers data:', popularBurgersCategory);
 
+          // Extract the items from the Popular Burgers category if it exists
           const popularBurgersData = popularBurgersCategory ? popularBurgersCategory.items : [];
-          setBurgers(popularBurgersData);  // Set the popular burgers data from the API response
+          setBurgers(popularBurgersData);  // Set the Popular Burgers data to state
         } else {
           console.error('Fetched data is not an array:', data);
           setError('Unexpected data format');

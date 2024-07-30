@@ -9,7 +9,12 @@ export default function Deserts() {
   useEffect(() => {
     setLoading(true);
     fetch('/api/data')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         // Log the entire data object to the console for debugging
         console.log('Fetched data:', data);
@@ -58,7 +63,7 @@ export default function Deserts() {
 
           {/* Ensure the image path starts with a leading slash */}
           <img 
-            src={desert.src} 
+            src={desert.src.startsWith('/') ? desert.src : `/${desert.src}`} 
             alt={desert.title} 
             className='mx-auto mb-2 h-20 w-20 object-cover' 
           />
