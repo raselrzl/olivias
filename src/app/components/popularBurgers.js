@@ -14,15 +14,22 @@ export default function PopularBurgers() {
         // Log the entire data object to the console for debugging
         console.log('Fetched data:', data);
 
-        // Extract popular burgers data from the API response
-        const popularBurgersCategory = data.find(category => category.category === 'Popular Burgers');
-        console.log('Popular Burgers data:', popularBurgersCategory);
+        // Check if the fetched data is an array
+        if (Array.isArray(data)) {
+          const popularBurgersCategory = data.find(category => category.category === 'Popular Burgers');
+          console.log('Popular Burgers data:', popularBurgersCategory);
 
-        const popularBurgersData = popularBurgersCategory ? popularBurgersCategory.items : [];
-        setBurgers(popularBurgersData);  // Set the popular burgers data from the API response
+          const popularBurgersData = popularBurgersCategory ? popularBurgersCategory.items : [];
+          setBurgers(popularBurgersData);  // Set the popular burgers data from the API response
+        } else {
+          console.error('Fetched data is not an array:', data);
+          setError('Unexpected data format');
+        }
+        
         setLoading(false);
       })
       .catch((err) => {
+        console.error('Fetch error:', err);
         setError(err.message);  // Set error message if fetching data fails
         setLoading(false);
       });

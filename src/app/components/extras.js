@@ -6,7 +6,7 @@ export default function Extras() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-/*   useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
@@ -52,49 +52,13 @@ export default function Extras() {
   if (error) {
     return <div className='text-red-500 text-center'>Error: {error}</div>;  // Show the error message
   }
- */
-
-
-
-
-  useEffect(() => {
-    setLoading(true);
-    fetch('/api/data')
-      .then((response) => response.json())
-      .then((data) => {
-        // Find the Drinks category
-        const extrasCategory = data.find(category => category.category === 'Extras');
-        
-        // Log the Drinks category to the console
-        console.log('Extras data:', extrasCategory);
-        
-        // Extract the items from the Drinks category if it exists
-        const extrasData = extrasCategory ? extrasCategory.items : [];
-        
-        // Set the Drinks data to state
-        setExtras(extrasData);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <div><LoadingSpinner /></div>;
-  }
-
-  if (error) {
-    return <div className='text-red-500 text-center'>Error: {error}</div>;
-  }
 
   return (
     <>
       {extras.map((extra, index) => (
         <div
           key={index}  // Use index as the key since there's no unique ID
-          className='relative bg-gray-200 p-4 text-center  hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
+          className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
         >
           {/* Price Button */}
           <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>

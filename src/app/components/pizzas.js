@@ -14,15 +14,22 @@ export default function Pizzas() {
         // Log the entire data object to the console for debugging
         console.log('Fetched data:', data);
 
-        // Extract pizza data from the API response
-        const pizzasCategory = data.find(category => category.category === 'Pizzas');
-        console.log('Pizzas data:', pizzasCategory);
+        // Check if the fetched data is an array
+        if (Array.isArray(data)) {
+          const pizzasCategory = data.find(category => category.category === 'Pizzas');
+          console.log('Pizzas data:', pizzasCategory);
 
-        const pizzasData = pizzasCategory ? pizzasCategory.items : [];
-        setPizzas(pizzasData);  // Set the pizzas data from the API response
+          const pizzasData = pizzasCategory ? pizzasCategory.items : [];
+          setPizzas(pizzasData);  // Set the pizzas data from the API response
+        } else {
+          console.error('Fetched data is not an array:', data);
+          setError('Unexpected data format');
+        }
+        
         setLoading(false);
       })
       .catch((err) => {
+        console.error('Fetch error:', err);
         setError(err.message);  // Set error message if fetching data fails
         setLoading(false);
       });

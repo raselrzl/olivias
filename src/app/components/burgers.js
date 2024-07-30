@@ -11,16 +11,25 @@ export default function Burgers() {
     fetch('/api/data')
       .then((response) => response.json())
       .then((data) => {
-        const burgersCategory = data.find(category => category.category === 'Burgers');
-        
-        console.log('Burgers data:', burgersCategory);
+        // Log the data structure
+        console.log('API data:', data);
 
-        const burgersData = burgersCategory ? burgersCategory.items : [];
-        console.log()
-        setBurgers(burgersData);
+        if (Array.isArray(data)) {
+          const burgersCategory = data.find(category => category.category === 'Burgers');
+          
+          if (burgersCategory) {
+            setBurgers(burgersCategory.items);
+          } else {
+            throw new Error('Burgers category not found');
+          }
+        } else {
+          throw new Error('Unexpected data format');
+        }
+
         setLoading(false);
       })
       .catch((err) => {
+        console.error('Fetch error:', err);
         setError(err.message);
         setLoading(false);
       });
@@ -33,20 +42,7 @@ export default function Burgers() {
   if (error) {
     return <div className='text-red-500 text-center'>Error: {error}</div>;
   }
-/* const burgers=[{
-  "title": "Jay's Beef",
-  "price": "SEK155",
-  "description": "Svenks Marinerad Ryggbiff, Färska Champinjoner, Piklad Rödlök, Ruccola, Aioli",
-  "src": "images/pizza1.png",
-  "category": "Pizzas"
-},
-{
-  "title": "Spicy Shrimp",
-  "price": "SEK144",
-  "description": "Chilli Marinerad Räkor, Färska Champinjoner, Ruccola",
-  "src": "images/pizza1.png",
-  "category": "Pizzas"
-},] */
+
   return (
     <>
       {burgers.map((burger, index) => (
