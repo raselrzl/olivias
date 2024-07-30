@@ -3,13 +3,17 @@ import LoadingSpinner from '../components/loading-spinner';  // Import the Loadi
 
 export default function PopularPizzas() {
   const [pizzas, setPizzas] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
     fetch('/api/data')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then((data) => {
         // Log the entire data object to the console for debugging
         console.log('Fetched data:', data);
@@ -17,20 +21,22 @@ export default function PopularPizzas() {
         // Check if the fetched data is an array
         if (Array.isArray(data)) {
           const popularPizzasCategory = data.find(category => category.category === 'Popular Pizzas');
-          console.log('Popular Pizzas data:', popularPizzasCategory);
+          console.log('Popular Pizzas category:', popularPizzasCategory);
 
-          const popularPizzasData = popularPizzasCategory ? popularPizzasCategory.items : [];
-          setPizzas(popularPizzasData);  // Set the popular pizzas data from the API response
+          if (popularPizzasCategory && Array.isArray(popularPizzasCategory.items)) {
+            setPizzas(popularPizzasCategory.items);  // Set the popular pizzas data from the API response
+          } else {
+            throw new Error('Popular Pizzas category or items are missing or in wrong format');
+          }
         } else {
-          console.error('Fetched data is not an array:', data);
-          setError('Unexpected data format');
+          throw new Error('Fetched data is not an array');
         }
-        
-        setLoading(false);
       })
       .catch((err) => {
         console.error('Fetch error:', err);
-        setError(err.message);  // Set error message if fetching data fails
+        setError('Error fetching data: ' + err.message);  // Set error message if fetching data fails
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, []);
@@ -45,26 +51,30 @@ export default function PopularPizzas() {
 
   return (
     <>
-      {pizzas.map((pizza, index) => (
-        <div
-          key={index}  // Use index as the key since there's no unique ID
-          className='relative bg-gray-200 p-4 text-center  hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
-        >
-          {/* Price Button */}
-          <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
-            {pizza.price}
-          </button>
+      {pizzas.length === 0 ? (
+        <div className='text-center text-gray-500'>No popular pizzas available</div>
+      ) : (
+        pizzas.map((pizza, index) => (
+          <div
+            key={index}  // Use index as the key if there is no unique ID
+            className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
+          >
+            {/* Price Button */}
+            <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
+              {pizza.price}
+            </button>
 
-          {/* Pizza Image */}
-          <img src={pizza.src} alt={pizza.title} className='mx-auto mb-2' />
+            {/* Pizza Image */}
+            <img src={pizza.src} alt={pizza.title} className='mx-auto mb-2' />
 
-          {/* Pizza Title */}
-          <h4 className='font-semibold text-md mb-1'>{pizza.title}</h4>
+            {/* Pizza Title */}
+            <h4 className='font-semibold text-md mb-1'>{pizza.title}</h4>
 
-          {/* Description */}
-          <p className='text-xs text-gray-500'>{pizza.description}</p>
-        </div>
-      ))}
+            {/* Description */}
+            <p className='text-xs text-gray-500'>{pizza.description || 'No description available'}</p>
+          </div>
+        ))
+      )}
     </>
   );
 }

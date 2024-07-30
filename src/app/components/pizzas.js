@@ -4,67 +4,75 @@ import LoadingSpinner from '../components/loading-spinner';  // Import the Loadi
 export default function Pizzas() {
   const [pizzas, setPizzas] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);  // Initial loading state should be true
 
   useEffect(() => {
-    setLoading(true);
     fetch('/api/data')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then((data) => {
-        // Log the entire data object to the console for debugging
         console.log('Fetched data:', data);
 
-        // Check if the fetched data is an array
         if (Array.isArray(data)) {
           const pizzasCategory = data.find(category => category.category === 'Pizzas');
-          console.log('Pizzas data:', pizzasCategory);
+          console.log('Pizzas category:', pizzasCategory);
 
-          const pizzasData = pizzasCategory ? pizzasCategory.items : [];
-          setPizzas(pizzasData);  // Set the pizzas data from the API response
+          if (pizzasCategory) {
+            setPizzas(pizzasCategory.items);
+          } else {
+            setError('Pizzas category not found');
+          }
         } else {
-          console.error('Fetched data is not an array:', data);
-          setError('Unexpected data format');
+          setError('Unexpected data format: Data is not an array');
         }
-        
+
         setLoading(false);
       })
       .catch((err) => {
         console.error('Fetch error:', err);
-        setError(err.message);  // Set error message if fetching data fails
+        setError('Error fetching data: ' + err.message);
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return <div><LoadingSpinner /></div>;  // Show the spinner while loading
+    return <div><LoadingSpinner /></div>;
   }
 
   if (error) {
-    return <div className='text-red-500 text-center'>Error: {error}</div>;  // Show the error message
+    return <div className='text-red-500 text-center'>Error: {error}</div>;
   }
 
   return (
     <>
-      {pizzas.map((pizza, index) => (
-        <div
-          key={index}  // Use index as the key since there's no unique ID
-          className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
-        >
-          {/* Price Button */}
-          <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
-            {pizza.price}
-          </button>
+      {pizzas.length === 0 ? (
+        <div className='text-center text-gray-500'>No pizzas available</div>
+      ) : (
+        pizzas.map((pizza, index) => (
+          <div
+            key={index}  // Use index as the key since there's no unique ID
+            className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
+          >
+            {/* Price Button */}
+            <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
+              {pizza.price}
+            </button>
 
-          {/* Pizza Image */}
-          <img src={pizza.src} alt={pizza.title} className='mx-auto mb-2' />
+            {/* Pizza Image */}
+            <img src={pizza.src} alt={pizza.title} className='mx-auto mb-2' />
 
-          {/* Pizza Title */}
-          <h4 className='font-semibold text-md my-1'>{pizza.title}</h4>
+            {/* Pizza Title */}
+            <h4 className='font-semibold text-md my-1'>{pizza.title}</h4>
 
-          {/* Description */}
-          <p className='text-xs text-gray-500'>{pizza.description}</p>
-        </div>
-      ))}
+            {/* Description */}
+            <p className='text-xs text-gray-500'>{pizza.description || 'No description available'}</p>
+          </div>
+        ))
+      )}
     </>
   );
 }

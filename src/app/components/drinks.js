@@ -4,35 +4,38 @@ import LoadingSpinner from './loading-spinner';
 export default function Drinks() {
   const [drinks, setDrinks] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     fetch('/api/data')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then((data) => {
-        // Log the entire data object to the console for debugging
+        // Log the fetched data
         console.log('Fetched data:', data);
 
-        // Check if the fetched data is an array
         if (Array.isArray(data)) {
-          // Find the Drinks category
           const drinksCategory = data.find(category => category.category === 'Drinks');
-          console.log('Drinks data:', drinksCategory);
-
-          // Extract the items from the Drinks category if it exists
-          const drinksData = drinksCategory ? drinksCategory.items : [];
-          setDrinks(drinksData);  // Set the Drinks data to state
+          
+          // Check if drinksCategory is an object with items array
+          if (drinksCategory && Array.isArray(drinksCategory.items)) {
+            setDrinks(drinksCategory.items);
+          } else {
+            throw new Error('Invalid data structure for Drinks category');
+          }
         } else {
-          console.error('Fetched data is not an array:', data);
-          setError('Unexpected data format');
+          throw new Error('Expected data to be an array');
         }
-        
-        setLoading(false);
       })
       .catch((err) => {
         console.error('Fetch error:', err);
-        setError(err.message);  // Set error message if fetching data fails
+        setError('Error fetching drinks data: ' + err.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, []);
@@ -47,19 +50,26 @@ export default function Drinks() {
 
   return (
     <>
-      {drinks.map((drink, index) => (
-        <div
-          key={index}  // Use index as the key since there's no unique ID
-          className='relative bg-gray-200 p-2 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
-        >
-          <button className='absolute top-1 right-1 md:top-2 md:right-2 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-2 shadow-md hover:bg-amber-600 text-xs'>
-            {drink.price}
-          </button>
-          <img src={drink.src} alt={drink.title} className='mx-auto mb-2 h-20 w-20 object-cover' />
-          <h4 className='font-semibold my-1 text-base'>{drink.title}</h4>
-          <p className='text-xs text-gray-500'>{drink.description}</p>
-        </div>
-      ))}
+      {drinks.length === 0 ? (
+        <div className='text-center text-gray-500'>No drinks available</div>
+      ) : (
+        drinks.map((drink, index) => (
+          <div
+            key={index}  // Use index as the key if there is no unique ID
+            className='relative bg-gray-200 p-2 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
+          >
+            <button className='absolute top-1 right-1 md:top-2 md:right-2 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-2 shadow-md hover:bg-amber-600 text-xs'>
+              {drink.price}
+            </button>
+
+            <img src={drink.src} alt={drink.title} className='mx-auto mb-2 h-20 w-20 object-cover' />
+
+            <h4 className='font-semibold my-1 text-base'>{drink.title}</h4>
+
+            <p className='text-xs text-gray-500'>{drink.description || 'No description available'}</p>
+          </div>
+        ))
+      )}
     </>
   );
 }

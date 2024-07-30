@@ -56,7 +56,12 @@ export default function Deserts() {
             {desert.price}
           </button>
 
-          <img src={desert.src} alt={desert.title} className='mx-auto mb-2 h-20 w-20 object-cover' />
+          {/* Ensure the image path starts with a leading slash */}
+          <img 
+            src={desert.src} 
+            alt={desert.title} 
+            className='mx-auto mb-2 h-20 w-20 object-cover' 
+          />
 
           <h4 className='font-semibold my-2'>{desert.title}</h4>
 

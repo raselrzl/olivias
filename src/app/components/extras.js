@@ -11,18 +11,14 @@ export default function Extras() {
     fetch('/api/data')
       .then((response) => response.json())
       .then((data) => {
-        // Log the entire data object to the console for debugging
         console.log('Fetched data:', data);
 
-        // Check if the fetched data is an array
         if (Array.isArray(data)) {
-          // Find the Extras category
           const extrasCategory = data.find(category => category.category === 'Extras');
           console.log('Extras data:', extrasCategory);
 
-          // Extract the items from the Extras category if it exists
           const extrasData = extrasCategory ? extrasCategory.items : [];
-          setExtras(extrasData);  // Set the Extras data to state
+          setExtras(extrasData);
         } else {
           console.error('Fetched data is not an array:', data);
           setError('Unexpected data format');
@@ -32,7 +28,7 @@ export default function Extras() {
       })
       .catch((err) => {
         console.error('Fetch error:', err);
-        setError(err.message);  // Set error message if fetching data fails
+        setError(err.message);
         setLoading(false);
       });
   }, []);
@@ -49,7 +45,7 @@ export default function Extras() {
     <>
       {extras.map((extra, index) => (
         <div
-          key={index}  // Use index as the key since there's no unique ID
+          key={index}  // Using index as key since there’s no unique ID
           className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
         >
           <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>

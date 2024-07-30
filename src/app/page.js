@@ -5,7 +5,7 @@ import { Footer } from "./components/Footer";
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [data, setData] = useState([]);
+  /* const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch('/api/data')
@@ -14,7 +14,7 @@ export default function Home() {
         console.log(data); // Log data to the console
         setData(data);
       });
-  }, []);
+  }, []); */
 
   return (
     <>

@@ -25,7 +25,7 @@ export default function PopularBurgers() {
           console.error('Fetched data is not an array:', data);
           setError('Unexpected data format');
         }
-        
+
         setLoading(false);
       })
       .catch((err) => {
