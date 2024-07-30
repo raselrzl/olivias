@@ -8,7 +8,7 @@ export default function Deserts() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('/api/data')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/data`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

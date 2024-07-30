@@ -9,7 +9,7 @@ export async function GET() {
     const data = await db.collection('menuItems').find({}).toArray(); // Replace with your collection name
     
     // Log the fetched data in a readable format
-    console.log('Fetched data:', JSON.stringify(data, null, 2));
+    //console.log('Fetched data:', JSON.stringify(data, null, 2));
 
     // Return the JSON response
     return NextResponse.json(data);

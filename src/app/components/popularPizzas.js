@@ -7,7 +7,7 @@ export default function PopularPizzas() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/data`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

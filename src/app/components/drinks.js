@@ -7,7 +7,7 @@ export default function Drinks() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/data`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
