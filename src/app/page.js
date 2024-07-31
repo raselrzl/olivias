@@ -1,20 +1,20 @@
 "use client";
-import Header from "./components/Header";
 import HomePizza from "./components/HomePizza";
 import { Footer } from "./components/Footer";
 import { useEffect, useState } from 'react';
+import { BASE_API_URL } from "@/lib/utils";
 
 export default function Home() {
-  /* const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch(`${BASE_API_URL}/api/data`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data); // Log data to the console
         setData(data);
       });
-  }, []); */
+  }, []);
 
   return (
     <>
