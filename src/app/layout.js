@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="pt-22 lg:pt-28">
+        <div className="pt-24">
         <Header />
         <main className="overflow-scroll sm:px-4 xl:px-20">
           {children}
