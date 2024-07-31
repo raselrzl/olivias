@@ -30,7 +30,7 @@ export default function AddItem(){
 
         if (title && src) {  // Changed imageUrl to src
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/menu-items`, {
+                const response = await fetch('/api/menu-items', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

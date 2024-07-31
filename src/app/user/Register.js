@@ -27,7 +27,7 @@ const Register = ({ onRegisterSuccess }) => {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/userRegistration`, {
+      const response = await fetch('/api/userRegistration', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

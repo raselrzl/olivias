@@ -7,7 +7,7 @@ export default function Burgers() {
   const [loading, setLoading] = useState(true); // Initial loading state should be true
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/data`)
+    fetch('/api/data')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

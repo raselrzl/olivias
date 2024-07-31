@@ -42,7 +42,7 @@ export default function ContactPage() {
         if (Object.keys(formErrors).length === 0) {
             try {
                 // Send form data to the backend
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact`, {
+                const response = await fetch('/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const Table = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/data`);
+        const response = await fetch('/api/data');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -52,7 +52,7 @@ const Table = () => {
     const { category, title } = itemToDelete;
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/deleteItem`, {
+      const response = await fetch('/api/deleteItem', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
