@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="pt-24">
         <Header />
-        <main className="overflow-scroll sm:px-4 xl:px-20">
+        <main className="overflow-hidden sm:px-4 xl:px-20">
           {children}
         </main>
         {/*  bg-image */}
