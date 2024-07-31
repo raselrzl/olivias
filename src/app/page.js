@@ -18,7 +18,6 @@ export default function Home() {
 
   return (
     <>
-      <Header/>
       <HomePizza />
       <Footer />
     </>

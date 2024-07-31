@@ -1,7 +1,6 @@
 "use client";
 import { useState, lazy, Suspense } from 'react';
 import { Footer } from "../components/Footer";
-import Header from "../components/Header";
 import LoadingSpinner from "../components/loading-spinner";
 
 const Burgers = lazy(() => import("../components/burgers"));
@@ -20,8 +19,6 @@ export default function Menu() {
 
     return (
         <div>
-            <Header />
-
             <div className="pb-24">
                 <div className='flex flex-col items-center justify-center text-sm m-2 sm:flex-row'>
                     <div className="flex flex-row">

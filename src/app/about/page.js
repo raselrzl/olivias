@@ -1,6 +1,5 @@
 "use client"
 import { Footer } from "../components/Footer";
-import Header from "../components/Header";
 import React, { useEffect } from 'react';
 
 export default function AboutPage() {
@@ -32,7 +31,6 @@ export default function AboutPage() {
 
     return (
         <div>
-            <Header />
             <div className="max-w-7xl mx-auto p-4 mb-4 sm:p-6 lg:p-8 text-amber-200">
                 {/* Introduction Section */}
                 <section className="text-center mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
