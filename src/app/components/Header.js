@@ -23,7 +23,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full z-50 flex px-2 py-2 lg:py-6 mb-8 items-center justify-between bg-black"> {/* Added fixed classes */}
+      <div className="fixed top-0 left-0 w-full z-50 flex px-4 lg:px-20  py-2 lg:py-6 mb-8 items-center justify-between bg-black"> {/* Added fixed classes */}
         <Link href="/">
           <Image src="/images/logo.png" width={40} height={40} alt='JAYS' />
         </Link>
