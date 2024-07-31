@@ -1,4 +1,5 @@
 "use client";
+import { BASE_API_URL } from '@/lib/utils';
 import { useState } from 'react';
 export default function AddItem(){
     const [category, setCategory] = useState('');
@@ -25,12 +26,14 @@ export default function AddItem(){
             setError('Please select a category');
             return;
         }
+        
 
         const priceWithSEK = price.startsWith('SEK') ? price : `SEK${price.trim()}`;
 
         if (title && src) {  // Changed imageUrl to src
             try {
-                const response = await fetch('/api/menu-items', {
+                const response = await fetch(`${BASE_API_URL}/api/menu-items`, {
+                   
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -57,7 +60,9 @@ export default function AddItem(){
             setError('Please fill in all fields correctly');
         }
     };
-
+    if(!BASE_API_URL){
+        return null;
+    }
     return(
         <>
         <div className="flex flex-col items-center justify-center min-h-screen py-4 sm:py-6 lg:py-8">

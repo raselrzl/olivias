@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
+import { BASE_API_URL } from '@/lib/utils';
 
 export default function PopularPizzas() {
   const [pizzas, setPizzas] = useState([]);
@@ -7,7 +8,7 @@ export default function PopularPizzas() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch(`${BASE_API_URL}/api/data`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -48,7 +49,9 @@ export default function PopularPizzas() {
   if (error) {
     return <div className='text-red-500 text-center'>Error: {error}</div>;  // Show the error message
   }
-
+  if(!BASE_API_URL){
+    return null;
+}
   return (
     <>
       {pizzas.length === 0 ? (

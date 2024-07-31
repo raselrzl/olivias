@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import LoadingSpinner from './loading-spinner';
+import { BASE_API_URL } from '@/lib/utils';
 
 export default function Drinks() {
   const [drinks, setDrinks] = useState([]);
@@ -7,7 +8,7 @@ export default function Drinks() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch(`${BASE_API_URL}/api/data`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -47,7 +48,9 @@ export default function Drinks() {
   if (error) {
     return <div className='text-red-500 text-center'>Error: {error}</div>;
   }
-
+  if(!BASE_API_URL){
+    return null;
+}
   return (
     <>
       {drinks.length === 0 ? (

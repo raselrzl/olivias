@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { BASE_API_URL } from '@/lib/utils';
 
 const Register = ({ onRegisterSuccess }) => {
   const [name, setName] = useState('');
@@ -27,7 +28,7 @@ const Register = ({ onRegisterSuccess }) => {
     }
 
     try {
-      const response = await fetch('/api/userRegistration', {
+      const response = await fetch(`${BASE_API_URL}/api/userRegistration`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +49,9 @@ const Register = ({ onRegisterSuccess }) => {
       setError('An error occurred during registration');
     }
   };
-
+  if(!BASE_API_URL){
+    return null;
+}
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-80">

@@ -4,6 +4,7 @@ import { Footer } from '../components/Footer';
 import dynamic from 'next/dynamic';
 import AddItem from './AddItem';
 import Table from './Table';
+import { BASE_API_URL } from '@/lib/utils';
 
 const Login = dynamic(() => import('../user/Login'), { ssr: false });
 const Register = dynamic(() => import('../user/Register'), { ssr: false });
@@ -23,7 +24,7 @@ export default function MenuItemsForm() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('/api/logout', {
+      const response = await fetch(`${BASE_API_URL}/api/logout`, {
         method: 'POST',
       });
       if (response.ok) {
@@ -35,6 +36,10 @@ export default function MenuItemsForm() {
       console.error('An error occurred during logout:', error);
     }
   };
+
+  if(!BASE_API_URL){
+    return null;
+}
 
   return (
     <div>

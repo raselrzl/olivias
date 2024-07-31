@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ImageSlider from '../components/ImageSlider';
 import FormInputs from '../components/FormInputs';
 import { Footer } from '../components/Footer';
+import { BASE_API_URL } from '@/lib/utils';
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -42,7 +43,7 @@ export default function ContactPage() {
         if (Object.keys(formErrors).length === 0) {
             try {
                 // Send form data to the backend
-                const response = await fetch('/api/contact', {
+                const response = await fetch(`${BASE_API_URL}/api/contact`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -73,7 +74,9 @@ export default function ContactPage() {
             setErrors(formErrors);
         }
     };
-
+    if(!BASE_API_URL){
+        return null;
+    }
     return (
         <> 
         <div className="min-h-screen">

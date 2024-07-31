@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
+import { BASE_API_URL } from '@/lib/utils';
 
 export default function Extras() {
   const [extras, setExtras] = useState([]);
@@ -8,7 +9,7 @@ export default function Extras() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('/api/data')
+    fetch(`${BASE_API_URL}/api/data`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -49,7 +50,9 @@ export default function Extras() {
   if (error) {
     return <div className='text-red-500 text-center'>Error: {error}</div>;
   }
-
+  if(!BASE_API_URL){
+    return null;
+}
   return (
     <>
       {extras.length === 0 ? (
