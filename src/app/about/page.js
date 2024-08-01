@@ -44,7 +44,7 @@ export default function AboutPage() {
                             className="w-full h-60 object-cover rounded-t-lg"
                         />
                         <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black/50 rounded-t-lg">
-                            <h1 className="text-3xl font-bold text-amber-200 mb-4 uppercase">Welcome to JAY'S</h1>
+                            <h1 className="text-3xl font-bold text-amber-200 mb-4 uppercase">Welcome to JAYS</h1>
                             <p className="text-lg text-amber-200">
                                 Discover JAYS, your go-to spot for classic pizzas, unique specials, and irresistible smash burgers right here in Svärtinge. We pride ourselves on crafting delicious dishes with passion.
                             </p>
