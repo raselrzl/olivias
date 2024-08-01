@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import { Footer } from "../components/Footer";
+import Image from 'next/image';
 import React, { useEffect } from 'react';
 
 export default function AboutPage() {
@@ -33,17 +34,19 @@ export default function AboutPage() {
         <div>
             <div className="max-w-7xl mx-auto p-4 mb-4 sm:p-6 lg:p-8 text-amber-200">
                 {/* Introduction Section */}
-                <section className="text-center mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
+                <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="relative">
-                        <img
-                            src="images/restaurant-interior.jpg"
+                        <Image
+                            src="/images/restaurant-interior.jpg"
                             alt="Restaurant Interior"
+                            width={1200}
+                            height={400}
                             className="w-full h-60 object-cover rounded-t-lg"
                         />
                         <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black/50 rounded-t-lg">
-                            <h1 className="text-3xl font-bold text-amber-200 mb-4  uppercase">Welcome to JAY'S</h1>
+                            <h1 className="text-3xl font-bold text-amber-200 mb-4 uppercase">Welcome to JAY'S</h1>
                             <p className="text-lg text-amber-200">
-                            Discover JAY’S, your go-to spot for classic pizzas, unique specials, and irresistible smash burgers right here in Svärtinge. We pride ourselves on crafting delicious dishes with passion..
+                                Discover JAY’S, your go-to spot for classic pizzas, unique specials, and irresistible smash burgers right here in Svärtinge. We pride ourselves on crafting delicious dishes with passion.
                             </p>
                         </div>
                     </div>
@@ -52,9 +55,11 @@ export default function AboutPage() {
                 {/* Our Story Section */}
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center p-6">
-                        <img
-                            src="images/ourchef.avif"
+                        <Image
+                            src="/images/ourchef.avif"
                             alt="Our Chef"
+                            width={600}
+                            height={400}
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
                         <div className="md:ml-6 p-4 text-center md:text-left">
@@ -69,15 +74,17 @@ export default function AboutPage() {
                 {/* Our Team Section */}
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center p-6">
-                        <img
-                            src="images/ourteam.jpg"
+                        <Image
+                            src="/images/ourteam.jpg"
                             alt="Our Team"
+                            width={600}
+                            height={400}
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
                         <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Meet Our Team</h2>
                             <p className="text-lg text-amber-200">
-                                Led by Chef of JAY'S, our team serves up the best Pizza and Burger compare to any classic restuarent.
+                                Led by Chef of JAY'S, our team serves up the best Pizza and Burger compared to any classic restaurant.
                             </p>
                         </div>
                     </div>
@@ -85,80 +92,93 @@ export default function AboutPage() {
 
                 {/* Our Philosophy Section */}
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
-  <div className="flex flex-col items-center p-6">
-    <div className="flex flex-col md:flex-row items-center w-full">
-      
-      <div className="md:ml-6 text-center p-4 md:text-left">
-        <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Our Philosophy</h2>
-        <p className="text-lg text-amber-200">
-          We’re dedicated to perfecting the art of pizza and smash burgers.
-          Our commitment to quality ingredients and traditional methods ensures every dish is exceptional.
-        </p>
-      </div>
-    </div>
-    <div className="mt-6 w-full h-[50vh] flex justify-center items-center">
-      <div className="hexagon-gallery">
-      <div className="hexagon" >
-            <img
-              src="images/freshingredients.avif"
-              alt="Fresh Ingredients"
-              className="hexagon-inset"
-            />
-          </div>
-          <div className="hexagon">
-            <img
-              src="images/burger-kött.jpg"
-              alt="Fresh Ingredients"
-              className="hexagon-inset"
-            />
-          </div>
-          <div className="hexagon">
-            <img
-              src="images/ryggbif.jpg"
-              alt="Fresh Ingredients"
-              className="hexagon-inset"
-            />
-          </div>
-          <div className="hexagon">
-            <img
-              src="images/smashedonsteak.jpg"
-              alt="Fresh Ingredients"
-              className="hexagon-inset"
-            />
-          </div>
-          <div className="hexagon">
-            <img
-              src="images/nutella.png"
-              alt="Fresh Ingredients"
-              className="hexagon-inset"
-            />
-          </div>
-          <div className="hexagon">
-            <img
-              src="images/pizza1.png"
-              alt="Fresh Ingredients"
-              className="hexagon-inset"
-            />
-          </div>
-          <div className="hexagon">
-            <img
-              src="images/burger2.png"
-              alt="Fresh Ingredients"
-              className="hexagon-inset"
-            />
-          </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+                    <div className="flex flex-col items-center p-6">
+                        <div className="flex flex-col md:flex-row items-center w-full">
+                            <div className="md:ml-6 text-center p-4 md:text-left">
+                                <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Our Philosophy</h2>
+                                <p className="text-lg text-amber-200">
+                                    We’re dedicated to perfecting the art of pizza and smash burgers. Our commitment to quality ingredients and traditional methods ensures every dish is exceptional.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="mt-6 w-full h-[50vh] flex justify-center items-center">
+                            <div className="hexagon-gallery">
+                                <div className="hexagon">
+                                    <Image
+                                        src="/images/freshingredients.avif"
+                                        alt="Fresh Ingredients"
+                                        width={200}
+                                        height={200}
+                                        className="hexagon-inset"
+                                    />
+                                </div>
+                                <div className="hexagon">
+                                    <Image
+                                        src="/images/burger-kött.jpg"
+                                        alt="Burger Ingredients"
+                                        width={200}
+                                        height={200}
+                                        className="hexagon-inset"
+                                    />
+                                </div>
+                                <div className="hexagon">
+                                    <Image
+                                        src="/images/ryggbif.jpg"
+                                        alt="Ryggbif"
+                                        width={200}
+                                        height={200}
+                                        className="hexagon-inset"
+                                    />
+                                </div>
+                                <div className="hexagon">
+                                    <Image
+                                        src="/images/smashedonsteak.jpg"
+                                        alt="Smashed Steak"
+                                        width={200}
+                                        height={200}
+                                        className="hexagon-inset"
+                                    />
+                                </div>
+                                <div className="hexagon">
+                                    <Image
+                                        src="/images/nutella.png"
+                                        alt="Nutella"
+                                        width={200}
+                                        height={200}
+                                        className="hexagon-inset"
+                                    />
+                                </div>
+                                <div className="hexagon">
+                                    <Image
+                                        src="/images/pizza1.png"
+                                        alt="Pizza"
+                                        width={200}
+                                        height={200}
+                                        className="hexagon-inset"
+                                    />
+                                </div>
+                                <div className="hexagon">
+                                    <Image
+                                        src="/images/burger2.png"
+                                        alt="Burger"
+                                        width={200}
+                                        height={200}
+                                        className="hexagon-inset"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Community Engagement Section */}
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center p-6">
-                        <img
-                            src="images/community-engagement-event.jpg"
+                        <Image
+                            src="/images/community-engagement-event.jpg"
                             alt="Community Engagement"
+                            width={600}
+                            height={400}
                             className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
                         />
                         <div className="md:ml-6 p-4 text-center md:text-left">
@@ -179,32 +199,16 @@ export default function AboutPage() {
                                 "Best pizza in town! The flavors are incredible, and the service is always top-notch." - Sarah M.
                             </p>
                             <p className="text-lg text-amber-200 italic bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-4 rounded-lg">
-                                "A hidden gem! The ambiance is perfect for a date night, and the staff makes you feel like family." - Michael R.
+                                "Jay's Pizza never disappoints. The burgers are amazing, and the atmosphere is cozy." - John D.
                             </p>
                         </div>
                     </div>
                 </section>
 
-                {/* Visit Us Section */}
-                <section className="text-center mb-14 bg-gray-900 rounded-lg shadow-lg overflow-hidden">
-                    <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Visit Us</h2>
-                    <p className="text-lg text-amber-200 mb-6">
-                        Join us at <span className="font-semibold">JAY'S</span>, located at <span className="font-semibold">Finspångsvägen 484, 605 80 Svärtinge, Sweden</span>.
-                    </p>
-                    <div className="relative mb-6">
-                        <div id="map" className="w-full h-64 rounded-lg shadow-lg"></div>
-                    </div>
-                    <div className="bg-gradient-to-r from-gray-700 p-4  via-gray-800 to-gray-900 rounded-lg text-amber-200">
-                        <h3 className="text-lg uppercase font-semibold text-amber-200 ">Opening Hours</h3>
-                        <ul className="text-sm space-y-1">
-                            <li>Wednesday: 3–8:30 PM</li>
-                          
-                            <li>Friday: 11 AM–1:30 PM, 3–9:30 PM</li>
-                            <li>Saturday: 12–9:30 PM</li>
-                            <li>Sunday: 12–8 PM</li>
-                            <li>Monday & Tuesday & Thursday: Closed</li>
-                            
-                        </ul>
+                {/* Map Section */}
+                <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
+                    <div className="relative">
+                        <div id="map" className="w-full h-96 rounded-lg"></div>
                     </div>
                 </section>
             </div>
