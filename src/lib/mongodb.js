@@ -5,6 +5,7 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 10000, // Increase timeout to 10 seconds
+  ssl: true,
 };
 
 let client;
