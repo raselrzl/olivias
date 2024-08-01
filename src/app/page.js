@@ -1,6 +1,5 @@
 "use client";
 import HomePizza from "./components/HomePizza";
-import { Footer } from "./components/Footer";
 import { useEffect, useState } from 'react';
 import { BASE_API_URL } from "@/lib/utils";
 
@@ -19,7 +18,6 @@ export default function Home() {
   return (
     <>
       <HomePizza />
-      <Footer />
     </>
   );
 }
