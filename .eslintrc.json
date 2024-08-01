@@ -1,16 +1,7 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:tailwindcss/recommended"
-  ],
-  "plugins": ["tailwindcss"],
+  "extends": ["next", "prettier"],
   "rules": {
-    "tailwindcss/no-custom-classname": "off", // Disable warnings for custom class names
-    "no-console": "off", // Warn about console statements
-    "no-unused-vars": ["off", { "argsIgnorePattern": "off" }], // Warn about unused vars, ignoring those starting with "_"
-    "react/react-in-jsx-scope": "off", // No need to import React in scope with Next.js
-    "react/prop-types": "off", // Disable prop-types checking for React
-    "tailwindcss/classnames-order": "off", // Disable classnames order rule
-    "tailwindcss/enforces-shorthand": "off" // Disable enforcing shorthand
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off"
   }
 }

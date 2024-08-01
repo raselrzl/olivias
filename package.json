@@ -25,6 +25,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^14.2.5",
     "@types/mongoose": "^5.11.97",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
