@@ -2,10 +2,8 @@ import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI; // Your MongoDB connection string
 const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   serverSelectionTimeoutMS: 10000, // Increase timeout to 10 seconds
-  ssl: true,
+  ssl: true, // Ensure SSL is used if required by your MongoDB server
 };
 
 let client;
@@ -29,6 +27,3 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export default clientPromise;
-
-
-
