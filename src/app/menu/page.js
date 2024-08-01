@@ -170,7 +170,7 @@ export default function Menu() {
 
 
                         <p className='mb-6 my-6 text-amber-100 text-sm text-center uppercase '>
-                            At Jay`&apos;`s, we offer two types of pizza bread to cater to your preferences. Italiensk Surdeg and Gluten-Free. <br /> <br />
+                            At Jay&apos;s, we offer two types of pizza bread to cater to your preferences. Italiensk Surdeg and Gluten-Free. <br /> <br />
 
                             <span className='text-primary uppercase'>Italiensk Surdeg: </span>Italiensk Surdeg: This classic Italian sourdough bread is a favorite for its rich flavor and perfect crust. Please note, selecting this option will incur an additional charge of 15 kr.
                             <br /><br /> <span className='text-primary uppercase'>Gluten-Free:</span> For those with dietary restrictions, our gluten-free pizza bread is an excellent choice. Please note, selecting this option will incur an additional charge of 20 kr.

@@ -11,7 +11,7 @@ const FormInputs = ({ formData, handleChange, errors }) => {
                     id="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
+                    className="mt-1 p-2 block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
                 />
                 {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
@@ -25,7 +25,7 @@ const FormInputs = ({ formData, handleChange, errors }) => {
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
+                    className="mt-1 p-2 block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
                 />
                 {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
@@ -39,7 +39,7 @@ const FormInputs = ({ formData, handleChange, errors }) => {
                     id="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
+                    className="mt-1 p-2 block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
                 />
                 {errors.subject && <p className="text-red-500 text-xs mt-1">{errors.subject}</p>}
             </div>
@@ -52,7 +52,7 @@ const FormInputs = ({ formData, handleChange, errors }) => {
                     id="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
+                    className="mt-1 p-2 block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
                     rows="4"
                 />
                 {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}

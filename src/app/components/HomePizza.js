@@ -9,7 +9,7 @@ export default function HomePizza() {
         <section className='lg:mx-20 lg:px-20 mb-24 px-6 relative'>
             <div>
                 <div >
-                    <h1 className='text-center text-2xl font-bold text-amber-200 uppercase mb-4'>Welcome to  <span className='text-rose-500'>JAYS! </span> </h1>
+                    <h1 className='text-center text-2xl font-bold text-amber-200 uppercase mb-4'>Welcome to  <span className='text-rose-500'>JAY&apos;S! </span> </h1>
                     <div className='bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-6 shadow-lg mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-lg'>
                         <p className='mb-6 my-6 text-amber-100 text-sm text-center uppercase'>
                             Experience a culinary masterpiece with our signature pizza, where every element harmonizes to create pure delight. Our handcrafted dough, topped with the finest tomatoes, artisanal cheeses, and an array of fresh, flavorful toppings, delivers a symphony of taste sensations. Indulge in a slice of pure perfection today and savor the magic!
@@ -69,7 +69,7 @@ export default function HomePizza() {
             </div>
             <div>
                 <h1 className='text-center mt-12  text-2xl font-semibold text-amber-200'>
-                    Triple Delight Extra Fries, Sauces, and Drinks  Elevating Your Dining Experience</h1>
+                    Extra Fries, Sauces, and Drinks  Elevating Your Dining Experience</h1>
                 <div className='flex items-center justify-center gap-4 text-sm mt-10'>
                     <Link href="/menu" className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
                         I know you you fat cow, you need extra<RightArrow />

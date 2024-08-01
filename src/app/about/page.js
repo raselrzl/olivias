@@ -41,12 +41,12 @@ export default function AboutPage() {
                             alt="Restaurant Interior"
                             width={1200}
                             height={400}
-                            className="w-full h-60 object-cover rounded-t-lg"
+                            className="w-full h-60 object-cover"
                         />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black/50 rounded-t-lg">
-                            <h1 className="text-3xl font-bold text-amber-200 mb-4 uppercase">Welcome to JAYS</h1>
-                            <p className="text-lg text-amber-200">
-                                Discover JAYS, your go-to spot for classic pizzas, unique specials, and irresistible smash burgers right here in Svärtinge. We pride ourselves on crafting delicious dishes with passion.
+                        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black/50">
+                            <h1 className="text-3xl font-bold text-amber-200 mb-4 uppercase">Welcome to JAY&apos;S</h1>
+                            <p className="text-md text-center text-amber-200 lg:px-40">
+                                Discover JAY&apos;S, your go-to spot for classic pizzas, unique specials, and irresistible smash burgers right here in Svärtinge. We pride ourselves on crafting delicious dishes with passion.
                             </p>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ export default function AboutPage() {
                             alt="Our Chef"
                             width={600}
                             height={400}
-                            className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
+                            className="w-full md:w-1/2 h-64 object-cover shadow-lg"
                         />
                         <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Our Story</h2>
@@ -79,7 +79,7 @@ export default function AboutPage() {
                             alt="Our Team"
                             width={600}
                             height={400}
-                            className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
+                            className="w-full md:w-1/2 h-64 object-cover shadow-lg"
                         />
                         <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Meet Our Team</h2>
@@ -179,7 +179,7 @@ export default function AboutPage() {
                             alt="Community Engagement"
                             width={600}
                             height={400}
-                            className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
+                            className="w-full md:w-1/2 h-64 object-cover shadow-lg"
                         />
                         <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Community Engagement</h2>
@@ -195,11 +195,11 @@ export default function AboutPage() {
                     <div className="p-6 text-center">
                         <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">What Our Customers Say</h2>
                         <div className="space-y-4">
-                            <p className="text-lg text-amber-200 italic bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-4 rounded-lg">
-                                Best pizza in town! The flavors are incredible, and the service is always top-notch. - Sarah M.
+                            <p className="text-lg text-amber-200 italic bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-4">
+                            &apos;&apos;Best pizza in town! The flavors are incredible, and the service is always top-notch.&apos;&apos; - Sarah M.
                             </p>
-                            <p className="text-lg text-amber-200 italic bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-4 rounded-lg">
-                                Jays Pizza never disappoints. The burgers are amazing, and the atmosphere is cozy. - John D.
+                            <p className="text-lg text-amber-200 italic bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-4">
+                            &apos;&apos;Jays Pizza never disappoints. The burgers are amazing, and the atmosphere is cozy.&apos;&apos; - John D.
                             </p>
                         </div>
                     </div>
@@ -208,7 +208,7 @@ export default function AboutPage() {
                 {/* Map Section */}
                 <section className="mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
                     <div className="relative">
-                        <div id="map" className="w-full h-96 rounded-lg"></div>
+                        <div id="map" className="w-full h-48"></div>
                     </div>
                 </section>
             </div>

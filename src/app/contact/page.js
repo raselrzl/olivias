@@ -81,13 +81,15 @@ export default function ContactPage() {
         <> 
         <div className="min-h-screen">
             
+            <div className="px-6">
             <ImageSlider />
+            </div>
             <div className="max-w-7xl mx-auto p-4 mb-4 sm:p-6 lg:p-8 text-amber-200">
                 
                     <div className="mb-10">
                         <div className="mb-12 mx-2 lg:mx-40 xl:mx-40 shadow-lg overflow-hidden p-8 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900">
                             <h1 className="text-3xl text-center font-bold text-amber-200 mb-4 uppercase">Contact Us</h1>
-                            <p className="text-lg text-center text-amber-200 lg:px-40">
+                            <p className="text-md text-center text-amber-200 lg:px-40">
                                 Whether you have questions, feedback, or just want to say hello, we’re here for you. Fill out the form below, and we’ll get back to you as soon as possible.
                             </p>
                         </div>
@@ -100,7 +102,7 @@ export default function ContactPage() {
                         <div>
                             <button
                                 type="submit"
-                                className={`w-full py-2 px-4 ${showConfirmation ? 'bg-black' : 'bg-primary'} text-white rounded-md shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                                className={`w-full py-2 px-4 ${showConfirmation ? 'bg-black' : 'bg-primary'} text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                             >
                                 Send Message
                             </button>
