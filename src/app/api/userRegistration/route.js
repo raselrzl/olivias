@@ -1,8 +1,5 @@
+import clientPromise from '@/lib/mongodb'; // Import the shared client promise
 import { NextResponse } from 'next/server';
-import { MongoClient } from 'mongodb';
-
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
 
 export async function POST(req) {
   try {
@@ -12,7 +9,7 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
-    await client.connect();
+    const client = await clientPromise; // Use the shared client promise
     const db = client.db('jays');
     const usersCollection = db.collection('users');
 
@@ -36,7 +33,5 @@ export async function POST(req) {
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-  } finally {
-    await client.close();
   }
 }

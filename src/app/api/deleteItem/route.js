@@ -1,19 +1,16 @@
-import { MongoClient } from 'mongodb';
+import clientPromise from '@/lib/mongodb'; // Adjust the import path if needed
 
-const uri = process.env.MONGODB_URI; // Make sure to have this in your .env file
 const dbName = 'jays'; // Your database name
 
-export async function DELETE(req, res) {
+export async function DELETE(req) {
   const { category, title } = await req.json();
 
   if (!category || !title) {
     return new Response(JSON.stringify({ message: 'Category and title are required' }), { status: 400 });
   }
 
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
   try {
-    await client.connect();
+    const client = await clientPromise;
     const db = client.db(dbName);
     const collection = db.collection('menuItems');
 
@@ -29,19 +26,17 @@ export async function DELETE(req, res) {
     return new Response(JSON.stringify({ message: 'Item deleted successfully' }), { status: 200 });
   } catch (error) {
     return new Response(JSON.stringify({ message: 'Internal server error' }), { status: 500 });
-  } finally {
-    await client.close();
   }
 }
 
-export async function GET(req, res) {
-  res.status(405).json({ message: `Method ${req.method} not allowed` });
+export async function GET(req) {
+  return new Response(JSON.stringify({ message: 'Method GET not allowed' }), { status: 405 });
 }
 
-export async function POST(req, res) {
-  res.status(405).json({ message: `Method ${req.method} not allowed` });
+export async function POST(req) {
+  return new Response(JSON.stringify({ message: 'Method POST not allowed' }), { status: 405 });
 }
 
-export async function PUT(req, res) {
-  res.status(405).json({ message: `Method ${req.method} not allowed` });
+export async function PUT(req) {
+  return new Response(JSON.stringify({ message: 'Method PUT not allowed' }), { status: 405 });
 }

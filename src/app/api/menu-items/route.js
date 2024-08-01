@@ -1,11 +1,9 @@
-import { MongoClient } from 'mongodb';
-
-const client = new MongoClient(process.env.MONGODB_URI);
+import clientPromise from '@/lib/mongodb'; // Import the shared client promise
 
 export async function POST(request) {
     try {
-        await client.connect();
-        const db = client.db('jays');
+        const client = await clientPromise; // Use the shared client promise
+        const db = client.db('jays'); // Access the database
         const collection = db.collection('menuItems');
         const { category, title, price, description, src } = await request.json();  // Changed imageUrl to src
 

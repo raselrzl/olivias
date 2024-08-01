@@ -1,24 +1,23 @@
-// src/app/api/contact/route.js
 import { NextResponse } from 'next/server';
-import { MongoClient } from 'mongodb';
+import clientPromise from '@/lib/mongodb'; // Adjust the import path if needed
 
-const client = new MongoClient(process.env.MONGODB_URI);
+const dbName = 'jays'; // Your database name
 
 export async function POST(request) {
-    try {
-        await client.connect();
-        const db = client.db('jays');
-        const collection = db.collection('contactMessages');
-        
-        const { name, email, subject, message } = await request.json();
-        
-        await collection.insertOne({ name, email, subject, message, createdAt: new Date() });
-        
-        return NextResponse.json({ message: 'Message sent successfully!' }, { status: 200 });
-    } catch (error) {
-        console.error('Error saving message:', error);
-        return NextResponse.json({ message: 'Failed to send message' }, { status: 500 });
-    } finally {
-        await client.close();
-    }
+  try {
+    // Use the shared clientPromise to get the MongoDB client
+    const client = await clientPromise;
+    const db = client.db(dbName);
+    const collection = db.collection('contactMessages');
+    
+    const { name, email, subject, message } = await request.json();
+    
+    // Insert the new message
+    await collection.insertOne({ name, email, subject, message, createdAt: new Date() });
+    
+    return NextResponse.json({ message: 'Message sent successfully!' }, { status: 200 });
+  } catch (error) {
+    console.error('Error saving message:', error);
+    return NextResponse.json({ message: 'Failed to send message' }, { status: 500 });
+  }
 }
