@@ -46,7 +46,7 @@ export default function AboutPage() {
                         <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black/50 rounded-t-lg">
                             <h1 className="text-3xl font-bold text-amber-200 mb-4 uppercase">Welcome to JAY'S</h1>
                             <p className="text-lg text-amber-200">
-                                Discover JAY’S, your go-to spot for classic pizzas, unique specials, and irresistible smash burgers right here in Svärtinge. We pride ourselves on crafting delicious dishes with passion.
+                                Discover JAYS, your go-to spot for classic pizzas, unique specials, and irresistible smash burgers right here in Svärtinge. We pride ourselves on crafting delicious dishes with passion.
                             </p>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ export default function AboutPage() {
                         <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Our Story</h2>
                             <p className="text-lg text-amber-200">
-                                Founded in 2024, JAY'S is a beloved spot for classic Special Pizza and Smash Burger.
+                                Founded in 2024, JAYS is a beloved spot for classic Special Pizza and Smash Burger.
                             </p>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ export default function AboutPage() {
                         <div className="md:ml-6 p-4 text-center md:text-left">
                             <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">Meet Our Team</h2>
                             <p className="text-lg text-amber-200">
-                                Led by Chef of JAY'S, our team serves up the best Pizza and Burger compared to any classic restaurant.
+                                Led by Chef of JAYS, our team serves up the best Pizza and Burger compared to any classic restaurant.
                             </p>
                         </div>
                     </div>
@@ -196,10 +196,10 @@ export default function AboutPage() {
                         <h2 className="text-2xl uppercase font-semibold text-amber-200 mb-4">What Our Customers Say</h2>
                         <div className="space-y-4">
                             <p className="text-lg text-amber-200 italic bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-4 rounded-lg">
-                                "Best pizza in town! The flavors are incredible, and the service is always top-notch." - Sarah M.
+                                Best pizza in town! The flavors are incredible, and the service is always top-notch. - Sarah M.
                             </p>
                             <p className="text-lg text-amber-200 italic bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-4 rounded-lg">
-                                "Jay's Pizza never disappoints. The burgers are amazing, and the atmosphere is cozy." - John D.
+                                Jays Pizza never disappoints. The burgers are amazing, and the atmosphere is cozy. - John D.
                             </p>
                         </div>
                     </div>
