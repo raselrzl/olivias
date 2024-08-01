@@ -89,7 +89,7 @@ export default function HomePizza() {
                 {/* Content container */}
                 <div className="relative flex flex-col items-center justify-center h-full text-center text-white p-6">
                     {/* Title */}
-                    <h1 className='text-center mt-12 text-2xl font-semibold text-amber-200'>Indulge  Delight Explore Our Scrumptious Dessert Haven</h1>
+                    <h1 className='text-center mt-12 text-2xl font-semibold text-amber-200'>Explore Our Scrumptious Dessert Haven</h1>
 
                     {/* Button */}
                     <Link href="/menu" className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
