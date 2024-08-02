@@ -11,7 +11,7 @@ export default function NotificationForm() {
     event.preventDefault();
 
     try {
-      const response = await fetch(`${BASE_API_URL}/api/notification`, {
+      const response = await fetch('/api/notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,10 +25,10 @@ export default function NotificationForm() {
         setSuccess(result.message);
         setMessage('');
       } else {
-        setError(result.error);
+        setError(result.error || 'An unexpected error occurred');
       }
     } catch (error) {
-      setError('An unexpected error occurred');
+      setError('An unexpected error occurred: ' + error.message);
     }
   };
 
@@ -52,7 +52,7 @@ export default function NotificationForm() {
         </div>
         <button
           type="submit"
-          className="w-full bg-primary text-white p-2 rounded hover:bg-blue-700 "
+          className="w-full bg-primary text-white p-2 rounded hover:bg-blue-700"
         >
           Submit
         </button>
