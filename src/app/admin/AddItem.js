@@ -65,9 +65,9 @@ export default function AddItem(){
     }
     return(
         <>
-        <div className="flex flex-col items-center justify-center min-h-screen py-4 sm:py-6 lg:py-8">
+        <div className="">
                 <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4'>
-                    Add Menu Items
+                    Add new Menu Items
                 </h1>
                 <div className="flex flex-col items-center px-6">
                     <div className="flex flex-wrap justify-center mb-6 gap-2 sm:gap-4">

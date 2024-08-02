@@ -1,9 +1,9 @@
 "use client";
 import { useState } from 'react';
-import { Footer } from '../components/Footer';
 import dynamic from 'next/dynamic';
 import AddItem from './AddItem';
 import Table from './Table';
+import ContactMessages from './contactMessages';
 import { BASE_API_URL } from '@/lib/utils';
 
 const Login = dynamic(() => import('../user/Login'), { ssr: false });
@@ -37,66 +37,76 @@ export default function MenuItemsForm() {
     }
   };
 
-  if(!BASE_API_URL){
+  if (!BASE_API_URL) {
     return null;
-}
+  }
 
   return (
     <div>
-      <div className='flex flex-col min-h-screen'>
+      <div >
         <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4'>
           Admin Page
         </h1>
-        <div className="flex flex-col items-center justify-center flex-grow">
-          {!user ? (
-            <>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button
-                  className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
-                  onClick={() => setView('login')}
-                >
-                  Login
-                </button>
-                <button
-                  className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
-                  onClick={() => setView('register')}
-                >
-                  Register
-                </button>
-              </div>
-            </>
-          ) : (
-            <div className="flex flex-col items-center">
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4">
-                Welcome Mr , {user.name}
-              </p>
+        {!user ? (
+          <div className="flex flex-col items-center justify-center flex-grow">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <button
                 className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
-                onClick={handleLogout}
+                onClick={() => setView('login')}
               >
-                Logout
+                Login
+              </button>
+              <button
+                className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
+                onClick={() => setView('register')}
+              >
+                Register
               </button>
             </div>
-          )}
-        </div>
-        <div className="flex items-center justify-center">
-          {view === 'login' && <Login onLoginSuccess={handleLoginSuccess} />}
-          {view === 'register' && <Register onRegisterSuccess={handleRegisterSuccess} />}
-        </div>
-        <div>
-          {user && (
-            <>
-              <div>
-                <AddItem />
+            {view === 'login' && <Login onLoginSuccess={handleLoginSuccess} />}
+            {view === 'register' && <Register onRegisterSuccess={handleRegisterSuccess} />}
+          </div>
+        ) : (
+          <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col items-center mb-6">
+              <p className='text-lg sm:text-xl md:text-2xl font-semibold text-amber-200'>
+                Welcome, {user.name}!
+              </p>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setView('addItem')}
+                  className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+                >
+                  Add New Menu Items
+                </button>
+                <button
+                  onClick={() => setView('allItems')}
+                  className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+                >
+                  View All Menu Items
+                </button>
+                <button
+                  onClick={() => setView('contactMessages')}
+                  className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+                >
+                  View All Contact Messages
+                </button>
+                <button
+                  className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
               </div>
-              <div className='mb-60'>
-                <Table />
-              </div>
-            </>
-          )}
-        </div>
+            </div>
+            <div className="flex items-center justify-center flex-grow">
+              {view === 'addItem' && <AddItem />}
+              {view === 'allItems' && <Table />}
+              {view === 'contactMessages' && <ContactMessages />}
+            </div>
+          </div>
+        )}
       </div>
-      <Footer />
     </div>
   );
 }

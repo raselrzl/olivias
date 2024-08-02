@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="pt-24">
+        <div className="pt-24 pb-24">
         <Header />
         <main className="overflow-hidden sm:px-4 xl:px-20">
           {children}

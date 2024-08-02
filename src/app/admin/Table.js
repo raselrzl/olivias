@@ -98,9 +98,9 @@ const Table = () => {
 }
 
   return (
-    <div className="overflow-x-auto px-4 sm:px-10 md:px-20 lg:px-40">
+    <div className="px-4 sm:px-10 md:px-20 lg:px-40">
       <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4'>
-        All Menu Items
+        Click Button to View Menu Items
       </h1>
       <div className="flex flex-wrap justify-center mb-6 gap-2 sm:gap-4">
         {data.map((category, index) => (

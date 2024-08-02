@@ -53,7 +53,7 @@ const Register = ({ onRegisterSuccess }) => {
     return null;
 }
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="">
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-80">
         <Link href="/" className="flex items-center justify-center">
           <Image src="/images/logo.png" width={40} height={40} alt='JAYS' />
