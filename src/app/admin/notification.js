@@ -24,6 +24,11 @@ export default function NotificationForm() {
       if (response.ok) {
         setSuccess(result.message);
         setMessage('');
+        
+        // Hide the success message after 30 seconds
+        setTimeout(() => {
+          setSuccess(null);
+        }, 10000);
       } else {
         setError(result.error || 'An unexpected error occurred');
       }
