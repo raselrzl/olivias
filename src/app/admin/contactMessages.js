@@ -26,7 +26,7 @@ export default function ContactMessages() {
     if (loading) return <LoadingSpinner />; // Show spinner while loading
 
     return (
-        <div className='my-10 mb-40'>
+        <div className='my-10 mb-40 px-8'>
             <div className='flex justify-center mb-10'>
                 <h1 className='text-2xl font-semibold text-amber-200'>Contact Messages</h1>
             </div>

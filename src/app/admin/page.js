@@ -72,7 +72,7 @@ export default function MenuItemsForm() {
               <p className='text-lg sm:text-xl md:text-2xl font-semibold text-amber-200'>
                 Welcome, {user.name}!
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap justify-center mb-6 gap-2 sm:gap-4">
                 <button
                   onClick={() => setView('addItem')}
                   className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'

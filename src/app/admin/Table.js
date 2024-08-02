@@ -121,43 +121,45 @@ const Table = () => {
       </div>
       {(showAll ? data : data.filter((category) => category.category === selectedCategory)).map((category, index) => (
         <div key={index} className="mb-8">
-          <table className="min-w-full bg-white border border-gray-200">
-            <thead>
-              <tr>
-                <th className="px-4 py-2 border" scope="col">#</th>
-                <th className="px-4 py-2 border" scope="col">Title</th>
-                <th className="px-4 py-2 border" scope="col">Price</th>
-                <th className="px-4 py-2 border" scope="col">Description</th>
-                <th className="px-4 py-2 border" scope="col">Image</th>
-                <th className="px-4 py-2 border" scope="col">Image Link</th>
-                <th className="px-4 py-2 border" scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {category.items.map((item, idx) => (
-                <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-800 text-white' : 'bg-gray-700 text-white'}>
-                  <td className="px-4 py-2 border">{idx + 1}</td>
-                  <td className="px-4 py-2 border">{item.title}</td>
-                  <td className="px-4 py-2 border">{item.price}</td>
-                  <td className="px-4 py-2 border">{item.description}</td>
-                  <td className="px-4 py-2 border">
-                    <img src={item.src} alt={item.title} className="w-16 h-16 object-cover" />
-                  </td>
-                  <td className="px-4 py-2 border">
-                    <a href={item.src} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{item.src}</a>
-                  </td>
-                  <td className="px-4 py-2 border">
-                    <button
-                      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                      onClick={() => handleDeleteClick(category.category, item.title)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white border border-gray-200">
+              <thead>
+                <tr>
+                  <th className="px-4 py-2 border" scope="col">#</th>
+                  <th className="px-4 py-2 border" scope="col">Title</th>
+                  <th className="px-4 py-2 border" scope="col">Price</th>
+                  <th className="px-4 py-2 border" scope="col">Description</th>
+                  <th className="px-4 py-2 border" scope="col">Image</th>
+                  <th className="px-4 py-2 border" scope="col">Image Link</th>
+                  <th className="px-4 py-2 border" scope="col">Delete</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {category.items.map((item, idx) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-800 text-white' : 'bg-gray-700 text-white'}>
+                    <td className="px-4 py-2 border">{idx + 1}</td>
+                    <td className="px-4 py-2 border">{item.title}</td>
+                    <td className="px-4 py-2 border">{item.price}</td>
+                    <td className="px-4 py-2 border">{item.description}</td>
+                    <td className="px-4 py-2 border">
+                      <img src={item.src} alt={item.title} className="w-16 h-16 object-cover" />
+                    </td>
+                    <td className="px-4 py-2 border">
+                      <a href={item.src} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{item.src}</a>
+                    </td>
+                    <td className="px-4 py-2 border">
+                      <button
+                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                        onClick={() => handleDeleteClick(category.category, item.title)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ))}
       <Modal
