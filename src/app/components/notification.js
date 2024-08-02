@@ -25,7 +25,7 @@ export default function Notification() {
 
     const intervalId = setInterval(() => {
       fetchLatestNotification(); // Fetch data every 20 minutes
-    }, 3 * 60 * 1000); // 3 minutes in milliseconds
+    }, 2 * 60 * 1000); // 2 minutes in milliseconds
 
     return () => clearInterval(intervalId); // Clear interval on component unmount
   }, []);
