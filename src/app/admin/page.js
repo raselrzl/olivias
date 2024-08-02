@@ -72,32 +72,32 @@ export default function MenuItemsForm() {
               <p className='text-lg sm:text-xl md:text-2xl font-semibold text-amber-200'>
                 Welcome, {user.name}!
               </p>
-              <div className="flex flex-wrap justify-center mb-6 gap-2 sm:gap-4">
-                <button
-                  onClick={() => setView('addItem')}
-                  className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
-                >
-                  Add New Menu Items
-                </button>
-                <button
-                  onClick={() => setView('allItems')}
-                  className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
-                >
-                  View All Menu Items
-                </button>
-                <button
-                  onClick={() => setView('contactMessages')}
-                  className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
-                >
-                  View All Contact Messages
-                </button>
-                <button
-                  className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
-              </div>
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center mb-6 gap-4 sm:gap-8">
+  <button
+    onClick={() => setView('addItem')}
+    className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+  >
+    Add New Menu Items
+  </button>
+  <button
+    onClick={() => setView('allItems')}
+    className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+  >
+    View All Menu Items
+  </button>
+  <button
+    onClick={() => setView('contactMessages')}
+    className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+  >
+    View All Contact Messages
+  </button>
+  <button
+    className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
+    onClick={handleLogout}
+  >
+    Logout
+  </button>
+</div>
             </div>
             <div className="flex items-center justify-center">
               {view === 'addItem' && <AddItem />}

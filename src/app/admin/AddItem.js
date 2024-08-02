@@ -115,7 +115,7 @@ export default function AddItem(){
                             Drinks
                         </button>
                     </div>
-                    <form className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl" onSubmit={handleSubmit}>
+                    <form className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-6 mb-12 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 overflow-hidden" onSubmit={handleSubmit}>
                         {submitted && (
                             <p className="mb-4 text-green-500 text-center">{submitted}</p>
                         )}
