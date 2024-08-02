@@ -99,7 +99,7 @@ export default function MenuItemsForm() {
                 </button>
               </div>
             </div>
-            <div className="flex items-center justify-center flex-grow">
+            <div className="flex items-center justify-center">
               {view === 'addItem' && <AddItem />}
               {view === 'allItems' && <Table />}
               {view === 'contactMessages' && <ContactMessages />}
