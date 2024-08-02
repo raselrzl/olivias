@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { usePathname } from 'next/navigation';
+import Notification from './notification';
 
 export default function Header() {
   const [isNavVisible, setIsNavVisible] = useState(false);
@@ -30,7 +31,7 @@ export default function Header() {
         </Link>
         
         <div className="text-amber-100 whitespace-nowrap animate-marquee">
-          <span className="text-xxs">Today 10% Deals! </span>
+          <span className="text-xxs"><Notification /></span>
         </div>
         
         <div className="relative">

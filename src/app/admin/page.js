@@ -5,6 +5,7 @@ import AddItem from './AddItem';
 import Table from './Table';
 import ContactMessages from './contactMessages';
 import { BASE_API_URL } from '@/lib/utils';
+import NotificationForm from './notification';
 
 const Login = dynamic(() => import('../user/Login'), { ssr: false });
 const Register = dynamic(() => import('../user/Register'), { ssr: false });
@@ -120,6 +121,12 @@ export default function MenuItemsForm() {
                 View All Contact Messages
               </button>
               <button
+                onClick={() => setView('notification')}
+                className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+              >
+                Notifications
+              </button>
+              <button
                 className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
                 onClick={handleLogout}
               >
@@ -131,6 +138,7 @@ export default function MenuItemsForm() {
             {view === 'addItem' && <AddItem />}
             {view === 'allItems' && <Table />}
             {view === 'contactMessages' && <ContactMessages />}
+            {view === 'notification' && <NotificationForm />}
           </div>
         </div>
       )}
