@@ -29,6 +29,7 @@ export default function MenuItemsForm() {
       });
       if (response.ok) {
         setUser(null); // Clear user data
+        setView(''); // Hide view after logout
       } else {
         console.error('Logout failed');
       }
@@ -42,71 +43,97 @@ export default function MenuItemsForm() {
   }
 
   return (
-    <div>
-      <div >
-        <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4'>
-          Admin Page
-        </h1>
-        {!user ? (
-          <div className="flex flex-col items-center justify-center flex-grow">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+    <div className="flex flex-col items-center justify-center ">
+      <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4'>
+        Admin Page
+      </h1>
+      {!user ? (
+        <div className="flex flex-col items-center justify-center w-full max-w-md">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            {view === '' && (
+              <>
+                {view !== 'register' && (
+                  <button
+                    className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
+                    onClick={() => setView('login')}
+                  >
+                    Login
+                  </button>
+                )}
+                {view !== 'login' && (
+                  <button
+                    className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
+                    onClick={() => setView('register')}
+                  >
+                    Register
+                  </button>
+                )}
+              </>
+            )}
+            {view === 'login' && (
+              <div className="flex flex-col items-center">
+                <Login onLoginSuccess={handleLoginSuccess} />
+                <button
+                  className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 mt-4 active:scale-95 active:bg-primary-dark"
+                  onClick={() => setView('register')}
+                >
+                  Register
+                </button>
+              </div>
+            )}
+            {view === 'register' && (
+              <div className="flex flex-col items-center">
+                <Register onRegisterSuccess={handleRegisterSuccess} />
+                <button
+                  className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 mt-4 active:scale-95 active:bg-primary-dark"
+                  onClick={() => setView('login')}
+                >
+                  Login
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col items-center mb-6">
+            <p className='text-lg sm:text-xl md:text-2xl font-semibold text-amber-200'>
+              Welcome, {user.name}!
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center mb-6 gap-4 sm:gap-8">
               <button
-                className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
-                onClick={() => setView('login')}
+                onClick={() => setView('addItem')}
+                className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
               >
-                Login
+                Add New Menu Items
+              </button>
+              <button
+                onClick={() => setView('allItems')}
+                className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+              >
+                View All Menu Items
+              </button>
+              <button
+                onClick={() => setView('contactMessages')}
+                className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
+              >
+                View All Contact Messages
               </button>
               <button
                 className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
-                onClick={() => setView('register')}
+                onClick={handleLogout}
               >
-                Register
+                Logout
               </button>
             </div>
-            {view === 'login' && <Login onLoginSuccess={handleLoginSuccess} />}
-            {view === 'register' && <Register onRegisterSuccess={handleRegisterSuccess} />}
           </div>
-        ) : (
-          <div className="flex flex-col min-h-screen">
-            <div className="flex flex-col items-center mb-6">
-              <p className='text-lg sm:text-xl md:text-2xl font-semibold text-amber-200'>
-                Welcome, {user.name}!
-              </p>
-              <div className="flex flex-col sm:flex-row flex-wrap justify-center mb-6 gap-4 sm:gap-8">
-  <button
-    onClick={() => setView('addItem')}
-    className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
-  >
-    Add New Menu Items
-  </button>
-  <button
-    onClick={() => setView('allItems')}
-    className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
-  >
-    View All Menu Items
-  </button>
-  <button
-    onClick={() => setView('contactMessages')}
-    className='p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark'
-  >
-    View All Contact Messages
-  </button>
-  <button
-    className="p-2 text-sm sm:text-base md:text-lg font-semibold uppercase rounded text-white bg-primary mx-4 active:scale-95 active:bg-primary-dark"
-    onClick={handleLogout}
-  >
-    Logout
-  </button>
-</div>
-            </div>
-            <div className="flex items-center justify-center">
-              {view === 'addItem' && <AddItem />}
-              {view === 'allItems' && <Table />}
-              {view === 'contactMessages' && <ContactMessages />}
-            </div>
+          <div className="flex items-center justify-center w-full">
+            {view === 'addItem' && <AddItem />}
+            {view === 'allItems' && <Table />}
+            {view === 'contactMessages' && <ContactMessages />}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
