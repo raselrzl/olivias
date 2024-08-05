@@ -21,15 +21,6 @@ export default function Notification() {
     }
   };
 
-  useEffect(() => {
-    fetchLatestNotification(); // Fetch data on component mount
-
-    const intervalId = setInterval(() => {
-      fetchLatestNotification(); // Fetch data every 20 minutes
-    }, 2 * 60 * 1000); // 2 minutes in milliseconds
-
-    return () => clearInterval(intervalId); // Clear interval on component unmount
-  }, []);
 
   return (
     <>       
