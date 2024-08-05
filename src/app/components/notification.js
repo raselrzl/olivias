@@ -7,7 +7,7 @@ export default function Notification() {
 
   const fetchLatestNotification = async () => {
     try {
-      const response = await fetch('/api/notification/latest');
+      const response = await fetch(`${BASE_API_URL}/api/notification/latest`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

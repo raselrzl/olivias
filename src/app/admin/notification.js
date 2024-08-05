@@ -31,7 +31,7 @@ export default function NotificationForm() {
     event.preventDefault();
 
     try {
-      const response = await fetch('/api/notification', {
+      const response = await fetch(`${BASE_API_URL}/api/notification`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
