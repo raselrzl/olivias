@@ -5,18 +5,22 @@ import { BASE_API_URL } from '@/lib/utils';
 
 export default function Notification() {
   const [latestNotification, setLatestNotification] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // Initial loading state should be true
 
   const fetchLatestNotification = async () => {
     try {
       const response = await fetch(`${BASE_API_URL}/api/notification/latest`);
-      const data = await response.json();
-      if (response.ok) {
-        setLatestNotification(data.message);
-      } else {
-        console.error('API response error:', data.error);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
+      const data = await response.json();
+      setLatestNotification(data.message);
     } catch (error) {
       console.error('Error fetching latest notification:', error);
+      setError('Error fetching latest notification: ' + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,12 +34,20 @@ export default function Notification() {
     return () => clearInterval(intervalId); // Clear interval on component unmount
   }, []);
 
+  if (loading) {
+    return <div><LoadingSpinner /></div>;
+  }
+
+  if (error) {
+    return <div className='text-red-500 text-center'>Error: {error}</div>;
+  }
+
   return (
     <div className="text-amber-100 whitespace-nowrap animate-marquee">
       {latestNotification ? (
         <span className="text-xxs">{latestNotification}</span>
       ) : (
-        <span className="text-xxs"> <LoadingSpinner /></span>
+        <span className="text-xxs">No notifications available</span>
       )}
     </div>
   );

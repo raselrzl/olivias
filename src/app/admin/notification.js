@@ -1,10 +1,31 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function NotificationForm() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [latestNotification, setLatestNotification] = useState('');
+
+  // Function to fetch the latest notification
+  const fetchLatestNotification = async () => {
+    try {
+      const response = await fetch('/api/notification/latest');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setLatestNotification(data.message || 'No notifications available');
+    } catch (error) {
+      console.error('Error fetching latest notification:', error);
+      setError('Error fetching latest notification: ' + error.message);
+    }
+  };
+
+  // Fetch latest notification on component mount
+  useEffect(() => {
+    fetchLatestNotification();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,10 +45,13 @@ export default function NotificationForm() {
         setSuccess(result.message);
         setMessage('');
         
-        // Hide the success message after 30 seconds
+        // Hide the success message after 10 seconds
         setTimeout(() => {
           setSuccess(null);
         }, 10000);
+
+        // Fetch the latest notification after successful submission
+        fetchLatestNotification();
       } else {
         setError(result.error || 'An unexpected error occurred');
       }
@@ -41,6 +65,10 @@ export default function NotificationForm() {
       <h2 className="text-xl font-bold mb-4">Add Notification</h2>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       {success && <p className="text-green-500 mb-4">{success}</p>}
+      <div className="mb-4">
+        <h3 className="text-lg font-semibold mb-2">Latest Notification</h3>
+        <p className="p-2 bg-gray-700 rounded">{latestNotification}</p>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
