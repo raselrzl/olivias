@@ -12,9 +12,8 @@ export default function Notification() {
       const data = await response.json();
       if (response.ok) {
         setLatestNotification(data.message);
-        // Optionally, update 'viewed' status here
       } else {
-        console.error(data.error);
+        console.error('API response error:', data.error);
       }
     } catch (error) {
       console.error('Error fetching latest notification:', error);
@@ -25,21 +24,19 @@ export default function Notification() {
     fetchLatestNotification(); // Fetch data on component mount
 
     const intervalId = setInterval(() => {
-      fetchLatestNotification(); // Fetch data every 20 minutes
+      fetchLatestNotification(); // Fetch data every 2 minutes
     }, 2 * 60 * 1000); // 2 minutes in milliseconds
 
     return () => clearInterval(intervalId); // Clear interval on component unmount
   }, []);
 
   return (
-    <>       
-      <div className="text-amber-100 whitespace-nowrap animate-marquee">
-        {latestNotification ? (
-          <span className="text-xxs">{latestNotification}</span>
-        ) : (
-          <span className="text-xxs"> <LoadingSpinner /></span>
-        )}
-      </div>
-    </>
+    <div className="text-amber-100 whitespace-nowrap animate-marquee">
+      {latestNotification ? (
+        <span className="text-xxs">{latestNotification}</span>
+      ) : (
+        <span className="text-xxs"> <LoadingSpinner /></span>
+      )}
+    </div>
   );
 }
