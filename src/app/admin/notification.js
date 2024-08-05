@@ -1,4 +1,5 @@
 "use client";
+import { BASE_API_URL } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 
 export default function NotificationForm() {
