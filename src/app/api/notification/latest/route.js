@@ -7,10 +7,15 @@ export async function GET() {
   const collection = db.collection('Notifications');
 
   try {
+    console.log('Fetching latest notification from database...');
     const latestNotification = await collection.find().sort({ createdAt: -1 }).limit(1).toArray();
+    console.log('Latest notification:', latestNotification);
+    
     const response = { message: latestNotification.length > 0 ? latestNotification[0].message : 'No notifications available' };
     
-    // Set cache headers to ensure the latest data is fetched
+    // Log response before sending it
+    console.log('Response:', response);
+    
     return NextResponse.json(response, { headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' } });
   } catch (error) {
     console.error('Failed to fetch notifications:', error);
