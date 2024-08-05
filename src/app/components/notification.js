@@ -33,16 +33,15 @@ export default function Notification() {
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
   }, []); // Empty dependency array ensures this runs only on mount and unmount
-
+  
+  
   if (error) {
     return <div className='text-red-500 text-center'>Error: {error}</div>;
   }
 
   return (
     <div>
-      <div>
         <span className="text-xxs">{latestNotification || 'JAYS'}</span>
-      </div>
     </div>
   );
 }
