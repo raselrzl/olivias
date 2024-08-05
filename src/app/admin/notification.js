@@ -89,6 +89,12 @@ export default function NotificationForm() {
           Submit
         </button>
       </form>
+      <button
+        onClick={fetchLatestNotification}
+        className="w-full bg-secondary text-white p-2 rounded mt-4 hover:bg-primary"
+      >
+        Click to Update Notification
+      </button>
     </div>
   );
 }
