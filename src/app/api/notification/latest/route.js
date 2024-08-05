@@ -8,13 +8,13 @@ export async function GET() {
 
   try {
     const latestNotification = await collection.find().sort({ createdAt: -1 }).limit(1).toArray();
-    if (latestNotification.length > 0) {
-      return NextResponse.json({ message: latestNotification[0].message });
-    } else {
-      return NextResponse.json({ message: 'No notifications available' });
-    }
+    const response = { message: latestNotification.length > 0 ? latestNotification[0].message : 'No notifications available' };
+    
+    // Set cache headers
+    return NextResponse.json(response, { headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' } });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Failed to fetch notifications' }, { status: 500 });
   }
 }
+
