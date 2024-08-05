@@ -82,7 +82,7 @@ export default function NotificationForm() {
       </div>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
+          <label htmlFor="message" className="block text-sm font-medium mb-2">Add Here</label>
           <textarea
             id="message"
             name="message"
