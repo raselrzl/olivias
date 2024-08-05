@@ -6,12 +6,12 @@ export default function NotificationForm() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [latestNotification, setLatestNotification] = useState('');
+  const [latestNotification, setLatestNotification] = useState(null); // Initialize as null
 
   // Function to fetch the latest notification
   const fetchLatestNotification = async () => {
     try {
-      const response = await fetch('/api/notification/latest');
+      const response = await fetch(`${BASE_API_URL}/api/notification/latest`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -23,9 +23,17 @@ export default function NotificationForm() {
     }
   };
 
-  // Fetch latest notification on component mount
   useEffect(() => {
+    // Fetch the latest notification on component mount
     fetchLatestNotification();
+
+    // Set up interval to fetch data every minute
+    const intervalId = setInterval(() => {
+      fetchLatestNotification();
+    }, 5 * 60 * 1000); // 5 minute in milliseconds
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleSubmit = async (event) => {
@@ -68,7 +76,9 @@ export default function NotificationForm() {
       {success && <p className="text-green-500 mb-4">{success}</p>}
       <div className="mb-4">
         <h3 className="text-lg font-semibold mb-2">Latest Notification</h3>
-        <p className="p-2 bg-gray-700 rounded">{latestNotification}</p>
+        <p className="p-2 bg-gray-700 rounded">
+          {latestNotification !== null ? latestNotification : 'No notifications available'}
+        </p>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -85,17 +95,11 @@ export default function NotificationForm() {
         </div>
         <button
           type="submit"
-          className="w-full bg-primary text-white p-2 rounded hover:bg-blue-700"
+          className="w-full bg-primary text-white p-2 rounded hover:bg-black active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors duration-300"
         >
           Submit
         </button>
       </form>
-      <button
-        onClick={fetchLatestNotification}
-        className="w-full bg-secondary text-white p-2 rounded mt-4 hover:bg-primary"
-      >
-        Click to Update Notification
-      </button>
     </div>
   );
 }

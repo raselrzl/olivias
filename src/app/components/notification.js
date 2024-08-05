@@ -20,14 +20,16 @@ export default function Notification() {
     }
   };
 
+  // Fetch data on component mount and set up interval
   useEffect(() => {
     fetchLatestNotification(); // Fetch data on component mount
 
     const intervalId = setInterval(() => {
-      fetchLatestNotification(); // Fetch data every 2 minutes
-    }, 1 * 60 * 1000); // 2 minutes in milliseconds
+      fetchLatestNotification(); // Fetch data every 1 minute
+    }, 2 * 60 * 1000); // 1 minute in milliseconds
 
-    return () => clearInterval(intervalId); // Clear interval on component unmount
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   if (error) {
@@ -35,8 +37,10 @@ export default function Notification() {
   }
 
   return (
-    <div className="text-amber-100 whitespace-nowrap animate-marquee"> 
-        <span className="text-xxs">{latestNotification}</span>
+    <div>     
+      <div>
+        <span className="text-xxs">{latestNotification || 'JAYS'}</span>
+      </div>
     </div>
   );
 }
