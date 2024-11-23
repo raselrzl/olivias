@@ -1,108 +1,135 @@
-import RightArrow from './RightArrow';
-import PopularPizzas from './popularPizzas';
-import PopularBurgers from './popularBurgers';
-import ImageSlider from './ImageSlider';
-import Link from 'next/link';
+import RightArrow from "./RightArrow";
+import PopularPizzas from "./popularPizzas";
+import PopularBurgers from "./popularBurgers";
+import ImageSlider from "./ImageSlider";
+import Link from "next/link";
 
 export default function HomePizza() {
-    return (
-        <section className='lg:mx-20 lg:px-20 mb-24 px-6 relative'>
-            <div>
-                <div >
-                    <h1 className='text-center text-2xl font-bold text-amber-200 uppercase mb-4'>Welcome to  <span className='text-rose-500'>JAY&apos;S! </span> </h1>
-                    <div className='bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-6 shadow-lg mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-lg'>
-                        <p className='mb-6 my-6 text-amber-100 text-sm text-center uppercase'>
-                            Experience a culinary masterpiece with our signature pizza, where every element harmonizes to create pure delight. Our handcrafted dough, topped with the finest tomatoes, artisanal cheeses, and an array of fresh, flavorful toppings, delivers a symphony of taste sensations. Indulge in a slice of pure perfection today and savor the magic!
-                        </p>
-                    </div>
-                    <ImageSlider />
-                    <div className='flex items-center justify-center gap-4 text-sm m-8'>
+  return (
+    <section className="relative mb-24 px-6 lg:mx-20 lg:px-20">
+      {/* //bg-[#EAC6B5] */}
+      <div>
+        <div>
+          <h1 className="mb-4 text-center text-2xl font-bold uppercase text-black">
+            Welcome to <span className="">Olivia&apos;S! </span>{" "}
+          </h1>
+          <div className="mx-auto my-6 max-w-screen-lg bg-[#EAC6B5] p-8 text-center text-sm uppercase text-black shadow-2xl">
+            <p className="">
+              Unna dig våra oemotståndliga hamburgare, tillagade med saftigt
+              premiumkött, färska grönsaker och signatursåser för en
+              smakupplevelse utöver det vanliga. Njut av perfekt grillade
+              stekar, möra och kryddade för ren lyx. Få en smak av Italien med
+              äkta pasta i rika såser, eller fräscha upp med färgsprakande
+              sallader fyllda med krispiga grönsaker och hemlagade dressingar.
+              Varje rätt är ett mästerverk för dina smaklökar!
+            </p>
+          </div>
+          <div className="mt-10 flex items-center justify-center gap-4 text-sm">
+            <Link
+              href="/contact"
+              className="flex items-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+            >
+              Book a Table
+              <RightArrow />
+            </Link>
+          </div>
+          <ImageSlider />
+          <div className="lg:m-14 mb-8 mt-8 flex items-center justify-center text-sm">
+            <button className="flex place-items-center items-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]">
+              Our Current Popular Food
+            </button>
+          </div>
+          <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+            <PopularPizzas />
+          </div>
 
-                        <button className='place-items-center bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
-                            Our Most Popular Pizzas
-                        </button>
-                    </div>
-                    <div className='grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 lg:pl-10 lg:pr-10'>
-                        <PopularPizzas />
+          <h1 className="mt-6 text-center text-2xl font-semibold text-black">
+            Slice & Sizzle: Where Every Tells a Tale of Taste!
+          </h1>
+          <div className="mt-10 flex items-center justify-center gap-4 text-sm">
+            <Link
+              href="/menu"
+              className="flex items-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+            >
+              Check Our Menu
+              <RightArrow />
+            </Link>
+          </div>
+        </div>
+      </div>
 
-                    </div>
+      <div>
+        {/* <h1 className="mt-12 text-center text-2xl font-semibold text-black">
+          SmashBite: Bite into <span className="text-black"> Burger </span>{" "}
+          Bliss with Every Smash!
+        </h1> */}
+        <p className="my-6 mb-6 text-center text-sm text-amber-100"></p>
 
-                    <h1 className='text-center mt-2 text-2xl font-semibold text-amber-200'>Slice & Sizzle: Where Every Bite from <span className='text-rose-500'>Pizza</span> Tells a Tale of Taste! </h1>
-                    <div className='flex items-center justify-center gap-4 text-sm mt-10'>
+        <div className="mx-auto my-6 max-w-screen-lg bg-[#EAC6B5] p-8 text-center text-sm uppercase text-black shadow-lg">
+          <p className="">
+            Experience burger bliss like never before with our smash burgers.
+            Every bite bursts with juicy perfection, the result of our
+            meticulous smashing technique. Topped with fresh ingredients and
+            nestled between toasted buns, each burger promises a mouthwatering
+            journey through layers of flavor and satisfaction.
+          </p>
+        </div>
 
-                        <Link href="/menu" className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
-                            Check Our Menu<RightArrow />
-                        </Link>
-                    </div>
+        <div className="mb-10 mt-10 flex items-center justify-center gap-4 text-sm">
+          <button className="flex items-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]">
+            Most Sailed Food
+          </button>
+        </div>
+      </div>
 
-                </div>
+      <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+        <PopularBurgers />
+      </div>
 
-            </div>
+      <div className="mt-10 flex items-center justify-center gap-4 text-sm">
+       {/*  <Link
+          href="/menu"
+          className="flex items-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+        >
+          Why dont you check our burger Menu?
+          <RightArrow />
+        </Link> */}
+      </div>
+      <div>
+        <h1 className="mt-12 text-center text-2xl font-semibold text-black">
+          Extra Fries, Sauces, and Drinks Elevating Your Dining Experience
+        </h1>
+        <div className="mt-10 flex items-center justify-center gap-4 text-sm">
+          <Link
+            href="/menu"
+            className="mb-6 flex items-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+          >
+            Do you need extras?
+            <RightArrow />
+          </Link>
+        </div>
+      </div>
 
+      <div className="relative h-[25vh] min-h-[25vh] bg-[url('/olivia/o4.jpg')] bg-cover bg-center bg-no-repeat">
+        {/* Overlay for better text visibility */}
+        <div className="absolute inset-0 bg-black opacity-60"></div>
 
-            <div>
-                <h1 className='text-center mt-12  text-2xl font-semibold text-amber-200'>SmashBite: Bite into <span className='text-rose-500'> Burger </span> Bliss with Every Smash!</h1>
-                <p className='text-center mb-6 my-6 text-amber-100 text-sm'></p>
+        {/* Content container */}
+        <div className="relative flex h-full flex-col items-center justify-center p-6 text-center">
+          {/* Title */}
+          <h1 className="mt-12 text-center text-2xl font-semibold text-[#EAC6B5]">
+            Explore Our Scrumptious Dessert Haven
+          </h1>
 
-                <div className='bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-6  shadow-lg mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-lg'>
-                    <p className='mb-6 my-6 text-amber-100 text-sm text-center uppercase'>
-                        Experience burger bliss like never before with our smash burgers. Every bite bursts with juicy perfection, the result of our meticulous smashing technique. Topped with fresh ingredients and nestled between toasted buns, each burger promises a mouthwatering journey through layers of flavor and satisfaction.</p>
-                </div>
-
-                <div className='flex items-center justify-center gap-4 text-sm mt-10 mb-10'>
-                    <button className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
-                        Most Sailed Burgers
-                    </button>
-                </div>
-            </div>
-
-            <div className='grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 lg:pl-10 lg:pr-10'>
-
-                <PopularBurgers />
-
-            </div>
-
-            <div className='flex items-center justify-center gap-4 text-sm mt-10'>
-                <Link href="/menu" className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
-                    Why dont you check our burger Menu<RightArrow />
-                </Link>
-            </div>
-            <div>
-                <h1 className='text-center mt-12  text-2xl font-semibold text-amber-200'>
-                    Extra Fries, Sauces, and Drinks  Elevating Your Dining Experience</h1>
-                <div className='flex items-center justify-center gap-4 text-sm mt-10'>
-                    <Link href="/menu" className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
-                        I know you you fat cow, you need extra<RightArrow />
-                    </Link>
-                </div>
-            </div>
-
-
-
-
-
-
-            <div className="relative bg-cover bg-center bg-no-repeat min-h-[25vh] h-[25vh] bg-[url('/images/milkshake2.jpg')]">
-                {/* Overlay for better text visibility */}
-                <div className="absolute inset-0 bg-black opacity-60"></div>
-
-                {/* Content container */}
-                <div className="relative flex flex-col items-center justify-center h-full text-center text-white p-6">
-                    {/* Title */}
-                    <h1 className='text-center mt-12 text-2xl font-semibold text-amber-200'>Explore Our Scrumptious Dessert Haven</h1>
-
-                    {/* Button */}
-                    <Link href="/menu" className='bg-primary flex uppercase gap-2 rounded text-white px-4 py-2 items-center'>
-                        Explore <RightArrow />
-                    </Link>
-                </div>
-            </div>
-
-
-
-
-
-
-        </section>
-    );
+          {/* Button */}
+          <Link
+            href="/menu#Desert"
+            className="flex items-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+          >
+            Explore <RightArrow />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
 }

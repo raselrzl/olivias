@@ -57,23 +57,28 @@ export default function PopularBurgers() {
     <>
       {burgers.map((burger, index) => (
         <div
-          key={index}  // Use index as the key since there's no unique ID
-          className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
-        >
-          {/* Price Button */}
-          <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
-            {burger.price}
-          </button>
-
-          {/* Burger Image */}
-          <img src={burger.src} alt={burger.title} className='mx-auto mb-4' />
-
-          {/* Burger Title */}
-          <h4 className='font-semibold text-md mb-1'>{burger.title}</h4>
-
-          {/* Description */}
-          <p className='text-xs text-gray-500'>{burger.description}</p>
-        </div>
+        key={index} // Use index as the key since there's no unique ID
+        className="relative bg-[#F7DAD0] rounded-lg p-6 text-center shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+      >
+        {/* Price Button */}
+        <button className="absolute top-4 right-4 bg-black text-[#EAC6B5] font-medium py-1 px-3 rounded-lg shadow-md hover:bg-[#D4A59A]">
+          {burger.price}
+        </button>
+      
+        {/* Burger Image */}
+        <img
+          src="olivia/o2.jpg"
+          alt={burger.title}
+          className="mx-auto mb-3 w-28 h-28 object-cover  shadow-sm"
+        />
+      
+        {/* Burger Title */}
+        <h4 className="font-semibold text-lg text-black mb-2">{burger.title}</h4>
+      
+        {/* Description */}
+        {/* <p className="text-sm text-gray-700">{burger.description || "No description available"}</p> */}
+      </div>
+      
       ))}
     </>
   );

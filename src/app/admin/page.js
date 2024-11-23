@@ -45,7 +45,7 @@ export default function MenuItemsForm() {
 
   return (
     <div className="flex flex-col items-center justify-center ">
-      <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4'>
+      <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#EAC6B5] uppercase mb-4'>
         Admin Page
       </h1>
       {!user ? (
@@ -98,7 +98,7 @@ export default function MenuItemsForm() {
       ) : (
         <div className="flex flex-col min-h-screen">
           <div className="flex flex-col items-center mb-6">
-            <p className='text-lg sm:text-xl md:text-2xl font-semibold text-amber-200'>
+            <p className='text-lg sm:text-xl md:text-2xl font-semibold text-[#EAC6B5]'>
               Welcome, {user.name}!
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap justify-center mb-6 gap-4 sm:gap-8">

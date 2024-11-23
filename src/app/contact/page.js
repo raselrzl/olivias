@@ -1,124 +1,151 @@
 "use client";
-import { useState } from 'react';
-import ImageSlider from '../components/ImageSlider';
-import FormInputs from '../components/FormInputs';
-import { Footer } from '../components/Footer';
-import { BASE_API_URL } from '@/lib/utils';
+import { useState } from "react";
+import ImageSlider from "../components/ImageSlider";
+import FormInputs from "../components/FormInputs";
+import { Footer } from "../components/Footer";
+import { BASE_API_URL } from "@/lib/utils";
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    personnummer: "",
+    message: "",
+    phoneNumber: "",
+    date: "",
+    time: "",
+    numPeople: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
     });
+  };
 
-    const [errors, setErrors] = useState({});
-    const [showConfirmation, setShowConfirmation] = useState(false);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    const validateForm = () => {
-        let formErrors = {};
-        if (!formData.name) formErrors.name = "Name is required";
-        if (!formData.email) {
-            formErrors.email = "Email is required";
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            formErrors.email = "Email address is invalid";
-        }
-        if (!formData.subject) formErrors.subject = "Subject is required";
-        if (!formData.message) formErrors.message = "Message is required";
-        return formErrors;
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formErrors = validateForm();
-        if (Object.keys(formErrors).length === 0) {
-            try {
-                // Send form data to the backend
-                const response = await fetch(`${BASE_API_URL}/api/contact`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                if (response.ok) {
-                    setShowConfirmation(true);
-                    setTimeout(() => {
-                        setShowConfirmation(false);
-                    }, 3000);
-                    
-                    // Clear the form data
-                    setFormData({
-                        name: '',
-                        email: '',
-                        subject: '',
-                        message: '',
-                    });
-                } else {
-                    console.error('Failed to submit form');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        } else {
-            setErrors(formErrors);
-        }
-    };
-    if(!BASE_API_URL){
-        return null;
+  const validateForm = () => {
+    let formErrors = {};
+    if (!formData.name) formErrors.name = "Name is required";
+    if (!formData.email) {
+      formErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      formErrors.email = "Email address is invalid";
     }
-    return (
-        <> 
-        <div className="min-h-screen">
-            
-            <div className="px-6">
-            <ImageSlider />
-            </div>
-            <div className="max-w-7xl mx-auto p-4 mb-4 sm:p-6 lg:p-8 text-amber-200">
-                
-                    <div className="mb-10">
-                        <div className="mb-12 mx-2 lg:mx-40 xl:mx-40 shadow-lg overflow-hidden p-8 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900">
-                            <h1 className="text-3xl text-center font-bold text-amber-200 mb-4 uppercase">Contact Us</h1>
-                            <p className="text-md text-center text-amber-200 lg:px-40">
-                                Whether you have questions, feedback, or just want to say hello, we’re here for you. Fill out the form below, and we’ll get back to you as soon as possible.
-                            </p>
-                        </div>
-                    </div>
-               
+    if (!formData.personnummer) {
+      formErrors.personnummer = "Personnummer is required";
+    } else if (!/^\d{10}$|^\d{12}$/.test(formData.personnummer)) {
+      formErrors.personnummer = "Personnummer must be in the format YYMMDDXXXX or YYYYMMDDXXXX";
+    }
+    if (!formData.phoneNumber)
+      formErrors.phoneNumber = "phoneNumber is required";
+    if (!formData.message) formErrors.message = "Message is required";
+    if (!formData.time) formErrors.time = "Time is required";
+    if (!formData.date) formErrors.date = "Date is required";
+    if (!formData.numPeople)
+      formErrors.numPeople = "Number of people is required";
+    return formErrors;
+  };
 
-                <div className="mb-12 mx-2 lg:mx-40 xl:mx-40 shadow-lg overflow-hidden p-8 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900">
-                    <form onSubmit={handleSubmit} className="space-y-2">
-                        <FormInputs formData={formData} handleChange={handleChange} errors={errors} />
-                        <div>
-                            <button
-                                type="submit"
-                                className={`w-full py-2 px-4 ${showConfirmation ? 'bg-black' : 'bg-primary'} text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                            >
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                    {showConfirmation && (
-                        <div className='bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-6 shadow-lg mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-lg'>
-                        <p className='mb-6 my-6 text-amber-100 text-sm text-center uppercase'>
-                            Thank You for your message. We will write back as soon as possible.
-                        </p>
-                    </div>
-                    )}
-                </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length === 0) {
+      try {
+        // Send form data to the backend
+        const response = await fetch(`${BASE_API_URL}/api/contact`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          setShowConfirmation(true);
+          setTimeout(() => {
+            setShowConfirmation(false);
+          }, 3000);
+
+          // Clear the form data
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+            phoneNumber: "",
+            date: "",
+            time: "",
+          });
+        } else {
+          console.error("Failed to submit form");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    } else {
+      setErrors(formErrors);
+    }
+  };
+  if (!BASE_API_URL) {
+    return null;
+  }
+  return (
+    <>
+      <div className="min-h-screen">
+        <div className="px-6">{/* <ImageSlider /> */}</div>
+        <div className="mx-auto my-6 max-w-screen-lg bg-[#EAC6B5] p-8 text-sm uppercase text-black shadow-2xl">
+          <div className="mb-10">
+            <div className="mx-auto my-6 max-w-screen-lg bg-[#EAC6B5] p-8 text-center text-sm uppercase text-black shadow-2xl">
+              <h1 className="text/black mb-4 text-center text-3xl font-bold uppercase">
+                Boka Ett Bord
+              </h1>
+              <p className="text-md text-center text-black lg:px-40">
+                Redo att njuta av en utsökt måltid på Olivia's Bar? Säkra ditt
+                bord genom att boka hos oss! Oavsett om du planerar en speciell
+                kväll eller bara söker en bra plats att äta, är vi här för att
+                göra din upplevelse oförglömlig. Fyll i formuläret nedan, så
+                bekräftar vi din bokning så snart som möjligt.{" "}
+              </p>
             </div>
-            <Footer />
+          </div>
+
+          <div className="mx-auto my-6 max-w-screen-lg bg-[#EAC6B5] p-8 text-sm uppercase text-black shadow-2xl">
+            <form onSubmit={handleSubmit} className="space-y-2">
+              <FormInputs
+                formData={formData}
+                handleChange={handleChange}
+                errors={errors}
+              />
+              <div>
+                <button
+                  type="submit"
+                  className={`w-full px-4 py-2 ${showConfirmation ? "bg-black" : "bg-black"} text-[#EAC6B5] shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
+                >
+                  Confirm Your Booking
+                </button>
+              </div>
+            </form>
+            {showConfirmation && (
+              <div className="mx-auto my-6 max-w-screen-lg bg-[#EAC6B5] p-8 text-center text-sm uppercase text-black shadow-2xl">
+                <p className="my-6 mb-6 text-center text-sm uppercase text-black">
+                  Tack för din bokning! <br /> <br /> Din reservation har
+                  mottagits och är initialt bekräftad. Vi återkommer till dig
+                  snarast möjligt om det skulle uppstå några
+                  tillgänglighetsproblem. Vi ser fram emot att välkomna dig till
+                  Olivias Bar!
+                </p>
+              </div>
+            )}
+          </div>
+          
         </div>
-        </>
-    );
+        <Footer />
+      </div>
+    </>
+  );
 }

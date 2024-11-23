@@ -66,7 +66,7 @@ export default function AddItem(){
     return(
         <>
         <div className="">
-                <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-200 uppercase mb-4'>
+                <h1 className='text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#EAC6B5] uppercase mb-4'>
                     Add new Menu Items
                 </h1>
                 <div className="flex flex-col items-center px-6">

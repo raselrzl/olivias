@@ -10,14 +10,14 @@ export async function POST(request) {
     const db = client.db(dbName);
     const collection = db.collection('contactMessages');
     
-    const { name, email, subject, message } = await request.json();
+    const { name, email, personnummer, message, phoneNumber, date, time, numPeople } = await request.json();
     
     // Insert the new message
-    await collection.insertOne({ name, email, subject, message, createdAt: new Date() });
+    await collection.insertOne({ name, email, personnummer, message,phoneNumber, date, time, numPeople, createdAt: new Date() });
     
-    return NextResponse.json({ message: 'Message sent successfully!' }, { status: 200 });
+    return NextResponse.json({ message: 'Booking request sent successfully!' }, { status: 200 });
   } catch (error) {
-    console.error('Error saving message:', error);
-    return NextResponse.json({ message: 'Failed to send message' }, { status: 500 });
+    console.error('Error saving Booking:', error);
+    return NextResponse.json({ message: 'Failed to send Booking request' }, { status: 500 });
   }
 }

@@ -59,24 +59,31 @@ export default function Deserts() {
     <>
       {deserts.map((desert, index) => (
         <div
-          key={index}  // Use index as the key since there's no unique ID
-          className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
-        >
-          <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
-            {desert.price}
-          </button>
-
-          {/* Ensure the image path starts with a leading slash */}
-          <img 
-            src={desert.src.startsWith('/') ? desert.src : `/${desert.src}`} 
-            alt={desert.title} 
-            className='mx-auto mb-2 h-20 w-20 object-cover' 
-          />
-
-          <h4 className='font-semibold my-2'>{desert.title}</h4>
-
-          <p className='text-sm text-gray-500'>{desert.description}</p>
-        </div>
+        key={index} // Use index as the key since there's no unique ID
+        className="relative bg-[#F7DAD0] rounded-lg p-6 text-center shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+      >
+        {/* Price Button */}
+        <button className="absolute top-4 right-4 bg-black text-[#EAC6B5] font-medium py-1 px-3 rounded-lg shadow-md hover:bg-[#D4A59A]">
+          {desert.price}
+        </button>
+      
+        {/* Dessert Image */}
+        <img
+          /* src={desert.src.startsWith("/") ? desert.src : `/${desert.src}`} */
+          src="olivia/des1.jpg"
+          alt={desert.title}
+          className="mx-auto mb-3 w-28 h-28 object-cover rounded-full shadow-sm"
+        />
+      
+        {/* Dessert Title */}
+        <h4 className="font-semibold text-lg text-black mb-2">{desert.title}</h4>
+      
+        {/* Description */}
+        <p className="text-sm text-gray-700">
+          {desert.description || "No description available"}
+        </p>
+      </div>
+      
       ))}
     </>
   );

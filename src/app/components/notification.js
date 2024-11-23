@@ -41,7 +41,7 @@ export default function Notification() {
 
   return (
     <div>
-        <span className="text-xxs">{latestNotification || 'JAYS'}</span>
+        <span className="text-xxs">{latestNotification || 'OLIVIAS'}</span>
     </div>
   );
 }

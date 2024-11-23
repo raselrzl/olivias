@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { BASE_API_URL } from "@/lib/utils";
 import PopularBurgers from './components/popularBurgers';
 import PopularPizzas from './components/popularPizzas';
-import Burgers from './components/burgers';
-import Pizzas from './components/pizzas';
-import Drinks from './components/drinks';
-import Extras from './components/extras';
+import Burgers from './components/varm';
+import Pizzas from './components/for';
+import Drinks from './components/barn';
+import Extras from './components/sallad';
 import Deserts from './components/deserts';
 import HomePizza from './components/HomePizza';
 

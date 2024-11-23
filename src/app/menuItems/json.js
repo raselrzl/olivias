@@ -70,7 +70,7 @@
     "category": "Pizzas"
   },
   {
-    "title": "CIAO JAY",
+    "title": "CIAO OLIVIA",
     "price": "SEK155",
     "description": "Rygbiff, Färska Champinjoner, Hackad Rödlök, Ruccola, Beasås",
     "src": "images/pizza1.png",

@@ -96,7 +96,7 @@ const Table = () => {
 
   return (
     <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-20">
-      <h1 className='text-center text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-amber-200 uppercase mb-4'>
+      <h1 className='text-center text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#EAC6B5] uppercase mb-4'>
         Click Button to View Menu Items
       </h1>
       <div className="flex flex-wrap justify-center mb-6 gap-2 sm:gap-4">

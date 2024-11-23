@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import LoadingSpinner from '../components/loading-spinner';  // Import the LoadingSpinner component
+import LoadingSpinner from './loading-spinner';  // Import the LoadingSpinner component
 import { BASE_API_URL } from '@/lib/utils';
 
 export default function Extras() {
@@ -60,23 +60,28 @@ export default function Extras() {
       ) : (
         extras.map((extra, index) => (
           <div
-            key={index}  // Using index as key since there’s no unique ID
-            className='relative bg-gray-200 p-4 text-center hover:bg-white transition-all hover:shadow-2xl hover:shadow-black/25'
-          >
-            <button className='absolute top-2 right-2 md:top-4 md:right-4 bg-primary text-white font-semibold py-1 px-2 md:py-1 md:px-3 shadow-md hover:bg-amber-600'>
-              {extra.price}
-            </button>
+  key={index} // Using index as key since there’s no unique ID
+  className="relative bg-[#F7DAD0] rounded-lg p-6 text-center shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+>
+  {/* Price Button */}
+  <button className="absolute top-4 right-4 bg-black text-[#EAC6B5] font-medium py-1 px-3 rounded-lg shadow-md hover:bg-[#D4A59A]">
+    {extra.price}
+  </button>
 
-            <img 
-              src={extra.src.startsWith('/') ? extra.src : `/${extra.src}`} 
-              alt={extra.title} 
-              className='mx-auto mb-2 h-20 w-20 object-cover' 
-            />
+  {/* Extra Image */}
+  <img
+    src={extra.src.startsWith('/') ? extra.src : `/${extra.src}`}
+    alt={extra.title}
+    className="mx-auto mb-3 w-28 h-28 object-cover rounded-full shadow-sm"
+  />
 
-            <h4 className='font-semibold my-2'>{extra.title}</h4>
+  {/* Extra Title */}
+  <h4 className="font-semibold text-lg text-black mb-2">{extra.title}</h4>
 
-            <p className='text-sm text-gray-500'>{extra.description}</p>
-          </div>
+  {/* Description */}
+  <p className="text-sm text-gray-700">{extra.description || "No description available"}</p>
+</div>
+
         ))
       )}
     </>

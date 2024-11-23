@@ -5,7 +5,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 export default function ImageSlider() {
   const slides = [
     {
-      url: 'images/r1.jpg',
+      url: 'olivia/o2.jpg',
     },
     {
       url: 'images/r2.jpeg',
@@ -15,7 +15,7 @@ export default function ImageSlider() {
     },
 
     {
-      url: 'images/r4.jpg',
+      url: 'olivia/o1.jpg',
     },
     {
       url: 'images/r5.webp',
@@ -73,7 +73,7 @@ export default function ImageSlider() {
             onClick={() => goToSlide(slideIndex)}
             className='text-2xl cursor-pointer'
           >
-            <p className={`w-4 h-4 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center text-white bg-black mx-1 mb-4 cursor-pointer hover:bg-primary transition ${slideIndex === currentIndex ? 'bg-primary' : ''} rounded-full text-xs md:text-sm lg:text-base`}>
+            <p className={`w-4 h-4 md:w-6 md:h-6 lg:w-8 lg:h-8 flex items-center justify-center text-white bg-[#EAC6B5] mx-1 mb-4 cursor-pointer hover:bg-[#EAC6B5] transition ${slideIndex === currentIndex ? 'bg-black' : ''} rounded-full text-xs md:text-sm lg:text-base`}>
               {slideIndex + 1}
             </p>
           </div>

@@ -56,7 +56,7 @@ const Register = ({ onRegisterSuccess }) => {
     <div className="">
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-80">
         <Link href="/" className="flex items-center justify-center">
-          <Image src="/images/logo.png" width={40} height={40} alt='JAYS' />
+          <Image src="/images/logo.png" width={40} height={40} alt='OLIVIAS' />
         </Link>
         <h1 className="text-2xl font-bold mb-4 text-center">Register</h1>
         {error && <p className="text-red-500">{error}</p>}

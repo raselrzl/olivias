@@ -1,22 +1,32 @@
 import Link from "next/link";
-import { ImFacebook2 } from "react-icons/im";
-import { ImInstagram } from "react-icons/im";
-import { IoCall } from "react-icons/io5";
+import { FaInstagramSquare } from "react-icons/fa";
+import { MdMarkEmailUnread } from "react-icons/md";
+import { MdAddCall } from "react-icons/md";
 export function Footer() {
-    return (
-        <>
-            <div className="fixed bottom-0 left-0 w-full flex gap-4 p-6 justify-center bg-black">
-                <Link href="https://www.facebook.com/share/iMFqxRGCbBVw5X5b/" target="_blank" rel="noopener noreferrer">
-                    <ImFacebook2 className="text-amber-100 text-3xl hover:text-primary" />
-                </Link>
-                <Link href="https://www.instagram.com/restaurangjays?igsh=MWpodmgyNnJrZm11bw==" target="_blank" rel="noopener noreferrer">
-                    <ImInstagram className="text-amber-100 text-3xl hover:text-primary" />
-                </Link>
-                <Link href="tel:+46734438696">
-                    <IoCall className="text-amber-100 text-3xl hover:text-primary" />
-                </Link>
-            </div>
-
-        </>
-    );
+  return (
+    <>
+      <div className="fixed bottom-0 left-0 flex w-full justify-center gap-4 bg-[#EAC6B5] p-6 text-3xl text-black">
+        {/* <Link
+          href="https://www.facebook.com/share/iMFqxRGCbBVw5X5b/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <ImFacebook2 className="hover:text-[#444444]" />
+        </Link> */}
+        <Link
+          href="https://www.instagram.com/oliviasbarnkpg?igsh=MWtkNDBoNDU3eGxoeg=="
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaInstagramSquare className="hover:text-[#444444]" />
+        </Link>
+        <Link href="tel:+46000000">
+          <MdAddCall className="hover:text-[#444444]" />
+        </Link>
+        <Link href="mailto:info@oliviasbar.se">
+          <MdMarkEmailUnread className="hover:text-[#444444]" />
+        </Link>
+      </div>
+    </>
+  );
 }

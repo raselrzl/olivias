@@ -1,185 +1,191 @@
 "use client";
-import { useState, lazy, Suspense } from 'react';
+import { useState, lazy, Suspense } from "react";
 import { Footer } from "../components/Footer";
 import LoadingSpinner from "../components/loading-spinner";
 
-const Burgers = lazy(() => import("../components/burgers"));
+const Burgers = lazy(() => import("../components/varm"));
 const Deserts = lazy(() => import("../components/deserts"));
-const Extras = lazy(() => import("../components/extras"));
-const Pizzas = lazy(() => import("../components/pizzas"));
-const Drinks = lazy(() => import("../components/drinks"));
+const Extras = lazy(() => import("../components/sallad"));
+const Pizzas = lazy(() => import("../components/for"));
+const Drinks = lazy(() => import("../components/barn"));
 
 export default function Menu() {
-    const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-    const handleCategoryChange = (category) => {
-        setSelectedCategory(category);
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    };
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-    return (
-        <div>
-            <div className="pb-24">
-                <div className='flex flex-col items-center justify-center text-sm m-2 sm:flex-row'>
-                    <div className="flex flex-row">
-                        <button
-                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'All' ? 'bg-primary-dark' : 'bg-primary'}`}
-                            onClick={() => handleCategoryChange('All')}
-                        >
-                            All
-                        </button>
-                        <button
-                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Pizzas' ? 'bg-primary-dark' : 'bg-primary'}`}
-                            onClick={() => handleCategoryChange('Pizzas')}
-                        >
-                            Pizzas
-                        </button>
-                        <button
-                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Burgers' ? 'bg-primary-dark' : 'bg-primary'}`}
-                            onClick={() => handleCategoryChange('Burgers')}
-                        >
-                            Burgers
-                        </button>
-                    </div>
-                    <div className="flex flex-row">
-                    <button
-                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Extras' ? 'bg-primary-dark' : 'bg-primary'}`}
-                            onClick={() => handleCategoryChange('Extras')}
-                        >
-                            Extras
-                        </button>
-                        
-                        <button
-                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Deserts' ? 'bg-primary-dark' : 'bg-primary'}`}
-                            onClick={() => handleCategoryChange('Deserts')}
-                        >
-                            Deserts
-                        </button>
-                        <button
-                            className={`m-2 place-items-center flex uppercase gap-2 rounded text-white px-4 py-2 items-center ${selectedCategory === 'Drinks' ? 'bg-primary-dark' : 'bg-primary'}`}
-                            onClick={() => handleCategoryChange('Drinks')}
-                        >
-                            Drinks
-                        </button>
-                        
-                    </div>
-                </div>
+  return (
+    <div>
+      <div className="pb-24">
+        <div className="m-2 flex flex-col items-center justify-center text-sm sm:flex-row">
+          <div className="flex flex-row">
+            <button
+              className={`m-2 flex place-items-center items-center gap-2 rounded px-4 py-2 uppercase ${selectedCategory === "All" ? "text-black" : "bg-black text-[#EAC6B5]"}`}
+              onClick={() => handleCategoryChange("All")}
+            >
+              All
+            </button>
+            <button
+              className={`m-2 flex place-items-center items-center gap-2 rounded px-4 py-2 uppercase ${selectedCategory === "Pizzas" ? "text-black" : "bg-black text-[#EAC6B5]"}`}
+              onClick={() => handleCategoryChange("Pizzas")}
+            >
+              Förätter
+            </button>
+            <button
+              className={`m-2 flex place-items-center items-center gap-2 rounded px-4 py-2 uppercase ${selectedCategory === "Burgers" ? "text-black" : "bg-black text-[#EAC6B5]"}`}
+              onClick={() => handleCategoryChange("Burgers")}
+            >
+              Varmrätter
+            </button>
+          </div>
+          <div className="flex flex-row">
+            <button
+              className={`m-2 flex place-items-center items-center gap-2 rounded px-4 py-2 uppercase ${selectedCategory === "Extras" ? "text-black" : "bg-black text-[#EAC6B5]"}`}
+              onClick={() => handleCategoryChange("Extras")}
+            >
+              Sallad
+            </button>
 
-                <Suspense fallback={<LoadingSpinner />}>
-                    {selectedCategory === 'All' && (
-                        <>
-                            <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                                <Pizzas />
-                            </div>
+            <button
+              className={`m-2 flex place-items-center items-center gap-2 rounded px-4 py-2 uppercase  ${selectedCategory === "Deserts" ? "text-black" : "bg-black text-[#EAC6B5]"}`}
+              onClick={() => handleCategoryChange("Deserts")}
+            >
+              Deserts
+            </button>
+            <button
+              className={`m-2 flex place-items-center items-center gap-2 rounded px-4 py-2 uppercase ${selectedCategory === "Drinks" ? "text-black" : "bg-black text-[#EAC6B5]"}`}
+              onClick={() => handleCategoryChange("Drinks")}
+            >
+              Barnmeny
+            </button>
+          </div>
+        </div>
 
-                            <div className="flex justify-center">
-                                <button
-                                    className='w-1/4 m-10 bg-primary flex justify-center items-center uppercase gap-2 rounded text-white px-4 py-2'
-                                    onClick={() => handleCategoryChange('Burgers')}
-                                >
-                                    Burgers
-                                </button>
-                            </div>
+        <Suspense fallback={<LoadingSpinner />}>
+          {selectedCategory === "All" && (
+            <>
+              <div className="flex justify-center">
+                <button
+                  className="m-10 flex w-auto items-center justify-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+                  onClick={() => handleCategoryChange("Pizzas")}
+                >
+                  Förätter
+                </button>
+              </div>
+              <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+                <Pizzas />
+              </div>
 
-                            <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                                <Burgers />
-                            </div>
-                            <div className="flex justify-center">
-                                <button
-                                    className='w-1/4 m-10 bg-primary flex justify-center items-center uppercase gap-2 rounded text-white px-4 py-2'
-                                    onClick={() => handleCategoryChange('Extras')}
-                                >
-                                    Extras
-                                </button>
-                            </div>
+              <div className="flex justify-center">
+                <button
+                  className="m-10 flex w-auto items-center justify-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+                  onClick={() => handleCategoryChange("Burgers")}
+                >
+                  Varmrätter
+                </button>
+              </div>
 
-                            <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                                <Extras />
-                            </div>
+              <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+                <Burgers />
+              </div>
+              <div className="flex justify-center">
+                <button
+                  className="m-10 flex w-auto items-center justify-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+                  onClick={() => handleCategoryChange("Extras")}
+                >
+                  Sallad
+                </button>
+              </div>
 
-                            <div className="flex justify-center">
-                                <button
-                                    className='w-1/4 m-10 bg-primary flex justify-center items-center uppercase gap-2 rounded text-white px-4 py-2'
-                                    onClick={() => handleCategoryChange('Deserts')}
-                                >
-                                    Deserts
-                                </button>
-                            </div>
+              <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+                <Extras />
+              </div>
 
-                            <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                                <Deserts />
-                            </div>
-                            <div className="flex justify-center">
-                                <button
-                                    className='w-1/4 m-10 bg-primary flex justify-center items-center uppercase gap-2 rounded text-white px-4 py-2'
-                                    onClick={() => handleCategoryChange('Drinks')}
-                                >
-                                    Drinks
-                                </button>
-                            </div>
+              <div className="flex justify-center" id="Desert">
+                <button
+                  className="m-10 flex w-auto items-center justify-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+                  onClick={() => handleCategoryChange("Deserts")}
+                >
+                  Deserts
+                </button>
+              </div>
 
-                            <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                                <Drinks />
-                            </div>
-                            
-                        </>
-                    )}
+              <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+                <Deserts />
+              </div>
+              <div className="flex justify-center">
+                <button
+                  className="m-10 flex w-auto items-center justify-center gap-2 rounded bg-black px-4 py-2 uppercase text-[#EAC6B5]"
+                  onClick={() => handleCategoryChange("Drinks")}
+                >
+                  Bernmeny
+                </button>
+              </div>
 
-                    {selectedCategory === 'Pizzas' && (
-                        <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                            <Pizzas />
-                        </div>
-                    )}
+              <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+                <Drinks />
+              </div>
+            </>
+          )}
 
-                    {selectedCategory === 'Burgers' && (
-                        <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                            <Burgers />
-                        </div>
-                    )}
+          {selectedCategory === "Pizzas" && (
+            <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+              <Pizzas />
+            </div>
+          )}
 
-                    
+          {selectedCategory === "Burgers" && (
+            <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+              <Burgers />
+            </div>
+          )}
 
-                    {selectedCategory === 'Deserts' && (
-                        <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                            <Deserts />
-                        </div>
-                    )}
+          {selectedCategory === "Deserts" && (
+            <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+              <Deserts />
+            </div>
+          )}
 
-                    {selectedCategory === 'Drinks' && (
-                        <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                            <Drinks />
-                        </div>
-                    )}
-                    {selectedCategory === 'Extras' && (
-                        <div className='fade-in grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 px-6 md:px-10 lg:px-20 2xl:px-80'>
-                            <Extras />
-                        </div>
-                    )}
-                </Suspense>
+          {selectedCategory === "Drinks" && (
+            <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+              <Drinks />
+            </div>
+          )}
+          {selectedCategory === "Extras" && (
+            <div className="mx-auto grid max-w-screen-lg grid-cols-2 gap-4 px-6 md:grid-cols-3 lg:grid-cols-4 lg:px-10">
+              <Extras />
+            </div>
+          )}
+        </Suspense>
 
-                <div className='my-10 mx-6'>
-                    <div className='bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 p-6 shadow-lg mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 max-w-screen-lg'>
-                        <h1 className='mb-2 my-2 text-amber-100 text-xl text-center uppercase'>Note:</h1>
-
-                        <p className='mb-6 my-6 text-primary text-sm text-center uppercase '>
-                            Each Burger include 80g*2 kött
-                        </p>
-                        <p className='mb-6 my-6 text-primary text-sm text-center uppercase '>
-                            You have option to Choose Hallumni*2
-                        </p>
-
-
+        <div className="mx-auto my-6 max-w-screen-lg bg-[#EAC6B5] p-8 text-center text-sm uppercase text-black shadow-2xl">
+          <div className="">
+            <h1 className="my-2 mb-2 text-center text-xl uppercase">Note:</h1>
+            <p className="my-6 mb-6 text-center text-sm uppercase">
+              Each Burger include 180g kött
+            </p>
+            <p className="my-6 mb-6 text-center text-sm uppercase">
+              You have option to Choose Hallumni
+            </p>
+            <p className="my-6 mb-6 text-center text-sm uppercase">
+              Each Steak include 220g kött
+            </p>
+            {/* 
                         <p className='mb-6 my-6 text-amber-100 text-sm text-center uppercase '>
                             At Jay&apos;s, we offer two types of pizza bread to cater to your preferences. Italiensk Surdeg and Gluten-Free. <br /> <br />
 
                             <span className='text-primary uppercase'>Italiensk Surdeg: </span>Italiensk Surdeg: This classic Italian sourdough bread is a favorite for its rich flavor and perfect crust. Please note, selecting this option will incur an additional charge of 15 kr.
                             <br /><br /> <span className='text-primary uppercase'>Gluten-Free:</span> For those with dietary restrictions, our gluten-free pizza bread is an excellent choice. Please note, selecting this option will incur an additional charge of 20 kr.
                             <br /><br />Additionally, we are pleased to offer gluten-free burger bread for our burger enthusiasts who need or prefer gluten-free options.</p>
-                    </div>
-                </div>
-
-                <Footer />
-            </div>
+                    */}{" "}
+          </div>
         </div>
-    );
+
+        <Footer />
+      </div>
+    </div>
+  );
 }
