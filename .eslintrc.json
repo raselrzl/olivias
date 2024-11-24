@@ -1,4 +1,4 @@
-{
+/* {
   "extends": [
     "next", 
    "eslint:recommended",
@@ -12,4 +12,18 @@
     "@next/next/no-page-custom-font": "off"
   }
   
+} */
+
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:next/recommended"
+  ],
+  "plugins": [
+    "next"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  }
 }
