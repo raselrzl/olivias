@@ -15,10 +15,7 @@
 } */
 
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:next/recommended"
-  ],
+  "extends": ["next", "next/core-web-vitals"],
   "plugins": [
     "next"
   ],
