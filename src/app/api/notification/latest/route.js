@@ -13,7 +13,6 @@ export async function GET() {
     
     const response = { message: latestNotification.length > 0 ? latestNotification[0].message : 'No notifications available' };
     
-    // Log response before sending it
     console.log('Response:', response);
     
     return NextResponse.json(response, { headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' } });

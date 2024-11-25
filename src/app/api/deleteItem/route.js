@@ -29,14 +29,14 @@ export async function DELETE(req) {
   }
 }
 
-export async function GET(req) {
+export async function GET() {
   return new Response(JSON.stringify({ message: 'Method GET not allowed' }), { status: 405 });
 }
 
-export async function POST(req) {
+export async function POST() {
   return new Response(JSON.stringify({ message: 'Method POST not allowed' }), { status: 405 });
 }
 
-export async function PUT(req) {
+export async function PUT() {
   return new Response(JSON.stringify({ message: 'Method PUT not allowed' }), { status: 405 });
 }

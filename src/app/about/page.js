@@ -2,7 +2,7 @@
 import { Footer } from "../components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { FaInstagramSquare } from "react-icons/fa";
 import { MdMarkEmailUnread } from "react-icons/md";
 

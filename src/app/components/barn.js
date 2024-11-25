@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import LoadingSpinner from './loading-spinner';
 import { BASE_API_URL } from '@/lib/utils';
+import Image from 'next/image';
 
 export default function Drinks() {
   const [drinks, setDrinks] = useState([]);
@@ -67,7 +68,7 @@ export default function Drinks() {
   </button>
 
   {/* Drink Image */}
-  <img
+  <Image
     src={drink.src}
     alt={drink.title}
     className="mx-auto mb-3 w-28 h-28 object-cover rounded-full shadow-sm"

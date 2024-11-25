@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import ImageSlider from "../components/ImageSlider";
 import FormInputs from "../components/FormInputs";
 import { Footer } from "../components/Footer";
 import { BASE_API_URL } from "@/lib/utils";

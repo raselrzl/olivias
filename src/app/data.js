@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 import { useEffect, useState } from 'react';
 import { BASE_API_URL } from "@/lib/utils";
 import PopularBurgers from './components/popularBurgers';
@@ -35,3 +35,4 @@ export default function Data() {
     </>
   );
 }
+ */
