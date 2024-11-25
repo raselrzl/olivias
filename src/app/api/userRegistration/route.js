@@ -1,4 +1,4 @@
-import clientPromise from '@/lib/mongodb'; // Import the shared client promise
+import clientPromise from '@/lib/mongodb'; 
 import { NextResponse } from 'next/server';
 
 export async function POST(req) {
@@ -9,21 +9,17 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
-    const client = await clientPromise; // Use the shared client promise
+    const client = await clientPromise; 
     const db = client.db('jays');
     const usersCollection = db.collection('users');
-
-    // Check if the user already exists
     const existingUser = await usersCollection.findOne({ email });
     if (existingUser) {
       return NextResponse.json({ error: 'User already exists' }, { status: 400 });
     }
-
-    // Insert the user into the database
     const newUser = {
       name,
       email,
-      password, // Plain text password
+      password,
       isAdmin: false,
       createdAt: new Date(),
     };

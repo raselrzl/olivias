@@ -1,15 +1,13 @@
 import { NextResponse } from 'next/server';
-import clientPromise from '@/lib/mongodb'; // Adjust the import path if needed
+import clientPromise from '@/lib/mongodb';
 
-const dbName = 'jays'; // Your database name
+const dbName = 'jays';
 
 export async function GET() {
   try {
     const client = await clientPromise;
     const db = client.db(dbName);
     const collection = db.collection('contactMessages');
-
-    // Fetch all messages from the collection
     const messages = await collection.find().sort({ createdAt: -1 }).toArray();
 
     return NextResponse.json(messages, { status: 200 });

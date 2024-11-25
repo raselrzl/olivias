@@ -1,6 +1,6 @@
-import clientPromise from '@/lib/mongodb'; // Adjust the import path if needed
+import clientPromise from '@/lib/mongodb';
 
-const dbName = 'jays'; // Your database name
+const dbName = 'jays';
 
 export async function DELETE(req) {
   const { category, title } = await req.json();

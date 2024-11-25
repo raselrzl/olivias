@@ -1,16 +1,15 @@
-import clientPromise from '@/lib/mongodb'; // Import the shared client promise
+import clientPromise from '@/lib/mongodb'; 
 
 export async function POST(request) {
     try {
-        const client = await clientPromise; // Use the shared client promise
-        const db = client.db('jays'); // Access the database
+        const client = await clientPromise; 
+        const db = client.db('jays'); 
         const collection = db.collection('menuItems');
-        const { category, title, price, description, src } = await request.json();  // Changed imageUrl to src
+        const { category, title, price, description, src } = await request.json(); 
 
-        // Ensure the required fields are provided
-        if (!category || !title || !price || !src) {  // Changed imageUrl to src
+        if (!category || !title || !price || !src) {  
             return new Response(
-                JSON.stringify({ error: 'Category, title, price, and image source are required' }),  // Updated error message
+                JSON.stringify({ error: 'Category, title, price, and image source are required' }), 
                 {
                     status: 400,
                     headers: { 'Content-Type': 'application/json' },
@@ -18,18 +17,13 @@ export async function POST(request) {
             );
         }
 
-        // Check if price already has "SEK" prefix
         const priceWithSEK = price.startsWith('SEK') ? price : `SEK${price.trim()}`;
-
-        // Create a new item object
         const newItem = {
             title,
-            price: priceWithSEK,  // Keep price as string with SEK prefix
+            price: priceWithSEK,
             description: description || '',
-            src  // Changed imageUrl to src
+            src 
         };
-
-        // Insert the new item into the specified category
         await collection.updateOne(
             { category },
             { $push: { items: newItem } },
@@ -43,7 +37,7 @@ export async function POST(request) {
             }
         );
     } catch (error) {
-        console.log(error);  // Log the error for debugging
+        console.log(error); 
         return new Response(
             JSON.stringify({ error: 'Failed to add item' }),
             {
