@@ -17,7 +17,7 @@ export async function POST(request) {
     
     return NextResponse.json({ message: 'Booking request sent successfully!' }, { status: 200 });
   } catch (error) {
-    console.error('Error saving Booking:', error);
+    console.log('Error saving Booking:', error);
     return NextResponse.json({ message: 'Failed to send Booking request' }, { status: 500 });
   }
 }

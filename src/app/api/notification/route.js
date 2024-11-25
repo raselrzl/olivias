@@ -22,7 +22,7 @@ export async function POST(request) {
 
     return NextResponse.json({ message: 'Notification added successfully' });
   } catch (error) {
-    console.error('Error adding notification:', error);
+    console.log('Error adding notification:', error);
     return NextResponse.json({ error: 'Failed to add notification', details: error.message }, { status: 500 });
   }
 }

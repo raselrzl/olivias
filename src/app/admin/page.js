@@ -32,10 +32,10 @@ export default function MenuItemsForm() {
         setUser(null); // Clear user data
         setView(''); // Hide view after logout
       } else {
-        console.error('Logout failed');
+        console.log('Logout failed');
       }
     } catch (error) {
-      console.error('An error occurred during logout:', error);
+      console.log('An error occurred during logout:', error);
     }
   };
 

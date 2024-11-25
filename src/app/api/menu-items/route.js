@@ -43,7 +43,7 @@ export async function POST(request) {
             }
         );
     } catch (error) {
-        console.error(error);  // Log the error for debugging
+        console.log(error);  // Log the error for debugging
         return new Response(
             JSON.stringify({ error: 'Failed to add item' }),
             {

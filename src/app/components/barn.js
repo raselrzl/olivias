@@ -33,7 +33,7 @@ export default function Drinks() {
         }
       })
       .catch((err) => {
-        console.error('Fetch error:', err);
+        console.log('Fetch error:', err);
         setError('Error fetching data: ' + err.message);
       })
       .finally(() => {

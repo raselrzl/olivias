@@ -82,10 +82,10 @@ export default function ContactPage() {
             time: "",
           });
         } else {
-          console.error("Failed to submit form");
+          console.log("Failed to submit form");
         }
       } catch (error) {
-        console.error("Error:", error);
+        console.log("Error:", error);
       }
     } else {
       setErrors(formErrors);

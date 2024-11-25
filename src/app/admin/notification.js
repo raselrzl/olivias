@@ -18,7 +18,7 @@ export default function NotificationForm() {
       const data = await response.json();
       setLatestNotification(data.message || 'No notifications available');
     } catch (error) {
-      console.error('Error fetching latest notification:', error);
+      console.log('Error fetching latest notification:', error);
       setError('Error fetching latest notification: ' + error.message);
     }
   };

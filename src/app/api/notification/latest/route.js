@@ -18,7 +18,7 @@ export async function GET() {
     
     return NextResponse.json(response, { headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' } });
   } catch (error) {
-    console.error('Failed to fetch notifications:', error);
+    console.log('Failed to fetch notifications:', error);
     return NextResponse.json({ error: 'Failed to fetch notifications' }, { status: 500 });
   }
 }

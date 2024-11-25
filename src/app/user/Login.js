@@ -29,7 +29,7 @@ const Login = ({ onLoginSuccess }) => {
         setError(data.error);
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
       setError('An error occurred during login');
     }
   };

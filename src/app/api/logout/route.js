@@ -8,7 +8,7 @@ export async function POST() {
     response.cookies.set('token', '', { maxAge: 0 });
     return response;
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
@@ -34,7 +34,7 @@ export async function POST() {
 
     return response;
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

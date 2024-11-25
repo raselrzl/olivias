@@ -36,7 +36,7 @@ export default function Pizzas() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Fetch error:", err);
+        console.log("Fetch error:", err);
         setError("Error fetching data: " + err.message);
         setLoading(false);
       });

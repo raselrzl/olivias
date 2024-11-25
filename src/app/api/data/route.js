@@ -14,7 +14,7 @@ export async function GET() {
     // Return the JSON response
     return NextResponse.json(data);
   } catch (error) {
-    console.error('Error fetching data:', error); // Log any errors
+    console.log('Error fetching data:', error); // Log any errors
 
     // Return a JSON response with a 500 status code and error message
     return NextResponse.json(

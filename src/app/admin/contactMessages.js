@@ -14,7 +14,7 @@ export default function ContactMessages() {
         data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setMessages(data);
       } catch (error) {
-        console.error("Error fetching messages:", error);
+        console.log("Error fetching messages:", error);
       } finally {
         setLoading(false);
       }

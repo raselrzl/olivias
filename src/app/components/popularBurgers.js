@@ -30,14 +30,14 @@ export default function PopularBurgers() {
           const popularBurgersData = popularBurgersCategory ? popularBurgersCategory.items : [];
           setBurgers(popularBurgersData);  // Set the Popular Burgers data to state
         } else {
-          console.error('Fetched data is not an array:', data);
+          console.log('Fetched data is not an array:', data);
           setError('Unexpected data format');
         }
 
         setLoading(false);
       })
       .catch((err) => {
-        console.error('Fetch error:', err);
+        console.log('Fetch error:', err);
         setError('Error fetching data: ' + err.message);  // Set error message if fetching data fails
         setLoading(false);
       });
