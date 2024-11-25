@@ -1,26 +1,8 @@
-/* {
-  "extends": [
-    "next", 
-   "eslint:recommended",
-    "plugin:next/recommended",
-    "prettier"],
-    "plugins": [
-    "react"
-  ],
+{
+  "extends": ["next/core-web-vitals", "eslint:recommended", "prettier"],
+  "plugins": ["react"],
   "rules": {
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off"
-  }
-  
-} */
-
-{
-  "extends": ["next", "next/core-web-vitals"],
-  "plugins": [
-    "next"
-  ],
-  "env": {
-    "browser": true,
-    "node": true
   }
 }
